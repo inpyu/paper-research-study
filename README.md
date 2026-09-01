@@ -39,3 +39,12 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `routine.sh` | cron 진입점 (flock · 타임아웃 · 로깅) | — |
 
 산출물은 `out/*.json` (gitignore).
+
+## 사이트 (`site/`) — Next.js 정적 내보내기
+서버 함수를 하나도 만들지 않는다(`output: "export"`). 화면은 `public/data/*.json` 만 읽는다.
+
+```bash
+cd site && npm install && npm run build     # out/ 에 정적 파일
+```
+
+Vercel 프로젝트 설정에서 **Root Directory 를 `site` 로** 지정하면 push 마다 자동 배포된다.

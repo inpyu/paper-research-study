@@ -18,10 +18,13 @@ run() {
   echo "=== $(date -Is) 루틴 시작"
   # 0. 대상 레포 갱신
   git -C "${TARGET_REPO:-$HOME/work/prefill-opt}" pull --ff-only -q || echo "pull 실패(계속)"
-  # 1~3. 파싱·인덱싱·갭 (LLM 미사용 — 항상 성공해야 한다)
-  run python3 "$ROOT/routine/parse_notes.py" &&
-  run python3 "$ROOT/routine/index_code.py" &&
-  run python3 "$ROOT/routine/gaps.py" --top 10
+  # 파싱·인덱싱·갭·빌드·배포 (여기까지 LLM 미사용 — 항상 성공해야 한다)
+  PY="$ROOT/.venv/bin/python3"; [ -x "$PY" ] || PY=python3
+  run "$PY" "$ROOT/routine/parse_notes.py" &&
+  run "$PY" "$ROOT/routine/index_code.py" &&
+  run "$PY" "$ROOT/routine/gaps.py" --top 10 &&
+  run "$PY" "$ROOT/routine/build.py" &&
+  run "$PY" "$ROOT/routine/publish.py"
   echo "=== $(date -Is) 루틴 끝"
 } >>"$LOG" 2>&1
 

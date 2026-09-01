@@ -19,11 +19,12 @@
 - **완료 기준**: `python3 routine/gaps.py --top 10`이 stdout에 갭을 출력하고,
   그중 7개 이상이 "실제로 몰랐던 것"이다. **여기서 유용하지 않으면 중단한다.**
 
-## M2 — 정적 사이트와 무중단 배포 (3~4일)
-- [ ] `build.py` → `site/public/data/*.json` + `manifest.json`
-- [ ] `site/` Next.js 정적 사이트: 갭 지도 / 개념 상세(노트 인용 + 코드 근거 GitHub 링크)
-- [ ] `publish.py` → 변경 시에만 commit & push, Vercel 자동 배포 연결
-- [ ] 화면에 "마지막 갱신 시각" 표시
+## M2 — 정적 사이트와 무중단 배포  ✅ 코드 완료 (Vercel 연결만 남음)
+- [x] `build.py` → `site/public/data/*.json` + `manifest.json` (130파일 310KB)
+- [x] `site/` Next.js 15 정적 내보내기: 갭 / 개념 / 위키 / 논문 4개 탭, 모바일 우선
+- [x] `publish.py` → 검증 통과 시에만 commit & push (개념 50개 미만이면 회귀로 보고 중단)
+- [x] 화면에 "마지막 갱신 시각 · head_sha" 표시
+- [ ] Vercel 프로젝트 생성 (Root Directory = `site`) — 대시보드에서 import
 - **완료 기준**: 폰 브라우저에서 갭 지도를 본다. 매일 아침 자동으로 갱신된다.
 
 ## M2.5 — 레포 위키 (4~5일) — 대부분 LLM 미사용
