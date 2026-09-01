@@ -85,6 +85,24 @@ def main():
     papers.sort(key=lambda x: -len(x["cited_in"]))
     files.append(write("papers.json", {"count": len(papers), "items": papers}))
 
+    # ---- 브리핑: 최신 + 날짜별 + 목록 ----
+    bdir = os.path.join(os.path.dirname(DATA), "..", "..", "out", "briefings")
+    bdir = os.path.normpath(bdir)
+    days = sorted(os.listdir(bdir)) if os.path.isdir(bdir) else []
+    bindex = []
+    for fn in days:
+        if not fn.endswith(".json"):
+            continue
+        b = json.load(open(os.path.join(bdir, fn), encoding="utf-8"))
+        files.append(write(f"briefing/{b['date']}.json", b))
+        must = sum(1 for x in b["items"] if x["verdict"] == "must-read")
+        bindex.append({"date": b["date"], "count": len(b["items"]),
+                       "must": must,
+                       "titles": [x["title"] for x in b["items"][:3]]})
+    bindex.sort(key=lambda x: x["date"], reverse=True)
+    files.append(write("briefings.json", {"count": len(bindex), "items": bindex,
+                                          "latest": bindex[0]["date"] if bindex else None}))
+
     # ---- 위키 뼈대: 파일 · 플래그 · 학습경로 · 가설 · 연대기 ----
     doc_of_file = {}
     for e in notes["evidence"]:
@@ -112,13 +130,14 @@ def main():
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "repo": "inpyu/prefill-opt", "head_sha": sha,
         "summary": gaps["summary"],
+        "latest_briefing": bindex[0]["date"] if bindex else None,
         "files": {rel: {"hash": h, "bytes": n} for rel, h, n in files},
     }
     write("manifest.json", manifest)
     total = sum(n for _, _, n in files)
     print(f"데이터 파일 {len(files)+1}개, {total/1024:.0f} KB -> site/public/data/")
     print(f"  개념 {len(index)} · 논문 {len(papers)} · 소스파일 {len(src)} · "
-          f"플래그 {len(code['flags'])} · 커밋 {len(log)}")
+          f"플래그 {len(code['flags'])} · 커밋 {len(log)} · 브리핑 {len(bindex)}일치")
 
 
 if __name__ == "__main__":

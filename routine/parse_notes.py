@@ -195,9 +195,18 @@ def main():
                     {"doc": rel, "line": i})
 
             if "RESEARCH-PLAN" in rel:
+                # 표의 첫 칸이 'H3' 인 줄이 그 가설의 정의다.
+                # 단순 첫 등장을 쓰면 H1 설명 안에 언급된 'H3' 가 잡힌다.
+                cells = [c.strip() for c in line.strip().strip("|").split("|")] \
+                    if line.strip().startswith("|") else []
+                own = strip_md(cells[0]) if cells else ""
                 for h in HYP.findall(line):
-                    hypotheses.setdefault(h, {"id": h, "doc": rel, "line": i,
-                                              "context": strip_md(line)[:160]})
+                    prev = hypotheses.get(h)
+                    is_def = own == h
+                    if prev is None or (is_def and not prev.get("is_def")):
+                        hypotheses[h] = {"id": h, "doc": rel, "line": i,
+                                         "is_def": is_def,
+                                         "context": strip_md(line)[:220]}
 
         emph, plain = mention_candidates(text)
         for term in emph | plain:

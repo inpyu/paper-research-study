@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 const TABS = [
+  ["brief", "브리핑"],
   ["gap", "갭"],
   ["concept", "개념"],
   ["wiki", "위키"],
@@ -196,6 +197,77 @@ function Wiki() {
   );
 }
 
+/* ---------- 브리핑 ---------- */
+const VERDICT = {
+  "must-read": ["필독", "warn"],
+  skim: ["훑기", ""],
+  skip: ["넘김", ""],
+};
+
+function Briefings() {
+  const idx = useJson("briefings.json");
+  const [day, setDay] = useState(null);
+  const d = useJson(day ? `briefing/${day}.json` : "briefings.json");
+  const cur = day && d && d.date === day ? d : null;
+
+  if (!idx) return <div className="empty">불러오는 중…</div>;
+  if (idx.count === 0) return <div className="empty">아직 브리핑이 없습니다.</div>;
+
+  if (!day) {
+    return (
+      <>
+        <p className="meta" style={{ marginTop: 4 }}>
+          매일 아침 arXiv 신규 논문을 refs.md 시드와 대조해 3편으로 추립니다.
+        </p>
+        {idx.items.map((b) => (
+          <div key={b.date} onClick={() => setDay(b.date)} style={{ cursor: "pointer" }}>
+            <Card name={b.date}
+              side={b.must ? `필독 ${b.must}편` : `${b.count}편`}>
+              {b.titles.join(" · ")}
+            </Card>
+          </div>
+        ))}
+      </>
+    );
+  }
+  if (!cur) return <div className="empty">불러오는 중…</div>;
+  return (
+    <>
+      <button className="pill" style={{ cursor: "pointer" }} onClick={() => setDay(null)}>← 날짜</button>
+      <div className="sec">{cur.date} · 후보 {cur.all?.length ?? "?"}편 중 {cur.items.length}편</div>
+      {cur.items.map((b, i) => {
+        const [label, cls] = VERDICT[b.verdict] || [b.verdict, ""];
+        return (
+          <div className="card" key={i}>
+            <div className="t">
+              <span className="n">
+                <span className={`pill ${cls}`}>{label}</span>
+                <a href={b.url} target="_blank" rel="noreferrer">{b.title}</a>
+              </span>
+              <span className="s">{b.published}</span>
+            </div>
+            <div className="d" style={{ color: "var(--fg)", marginTop: 8 }}>{b.what}</div>
+            <div className="d" style={{ marginTop: 4 }}>{b.relation}</div>
+            {b.gap && <div className="d" style={{ marginTop: 4 }}>간극: {b.gap}</div>}
+            <div className="d" style={{ marginTop: 6 }}>
+              {(b.hypotheses || []).map((h) => <span className="pill" key={h}>{h}</span>)}
+              <span className="pill">{b.categories?.[0]}</span>
+              <span className="pill">유사도 {b.score}</span>
+            </div>
+            <div style={{ marginTop: 8 }}>
+              <button className="pill" style={{ cursor: "pointer" }}
+                onClick={() => navigator.clipboard?.writeText(
+                  `| **${b.title}** [arXiv](${b.url}) | ${b.what} | ${b.gap || ""} |`)}>
+                refs.md 한 줄 복사
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
 /* ---------- 논문 ---------- */
 function Papers() {
   const d = useJson("papers.json");
@@ -217,7 +289,7 @@ function Papers() {
 
 export default function Page() {
   const m = useJson("manifest.json");
-  const [tab, setTab] = useState("gap");
+  const [tab, setTab] = useState("brief");
   const s = m?.summary;
   return (
     <>
@@ -244,6 +316,7 @@ export default function Page() {
             <div className="stat"><b>{s.G2}</b><span>G2 근거 없음</span></div>
           </div>
         )}
+        {tab === "brief" && <Briefings />}
         {tab === "gap" && <Gaps />}
         {tab === "concept" && <Concepts />}
         {tab === "wiki" && <Wiki />}

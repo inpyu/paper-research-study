@@ -8,7 +8,9 @@
 **이 서버의 cron 루틴이 Claude Code 헤드리스(구독)로 콘텐츠를 미리 만들어 git push하고,
 Vercel이 정적 사이트로 무중단 자동 배포한다. 배포된 사이트는 LLM을 호출하지 않는다 — 추가 과금 0.**
 
-현재 상태: **M1 구현 중** — 노트 파서 · 코드 인덱서 · 갭 분석기가 동작한다(LLM 미사용).
+배포: **https://paper-research-study.vercel.app**
+
+현재 상태: **M1~M3 완료** — 파싱·갭·정적사이트·일일 논문 브리핑이 자동으로 돈다.
 
 ```bash
 python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routine/gaps.py --top 10
@@ -36,7 +38,12 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `parse_notes.py` | `research/*.md` → 개념·링크·코드근거·논문시드·학습경로·가설 | 미사용 |
 | `index_code.py` | 심볼·CLI 플래그·주석 용어·파일 변경빈도 | 미사용 |
 | `gaps.py` | G1~G5 갭 산출 + 사람이 읽는 리포트 | 미사용 |
-| `routine.sh` | cron 진입점 (flock · 타임아웃 · 로깅) | — |
+| `arxiv.py` | 시드 정규화 + arXiv 신규 수집 + BM25 랭킹 | 미사용 |
+| `generate.py` | 브리핑 생성 (Claude Code 헤드리스, 구독) + 스키마 검증 | **사용** |
+| `build.py` | `site/public/data/*.json` 생성 | 미사용 |
+| `publish.py` | 검증 후 변경 시에만 commit & push | 미사용 |
+| `notify.py` | ntfy.sh 푸시 발송 | 미사용 |
+| `routine.sh` | cron 진입점 (flock · 타임아웃 · 로깅), **매일 06:10** | — |
 
 산출물은 `out/*.json` (gitignore).
 
