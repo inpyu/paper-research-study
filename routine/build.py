@@ -11,7 +11,7 @@ import sys
 from datetime import datetime, timezone
 
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
-from common import REPO, git, load  # noqa: E402
+from common import OUT as OUTDIR, REPO, git, load  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "site", "public", "data")
@@ -44,21 +44,70 @@ def main():
     for l in notes["links"]:
         links_out.setdefault(l["from"], []).append(l)
 
+    # 생성된 설명을 읽어 붙인다
+    exp_dir = os.path.join(OUTDIR, "explain")
+    explains = {}
+    if os.path.isdir(exp_dir):
+        for fn in os.listdir(exp_dir):
+            if fn.endswith(".json"):
+                try:
+                    e = json.load(open(os.path.join(exp_dir, fn), encoding="utf-8"))
+                    explains[e["key"]] = e
+                except Exception:
+                    pass
+
     index = []
     for c in notes["concepts"]:
         ev = ev_by_key.get(c["key"], []) + [
             e for e in c.get("evidence", []) if "via" in e]
+        e = explains.get(c["key"], {})
         index.append({"key": c["key"], "name": c["name"],
                       "aliases": c["aliases"], "docs": len(c["defs"]),
-                      "ev": len(ev)})
+                      "ev": len(ev), "one_liner": e.get("one_liner", ""),
+                      "difficulty": e.get("difficulty", 0),
+                      "tags": e.get("tags", []),
+                      "explained": bool(e)})
         files.append(write(f"concept/{c['key'].replace(' ', '_')}.json", {
             "key": c["key"], "name": c["name"], "aliases": c["aliases"],
+            **{k: e.get(k) for k in ("one_liner", "what", "why", "how",
+                                     "in_this_repo", "difficulty", "tags")},
+            "prerequisites": e.get("prerequisites", []),
+            "related_keys": e.get("related", []),
             "defs": [{**d, "url": gh(d["doc"], d["line"], sha)} for d in c["defs"]],
             "evidence": [{**e, "url": gh(e["file"], e.get("line_start"), sha)}
                          for e in ev],
             "links": links_out.get(c["key"], []),
         }))
-    files.append(write("concepts.json", {"count": len(index), "items": index}))
+    # 학습 순서: 선행 개념 그래프의 깊이 -> 난이도 -> 이름
+    prereq = {c["key"]: explains.get(c["key"], {}).get("prerequisites", [])
+              for c in notes["concepts"]}
+    keys = set(prereq)
+    depth = {}
+
+    def d_of(k, stack=()):
+        if k in depth:
+            return depth[k]
+        if k in stack or k not in keys:          # 순환은 깊이 0 으로 끊는다
+            return 0
+        ds = [d_of(p, stack + (k,)) for p in prereq.get(k, []) if p in keys]
+        depth[k] = (max(ds) + 1) if ds else 0
+        return depth[k]
+
+    for k in keys:
+        d_of(k)
+    by_key = {c["key"]: c for c in index}
+    order = sorted(keys, key=lambda k: (depth.get(k, 0),
+                                        by_key[k]["difficulty"] or 9,
+                                        by_key[k]["name"].lower()))
+    steps = {}
+    for k in order:
+        steps.setdefault(depth.get(k, 0), []).append(k)
+    files.append(write("concepts.json", {
+        "count": len(index), "items": index,
+        "explained": sum(1 for x in index if x["explained"]),
+        "order": order,
+        "steps": [{"level": lv, "keys": ks} for lv, ks in sorted(steps.items())],
+    }))
 
     # ---- 갭 ----
     for k in ("G1", "G2", "G3", "G4", "G5"):
@@ -128,6 +177,23 @@ def main():
     files.append(write("briefings.json", {"count": len(bindex), "items": bindex,
                                           "latest": bindex[0]["date"] if bindex else None}))
 
+    # ---- 코드 문서 (파일·함수 설명) ----
+    doc_dir = os.path.join(OUTDIR, "codedoc")
+    cdocs = {}
+    if os.path.isdir(doc_dir):
+        for fn in sorted(os.listdir(doc_dir)):
+            if not fn.endswith(".json"):
+                continue
+            try:
+                cd = json.load(open(os.path.join(doc_dir, fn), encoding="utf-8"))
+            except Exception:
+                continue
+            cd["url"] = gh(cd["file"], None, sha)
+            for f_ in cd.get("functions", []):
+                f_["url"] = gh(cd["file"], f_.get("line"), sha)
+            cdocs[cd["file"]] = cd
+            files.append(write(f"code/{cd['file'].replace('/', '_')}.json", cd))
+
     # ---- 위키 뼈대: 파일 · 플래그 · 학습경로 · 가설 · 연대기 ----
     doc_of_file = {}
     for e in notes["evidence"]:
@@ -136,7 +202,16 @@ def main():
             "in_refs": f.get("in_refs", 0), "url": gh(f["path"], None, sha),
             "notes": sorted(doc_of_file.get(f["path"], []))}
            for f in code["files"] if f["path"].startswith("src/")]
-    files.append(write("wiki/files.json", {"count": len(src), "items": src}))
+    for f_ in src:
+        cd = cdocs.get(f_["path"])
+        if cd:
+            f_["role"] = cd.get("role", "")[:160]
+            f_["tags"] = cd.get("tags", [])
+            f_["functions"] = len(cd.get("functions", []))
+            f_["doc"] = True
+    files.append(write("wiki/files.json", {
+        "count": len(src), "documented": sum(1 for f_ in src if f_.get("doc")),
+        "items": src}))
     files.append(write("wiki/flags.json", {
         "count": len(code["flags"]),
         "items": [{"flag": f["flag"], "sites": f["sites"],
@@ -180,6 +255,7 @@ def main():
     print(f"  개념 {len(index)} · 논문 {len(papers)} · 소스파일 {len(src)} · "
           f"플래그 {len(code['flags'])} · 커밋 {len(log)} · 브리핑 {len(bindex)}일치 · "
           f"실행경로 {len(tr['traces']) if tr else 0}개")
+    print(f"  설명: 개념 {len(explains)}/{len(index)} · 코드 파일 {len(cdocs)}")
 
 
 if __name__ == "__main__":

@@ -1,25 +1,22 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 
-const TABS = [
-  ["brief", "브리핑"],
-  ["gap", "갭"],
-  ["concept", "개념"],
-  ["wiki", "위키"],
-  ["paper", "논문"],
-];
+const TABS = [["brief", "브리핑"], ["concept", "개념"], ["code", "코드"], ["paper", "논문"]];
+const REPO_URL = "https://github.com/inpyu/prefill-opt/blob/main/";
 
+// 탭을 바꾸면 path 는 즉시 바뀌지만 데이터는 한 박자 늦게 온다.
+// 그 사이 새 탭이 옛 데이터 모양으로 그려져 터졌다. 경로가 일치할 때만 렌더한다.
 const useJson = (path) => {
-  const [d, setD] = useState(null);
+  const [st, setSt] = useState({ path: null, data: null, error: null });
   useEffect(() => {
     let alive = true;
     fetch(`./data/${path}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => alive && setD(j))
-      .catch(() => alive && setD(null));
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((j) => alive && setSt({ path, data: j, error: null }))
+      .catch((e) => alive && setSt({ path, data: null, error: String(e.message || e) }));
     return () => { alive = false; };
   }, [path]);
-  return d;
+  return st.path === path ? st : { path, data: null, error: null };
 };
 
 const ago = (iso) => {
@@ -30,253 +27,257 @@ const ago = (iso) => {
   return `${Math.floor(h / 24)}일 전`;
 };
 
-function Card({ name, side, children, href }) {
-  const body = (
-    <div className="card">
-      <div className="t">
-        <span className="n">{name}</span>
-        {side && <span className="s">{side}</span>}
-      </div>
-      {children && <div className="d">{children}</div>}
-    </div>
-  );
-  return href ? <a href={href} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>{body}</a> : body;
-}
+const Loading = () => <div className="empty">불러오는 중…</div>;
+const Failed = ({ e }) => <div className="empty">데이터를 불러오지 못했습니다 ({e})</div>;
+const Tags = ({ items }) => (items || []).map((t) => <span className="pill" key={t}>{t}</span>);
 
-/* ---------- 갭 ---------- */
-function Gaps() {
-  const [kind, setKind] = useState("G3");
-  const d = useJson(`gap/${kind}.json`);
-  const desc = {
-    G3: "노트에서 언급만 되고 정의된 적 없는 용어 — 안다고 착각하고 넘어간 것",
-    G1: "코드에만 있고 노트에 전혀 없는 용어",
-    G2: "노트에 있으나 코드 근거를 못 찾은 개념",
-    G4: "어떤 노트도 언급하지 않는 소스 파일",
-    G5: "노트에 설명이 없는 CLI 플래그",
-  }[kind];
+function Section({ title, children }) {
+  if (!children) return null;
   return (
     <>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", margin: "4px 0 10px" }}>
-        {["G3", "G1", "G4", "G5", "G2"].map((k) => (
-          <button key={k} className="pill" onClick={() => setKind(k)}
-            style={{ cursor: "pointer", background: kind === k ? "var(--accent)" : "transparent",
-                     color: kind === k ? "#fff" : "var(--dim)",
-                     borderColor: kind === k ? "var(--accent)" : "var(--line)" }}>
-            {k}
-          </button>
-        ))}
-      </div>
-      <p className="meta" style={{ marginTop: 0 }}>{desc}</p>
-      {!d ? <div className="empty">불러오는 중…</div> :
-        d.items.length === 0 ? <div className="empty">없음</div> :
-        d.items.slice(0, 120).map((x, i) => {
-          if (kind === "G3")
-            return (
-              <Card key={i} name={x.term}
-                side={`문서 ${x.doc_count} · 강조 ${x.emph} · ${x.in_code ? `코드 ${x.in_code}` : "노트만"}`}>
-                {x.docs.map((s) => s.replace("research/", "")).join(", ")}
-              </Card>
-            );
-          if (kind === "G1")
-            return <Card key={i} name={x.term} side={`변경 ${x.churn}회`} href={x.url}>
-              <span className="mono">{x.file}</span></Card>;
-          if (kind === "G2")
-            return <Card key={i} name={x.name} side={`정의 ${x.docs}곳`} />;
-          if (kind === "G4")
-            return <Card key={i} name={x.path.replace("src/", "")} side={`${x.loc}줄 · 변경 ${x.churn}회`} href={x.url} />;
-          return <Card key={i} name={<span className="mono">{x.flag}</span>}
-            side={`${x.sites}곳`} href={x.url}>
-            <span className="mono">{x.file}:{x.line}</span></Card>;
-        })}
+      <div className="sec">{title}</div>
+      <p className="body">{children}</p>
     </>
   );
 }
 
-/* ---------- 개념 ---------- */
-function Concepts() {
-  const idx = useJson("concepts.json");
-  const [q, setQ] = useState("");
-  const [sel, setSel] = useState(null);
-  const detail = useJson(sel ? `concept/${sel.replace(/ /g, "_")}.json` : "concepts.json");
-  const items = useMemo(() => {
-    if (!idx) return [];
-    const s = q.trim().toLowerCase();
-    return idx.items.filter((c) => !s || c.name.toLowerCase().includes(s) ||
-      c.aliases.some((a) => a.toLowerCase().includes(s)));
-  }, [idx, q]);
-
-  if (sel && detail && detail.key === sel) {
-    return (
-      <>
-        <button className="pill" style={{ cursor: "pointer" }} onClick={() => setSel(null)}>← 목록</button>
-        <h2 style={{ margin: "14px 0 4px", fontSize: 20 }}>{detail.name}</h2>
-        {detail.aliases.length > 0 && <p className="meta">{detail.aliases.join(" · ")}</p>}
-        <div className="sec">노트 정의 {detail.defs.length}곳</div>
-        {detail.defs.map((d, i) => (
-          <Card key={i} name={d.doc.replace("research/", "")} side={`:${d.line}`} href={d.url} />
-        ))}
-        <div className="sec">코드 근거 {detail.evidence.length}곳</div>
-        {detail.evidence.length === 0 ? <div className="empty">없음 — G2 갭</div> :
-          detail.evidence.map((e, i) => (
-            <Card key={i} name={<span className="mono">{e.file}</span>}
-              side={e.line_start ? `:${e.line_start}` : e.via || ""} href={e.url}>{e.note}</Card>
-          ))}
-        {detail.links.length > 0 && (
-          <>
-            <div className="sec">이어지는 개념</div>
-            {detail.links.map((l, i) => (
-              <button key={i} className="pill" style={{ cursor: "pointer" }}
-                onClick={() => setSel(l.to_key)}>{l.to_text}</button>
-            ))}
-          </>
-        )}
-      </>
-    );
-  }
-  return (
-    <>
-      <input type="search" placeholder="개념 검색" value={q} onChange={(e) => setQ(e.target.value)} />
-      {!idx ? <div className="empty">불러오는 중…</div> :
-        <div className="grid2">
-          {items.map((c) => (
-            <div key={c.key} onClick={() => setSel(c.key)} style={{ cursor: "pointer" }}>
-              <Card name={c.name} side={`문서 ${c.docs}${c.ev ? ` · 근거 ${c.ev}` : ""}`} />
-            </div>
-          ))}
-        </div>}
-    </>
-  );
-}
-
-/* ---------- 위키 ---------- */
-function Wiki() {
-  const [view, setView] = useState("files");
-  const d = useJson(`wiki/${view}.json`);
-  return (
-    <>
-      <div style={{ display: "flex", gap: 6, margin: "4px 0 12px", flexWrap: "wrap" }}>
-        {[["trace", "실행 경로"], ["artifacts", "실험"], ["numbers", "수치"], ["logs", "로그"], ["questions", "열린 질문"], ["xref", "역인덱스"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
-          <button key={k} className="pill" onClick={() => setView(k)}
-            style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
-                     color: view === k ? "#fff" : "var(--dim)",
-                     borderColor: view === k ? "var(--accent)" : "var(--line)" }}>{label}</button>
-        ))}
-      </div>
-      {!d ? <div className="empty">불러오는 중…</div> :
-        view === "trace" ? <Trace d={d} /> :
-        view === "artifacts" ? <Runs d={d} /> :
-        view === "numbers" ? <Numbers d={d} /> :
-        view === "logs" ? <Logs d={d} /> :
-        view === "questions" ? <Questions d={d} /> :
-        view === "xref" ? <Xref d={d} /> :
-        view === "files" ? d.items.map((f, i) => (
-          <Card key={i} name={<span className="mono">{f.path.replace("src/", "")}</span>}
-            side={`${f.loc}줄 · 변경 ${f.churn} · 참조 ${f.in_refs ?? 0}`} href={f.url}>
-            {f.notes.length ? `노트: ${f.notes.map((n) => n.replace("research/", "")).join(", ")}`
-              : <span style={{ color: "var(--warn)" }}>노트 없음 (G4)</span>}
-          </Card>
-        )) :
-        view === "flags" ? d.items.map((f, i) => (
-          <Card key={i} name={<span className="mono">{f.flag}</span>}
-            side={`${f.sites.length}곳`} href={f.url}>
-            <span className="mono">{f.sites[0].file}:{f.sites[0].line}</span></Card>
-        )) :
-        view === "history" ? d.items.map((c, i) => (
-          <Card key={i} name={c.subject} side={c.date}>
-            <span className="mono">{c.sha}</span></Card>
-        )) : (
-          <>
-            <div className="sec">학습 경로 {d.stages.length} Stage</div>
-            {d.stages.map((s, i) => <Card key={i} name={`Stage ${s.stage}`} side="">{s.title}</Card>)}
-            <div className="sec">가설</div>
-            {Object.values(d.hypotheses).map((h, i) => (
-              <Card key={i} name={h.id} side="">{h.context}</Card>
-            ))}
-            <div className="sec">노트 문서 {d.docs.length}개</div>
-            {d.docs.map((x, i) => (
-              <Card key={i} name={x.path.replace("research/", "")} side={`${x.lines}줄`} href={x.url}>
-                {x.title}</Card>
-            ))}
-          </>
-        )}
-    </>
-  );
-}
-
-/* ---------- 브리핑 ---------- */
-const VERDICT = {
-  "must-read": ["필독", "warn"],
-  skim: ["훑기", ""],
-  skip: ["넘김", ""],
-};
+/* ================= 브리핑 ================= */
+const VERDICT = { "must-read": ["필독", "warn"], skim: ["훑기", ""], skip: ["넘김", ""] };
 
 function Briefings() {
-  const idx = useJson("briefings.json");
   const [day, setDay] = useState(null);
-  const d = useJson(day ? `briefing/${day}.json` : "briefings.json");
-  const cur = day && d && d.date === day ? d : null;
+  const idx = useJson("briefings.json");
+  const one = useJson(day ? `briefing/${day}.json` : "briefings.json");
 
-  if (!idx) return <div className="empty">불러오는 중…</div>;
-  if (idx.count === 0) return <div className="empty">아직 브리핑이 없습니다.</div>;
-
-  if (!day) {
+  if (day) {
+    if (one.error) return <Failed e={one.error} />;
+    if (!one.data || one.data.date !== day) return <Loading />;
     return (
       <>
-        <p className="meta" style={{ marginTop: 4 }}>
-          매일 아침 arXiv 신규 논문을 refs.md 시드와 대조해 3편으로 추립니다.
-        </p>
-        {idx.items.map((b) => (
-          <div key={b.date} onClick={() => setDay(b.date)} style={{ cursor: "pointer" }}>
-            <Card name={b.date}
-              side={b.must ? `필독 ${b.must}편` : `${b.count}편`}>
-              {b.titles.join(" · ")}
-            </Card>
-          </div>
-        ))}
-      </>
-    );
-  }
-  if (!cur) return <div className="empty">불러오는 중…</div>;
-  return (
-    <>
-      <button className="pill" style={{ cursor: "pointer" }} onClick={() => setDay(null)}>← 날짜</button>
-      <div className="sec">{cur.date} · 후보 {cur.all?.length ?? "?"}편 중 {cur.items.length}편</div>
-      {cur.items.map((b, i) => {
-        const [label, cls] = VERDICT[b.verdict] || [b.verdict, ""];
-        return (
-          <div className="card" key={i}>
-            <div className="t">
-              <span className="n">
-                <span className={`pill ${cls}`}>{label}</span>
-                <a href={b.url} target="_blank" rel="noreferrer">{b.title}</a>
-              </span>
-              <span className="s">{b.published}</span>
-            </div>
-            <div className="d" style={{ color: "var(--fg)", marginTop: 8 }}>{b.what}</div>
-            <div className="d" style={{ marginTop: 4 }}>{b.relation}</div>
-            {b.gap && <div className="d" style={{ marginTop: 4 }}>간극: {b.gap}</div>}
-            <div className="d" style={{ marginTop: 6 }}>
-              {(b.hypotheses || []).map((h) => <span className="pill" key={h}>{h}</span>)}
-              <span className="pill">{b.categories?.[0]}</span>
-              <span className="pill">유사도 {b.score}</span>
-            </div>
-            <div style={{ marginTop: 8 }}>
-              <button className="pill" style={{ cursor: "pointer" }}
+        <button className="pill" onClick={() => setDay(null)}>← 날짜 목록</button>
+        <div className="sec">{one.data.date}</div>
+        {one.data.items.map((b, i) => {
+          const [label, cls] = VERDICT[b.verdict] || [b.verdict, ""];
+          return (
+            <div className="card" key={i}>
+              <div className="t">
+                <span className="n">
+                  <span className={`pill ${cls}`}>{label}</span>
+                  <a href={b.url} target="_blank" rel="noreferrer">{b.title}</a>
+                </span>
+                <span className="s">{b.published}</span>
+              </div>
+              <Section title="무엇을 했나">{b.what}</Section>
+              <Section title="우리 연구와의 관계">{b.relation}</Section>
+              <Section title="우리 체제와의 간극">{b.gap}</Section>
+              {b.abstract && <details><summary className="meta">초록 원문</summary>
+                <p className="body" style={{ color: "var(--dim)" }}>{b.abstract}</p></details>}
+              <div style={{ marginTop: 8 }}>
+                <Tags items={b.topics} />
+                {(b.hypothesis_notes || []).map((h, j) => (
+                  <div className="d" key={j}>· {h}</div>
+                ))}
+              </div>
+              <button className="pill" style={{ marginTop: 8 }}
                 onClick={() => navigator.clipboard?.writeText(
                   `| **${b.title}** [arXiv](${b.url}) | ${b.what} | ${b.gap || ""} |`)}>
                 refs.md 한 줄 복사
               </button>
             </div>
+          );
+        })}
+      </>
+    );
+  }
+  if (idx.error) return <Failed e={idx.error} />;
+  if (!idx.data) return <Loading />;
+  if (!idx.data.count) return <div className="empty">아직 브리핑이 없습니다.</div>;
+  return (
+    <>
+      <p className="meta">매일 아침 arXiv 신규 논문을 이 연구의 선행연구와 대조해 추립니다.</p>
+      {idx.data.items.map((b) => (
+        <div key={b.date} onClick={() => setDay(b.date)} style={{ cursor: "pointer" }}>
+          <div className="card">
+            <div className="t">
+              <span className="n">{b.date}</span>
+              <span className="s">{b.must ? `필독 ${b.must}편` : `${b.count}편`}</span>
+            </div>
+            <div className="d">{b.titles.join(" · ")}</div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </>
   );
 }
 
-/* ---------- 실행 경로 (위키 W2) ---------- */
-function Trace({ d }) {
+/* ================= 개념 ================= */
+function ConceptDetail({ k, onOpen, onBack, index }) {
+  const { data: c, error } = useJson(`concept/${k.replace(/ /g, "_")}.json`);
+  const nameOf = (key) => index?.find((x) => x.key === key)?.name || key;
+  if (error) return <Failed e={error} />;
+  if (!c) return <Loading />;
+  return (
+    <>
+      <button className="pill" onClick={onBack}>← 목록</button>
+      <h2 className="title">{c.name}</h2>
+      {c.one_liner && <p className="lead">{c.one_liner}</p>}
+      <div style={{ margin: "6px 0 4px" }}>
+        {c.difficulty > 0 && <span className="pill">난이도 {c.difficulty}/5</span>}
+        <Tags items={c.tags} />
+        {c.aliases?.length > 0 && <span className="meta"> {c.aliases.join(" · ")}</span>}
+      </div>
+
+      {!c.what && (
+        <div className="notice">아직 설명이 생성되지 않았습니다. 매일 루틴이 순서대로 채웁니다.</div>
+      )}
+      <Section title="무엇인가">{c.what}</Section>
+      <Section title="왜 필요한가">{c.why}</Section>
+      <Section title="어떻게 동작하는가">{c.how}</Section>
+      <Section title="이 연구에서는">{c.in_this_repo}</Section>
+
+      {c.prerequisites?.length > 0 && (
+        <>
+          <div className="sec">먼저 알아야 할 개념</div>
+          {c.prerequisites.map((p) => (
+            <button className="pill big" key={p} onClick={() => onOpen(p)}>{nameOf(p)}</button>
+          ))}
+        </>
+      )}
+      {(c.related_keys?.length > 0 || c.links?.length > 0) && (
+        <>
+          <div className="sec">함께 보면 좋은 개념</div>
+          {(c.related_keys || []).map((p) => (
+            <button className="pill big" key={p} onClick={() => onOpen(p)}>{nameOf(p)}</button>
+          ))}
+          {(c.links || []).map((l, i) => (
+            <button className="pill big" key={`l${i}`} onClick={() => onOpen(l.to_key)}>
+              {l.to_text}
+            </button>
+          ))}
+        </>
+      )}
+
+      <div className="sec">노트에서 읽기</div>
+      {c.defs.map((d, i) => (
+        <a className="row" key={i} href={d.url} target="_blank" rel="noreferrer">
+          <span className="mono">{d.doc.replace("research/", "")}</span>
+          <span className="s">:{d.line}</span>
+        </a>
+      ))}
+      <div className="sec">코드에서 보기</div>
+      {c.evidence.length === 0
+        ? <div className="empty">이 개념에 대응하는 코드를 찾지 못했습니다.</div>
+        : c.evidence.map((e, i) => (
+          <a className="row" key={i} href={e.url} target="_blank" rel="noreferrer">
+            <span className="mono">{e.file}</span>
+            <span className="s">{e.line_start ? `:${e.line_start}` : ""}</span>
+          </a>
+        ))}
+    </>
+  );
+}
+
+function Concepts() {
+  const { data: idx, error } = useJson("concepts.json");
+  const [q, setQ] = useState("");
+  const [sel, setSel] = useState(null);
+  const [mode, setMode] = useState("order");
+
+  const byKey = useMemo(
+    () => Object.fromEntries((idx?.items || []).map((c) => [c.key, c])), [idx]);
+
+  if (sel) return <ConceptDetail k={sel} index={idx?.items} onOpen={setSel}
+                                 onBack={() => setSel(null)} />;
+  if (error) return <Failed e={error} />;
+  if (!idx) return <Loading />;
+
+  const s = q.trim().toLowerCase();
+  const match = (c) => !s || c.name.toLowerCase().includes(s) ||
+    (c.one_liner || "").toLowerCase().includes(s) ||
+    (c.tags || []).some((t) => t.toLowerCase().includes(s));
+
+  const Item = ({ c }) => (
+    <div onClick={() => setSel(c.key)} style={{ cursor: "pointer" }}>
+      <div className="card">
+        <div className="t">
+          <span className="n">{c.name}</span>
+          <span className="s">{c.difficulty ? `난이도 ${c.difficulty}` : ""}</span>
+        </div>
+        {c.one_liner
+          ? <div className="d">{c.one_liner}</div>
+          : <div className="d" style={{ color: "var(--dim)" }}>설명 생성 대기</div>}
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      <div className="switch">
+        {[["order", "학습 순서"], ["all", "전체 목록"]].map(([k, label]) => (
+          <button key={k} className="pill" data-on={mode === k}
+            onClick={() => setMode(k)}>{label}</button>
+        ))}
+        <span className="meta">설명 {idx.explained}/{idx.count}</span>
+      </div>
+      <input type="search" placeholder="개념·태그 검색" value={q}
+        onChange={(e) => setQ(e.target.value)} />
+      {mode === "order" && !s && (
+        <p className="meta">선행 개념이 없는 것부터 순서대로 쌓아 올립니다.</p>
+      )}
+      {mode === "order" && !s
+        ? idx.steps.map((st) => (
+          <div key={st.level}>
+            <div className="sec">
+              {st.level === 0 ? "기초 — 먼저 읽을 것" : `${st.level}단계`}
+              <span className="meta"> · {st.keys.length}개</span>
+            </div>
+            {st.keys.map((k) => byKey[k] && <Item c={byKey[k]} key={k} />)}
+          </div>
+        ))
+        : (idx.order || idx.items.map((c) => c.key))
+          .map((k) => byKey[k]).filter((c) => c && match(c))
+          .map((c) => <Item c={c} key={c.key} />)}
+    </>
+  );
+}
+
+/* ================= 코드 ================= */
+function CodeDetail({ path, onBack }) {
+  const { data: d, error } = useJson(`code/${path.replace(/\//g, "_")}.json`);
+  if (error) return <Failed e={error} />;
+  if (!d) return <Loading />;
+  return (
+    <>
+      <button className="pill" onClick={onBack}>← 파일 목록</button>
+      <h2 className="title mono">{d.file}</h2>
+      <div style={{ margin: "6px 0" }}>
+        <Tags items={d.tags} />
+        <span className="meta">{d.loc}줄 · 함수 {d.symbol_count}개 · 변경 {d.churn}회</span>
+      </div>
+      <Section title="이 파일이 하는 일">{d.role}</Section>
+      <Section title="이 연구에서 왜 중요한가">{d.why_it_matters}</Section>
+      <Section title="어디부터 읽을까">{d.read_order}</Section>
+      <div className="sec">함수 {d.functions.length}개</div>
+      {d.functions.map((f, i) => (
+        <div className="card" key={i}>
+          <div className="t">
+            <a className="n mono" href={f.url} target="_blank" rel="noreferrer">{f.name}</a>
+            <span className="s">:{f.line}</span>
+          </div>
+          <div className="d" style={{ color: "var(--fg)" }}>{f.what}</div>
+          {f.note && <div className="d">{f.note}</div>}
+        </div>
+      ))}
+      <a className="row" href={d.url} target="_blank" rel="noreferrer">GitHub 에서 전체 보기</a>
+    </>
+  );
+}
+
+function Trace() {
+  const { data: d, error } = useJson("wiki/trace.json");
   const [i, setI] = useState(0);
+  if (error) return <Failed e={error} />;
+  if (!d) return <Loading />;
   const t = d.traces?.[i];
   if (!t) return <div className="empty">경로 없음</div>;
   const children = {};
@@ -292,36 +293,23 @@ function Trace({ d }) {
   walk(t.entry, 0, new Set());
   return (
     <>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+      <div className="switch">
         {d.traces.map((x, j) => (
-          <button key={j} className="pill" onClick={() => setI(j)}
-            style={{ cursor: "pointer", background: i === j ? "var(--accent)" : "transparent",
-                     color: i === j ? "#fff" : "var(--dim)",
-                     borderColor: i === j ? "var(--accent)" : "var(--line)" }}>
+          <button key={j} className="pill" data-on={i === j} onClick={() => setI(j)}>
             {x.label}
           </button>
         ))}
       </div>
-      <p className="meta" style={{ marginTop: 0 }}>
-        호출 그래프를 tree-sitter 로 뽑아 편 것. 노트가 설명하는 단계는{" "}
-        <b>{t.covered}/{Object.keys(t.nodes).length}</b> 뿐이다.
-      </p>
+      <p className="meta">프롬프트 하나가 들어왔을 때 호출되는 순서입니다.</p>
       {rows.map(({ k, n, depth }, j) => (
         <a key={j} href={n.url} target="_blank" rel="noreferrer"
            style={{ textDecoration: "none", display: "block",
                     marginLeft: Math.min(depth, 4) * 14 }}>
-          <div className="card" style={{ padding: "8px 11px", marginBottom: 5,
-               borderLeft: `3px solid ${n.notes.length ? "var(--ok)" : "var(--line)"}` }}>
+          <div className="card tight">
             <div className="t">
               <span className="n mono" style={{ fontSize: 13 }}>{k.split("#")[1]}</span>
-              <span className="s">{n.refs ? `참조 ${n.refs}` : ""}</span>
             </div>
-            <div className="d">
-              <span className="mono">{n.file.replace("src/", "")}:{n.line}</span>
-              {n.notes.length > 0
-                ? <span style={{ color: "var(--ok)" }}> · {n.notes.join(", ")}</span>
-                : <span style={{ color: "var(--dim)" }}> · 노트 설명 없음</span>}
-            </div>
+            <div className="d mono">{n.file.replace("src/", "")}:{n.line}</div>
           </div>
         </a>
       ))}
@@ -329,235 +317,83 @@ function Trace({ d }) {
   );
 }
 
-/* ---------- 실험 카드 (W4) ---------- */
-function Runs({ d }) {
+function Code() {
+  const { data: d, error } = useJson("wiki/files.json");
+  const [sel, setSel] = useState(null);
+  const [view, setView] = useState("files");
+  const [q, setQ] = useState("");
+  if (sel) return <CodeDetail path={sel} onBack={() => setSel(null)} />;
   return (
     <>
-      <p className="meta" style={{ marginTop: 4 }}>
-        artifacts/ 의 run-id {d.count}개. manifest·hosts.tsv·raw 로그를 파싱한 것.
-        <b> 어떤 노트도 인용하지 않는 실험 {d.G6.length}개(G6)</b>.
-      </p>
-      {d.runs.map((r) => (
-        <div className="card" key={r.run_id}>
-          <div className="t">
-            <span className="n mono">{r.run_id}</span>
-            <span className="s">{(r.created_utc || "").slice(0, 10)}</span>
-          </div>
-          <div className="d">
-            {r.node_count ? `노드 ${r.node_count}` : "노드 정보 없음"}
-            {r.temp_range && ` · ${r.temp_range[0]}~${r.temp_range[1]}℃`}
-            {r.governor?.length ? ` · ${r.governor.join("/")}` : ""}
-            {` · 로그 ${r.raw_files}`}
-            {r.git_sha && ` · ${r.git_sha.slice(0, 8)}`}
-            {r.dirty && <span className="pill warn" style={{ marginLeft: 6 }}>dirty</span>}
-          </div>
-          {r.results && (
-            <div className="d">
-              결과 {r.results.rows}행 —{" "}
-              {Object.entries(r.results.summary).slice(0, 3).map(([k, v]) =>
-                `${k} ${v.min}~${v.max}(중앙 ${v.median})`).join(" · ")}
-            </div>
-          )}
-          {r.flags?.length > 0 && (
-            <div className="d mono">{r.flags.join(" ")}</div>
-          )}
-          <div className="d">
-            {r.cited_in.length
-              ? <span style={{ color: "var(--ok)" }}>인용: {r.cited_in.join(", ")}</span>
-              : <span style={{ color: "var(--warn)" }}>인용 없음 (G6)</span>}
-          </div>
-          {r.warnings.map((w, i) => (
-            <div className="d" key={i} style={{ color: "var(--warn)" }}>⚠ {w}</div>
-          ))}
-        </div>
-      ))}
-    </>
-  );
-}
-
-/* ---------- 수치 대사전 (W6) ---------- */
-function Numbers({ d }) {
-  const [view, setView] = useState("dict");
-  return (
-    <>
-      <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
-        {[["dict", `자주 쓰는 수치`], ["g8", `불일치 ${d.G8_count}`],
-          ["g7", `출처 없음 ${d.G7_count}`]].map(([k, label]) => (
-          <button key={k} className="pill" onClick={() => setView(k)}
-            style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
-                     color: view === k ? "#fff" : "var(--dim)",
-                     borderColor: view === k ? "var(--accent)" : "var(--line)" }}>{label}</button>
+      <div className="switch">
+        {[["files", "파일별 설명"], ["trace", "실행 경로"]].map(([k, label]) => (
+          <button key={k} className="pill" data-on={view === k}
+            onClick={() => setView(k)}>{label}</button>
         ))}
       </div>
-      {view === "dict" && d.dictionary.map((x, i) => (
-        <Card key={i} name={<span className="mono">{x.value.toLocaleString()} {x.unit}</span>}
-          side={`${x.count}회`}>
-          {x.example}
-          <div style={{ marginTop: 3 }}>{x.docs.join(", ")}</div>
-        </Card>
-      ))}
-      {view === "g8" && (
+      {view === "trace" ? <Trace /> : error ? <Failed e={error} /> : !d ? <Loading /> : (
         <>
-          <p className="meta" style={{ marginTop: 0 }}>
-            같은 맥락에서 값이 다른 수치. 논문 쓰기 전에 확인할 것 — 후보이지 확정이 아니다.
-          </p>
-          {d.G8.map((x, i) => (
-            <div className="card" key={i}>
-              <div className="t">
-                <span className="n mono">{x.values.join(" / ")} {x.unit}</span>
+          <p className="meta">설명 {d.documented}/{d.count} · 참조와 변경이 잦은 파일부터</p>
+          <input type="search" placeholder="파일 검색" value={q}
+            onChange={(e) => setQ(e.target.value)} />
+          {[...d.items]
+            .filter((f) => !q || f.path.toLowerCase().includes(q.toLowerCase()))
+            .sort((a, b) => (b.doc ? 1 : 0) - (a.doc ? 1 : 0) ||
+              (b.churn * 3 + (b.in_refs || 0)) - (a.churn * 3 + (a.in_refs || 0)))
+            .map((f) => (
+              <div key={f.path} onClick={() => f.doc && setSel(f.path)}
+                style={{ cursor: f.doc ? "pointer" : "default" }}>
+                <div className="card">
+                  <div className="t">
+                    <span className="n mono">{f.path.replace("src/", "")}</span>
+                    <span className="s">{f.loc}줄</span>
+                  </div>
+                  {f.role
+                    ? <><div className="d" style={{ color: "var(--fg)" }}>{f.role}</div>
+                        <div className="d"><Tags items={f.tags} />
+                          <span className="meta">함수 {f.functions}개 설명</span></div></>
+                    : <div className="d" style={{ color: "var(--dim)" }}>설명 생성 대기</div>}
+                </div>
               </div>
-              <div className="d">{x.sig}</div>
-              {x.where.map((w, j) => (
-                <div className="d mono" key={j}>{w.doc}:{w.line} — {w.context}</div>
-              ))}
-            </div>
-          ))}
-        </>
-      )}
-      {view === "g7" && (
-        <>
-          <p className="meta" style={{ marginTop: 0 }}>
-            artifacts/README.md 규칙: “논문의 모든 수치는 run-id 를 인용해야 한다”.
-            run-id 를 인용하는 문서는 <b>{d.docs.filter((x) => x.run_ids.length).length}/{d.docs.length}</b> 뿐이다.
-          </p>
-          {d.docs.filter((x) => x.measured_unsourced > 0).map((x, i) => (
-            <Card key={i} name={x.doc} side={`측정값 ${x.measured_unsourced}개`}>
-              run-id 인용 없음
-            </Card>
-          ))}
+            ))}
         </>
       )}
     </>
   );
 }
 
-/* ---------- 로그 사전 (W5) ---------- */
-function Logs({ d }) {
-  const [q, setQ] = useState("");
-  const items = d.items.filter((x) => !q ||
-    x.template.toLowerCase().includes(q.toLowerCase()));
-  return (
-    <>
-      <p className="meta" style={{ marginTop: 4 }}>
-        로그 {d.total_lines.toLocaleString()}줄 → 템플릿 {d.count}종.
-        코드 출력 지점을 찾은 것 {d.located}, <b>노트가 설명하는 것 {d.documented}</b>.
-      </p>
-      <input type="search" placeholder="로그 패턴 검색" value={q}
-        onChange={(e) => setQ(e.target.value)} />
-      {items.slice(0, 150).map((x, i) => (
-        <div className="card" key={i}
-          style={{ borderLeft: `3px solid ${x.is_error ? "var(--warn)" : "var(--line)"}` }}>
-          <div className="t">
-            <span className="n mono" style={{ fontSize: 12.5 }}>{x.template}</span>
-            <span className="s">{x.count}회 · run {x.run_count}</span>
-          </div>
-          <div className="d">
-            {x.origin
-              ? <a className="mono" href={`https://github.com/inpyu/prefill-opt/blob/main/${x.origin.file}#L${x.origin.line}`}
-                   target="_blank" rel="noreferrer">
-                  {x.origin.file.replace("src/", "")}:{x.origin.line}
-                </a>
-              : <span style={{ color: "var(--dim)" }}>출처 미상</span>}
-            {x.notes.length
-              ? <span style={{ color: "var(--ok)" }}> · 노트: {x.notes.join(", ")}</span>
-              : <span style={{ color: "var(--warn)" }}> · 설명 없음</span>}
-          </div>
-        </div>
-      ))}
-    </>
-  );
-}
-
-/* ---------- 열린 질문 (W7) ---------- */
-function Questions({ d }) {
-  return (
-    <>
-      <p className="meta" style={{ marginTop: 4 }}>
-        코드 {d.by_kind.code || 0} · 노트 {d.by_kind.note || 0} · 실험 {d.by_kind.run || 0}
-      </p>
-      {d.items.map((x, i) => (
-        <Card key={i} name={<span className="pill">{x.mark}</span>}
-          side={<span className="mono">{x.where}{x.line ? `:${x.line}` : ""}</span>}>
-          {x.text}
-        </Card>
-      ))}
-    </>
-  );
-}
-
-/* ---------- 용어 역인덱스 (W8) ---------- */
-function Xref({ d }) {
-  const [q, setQ] = useState("");
-  const items = d.items.filter((x) => !q ||
-    x.term.toLowerCase().includes(q.toLowerCase()));
-  return (
-    <>
-      <p className="meta" style={{ marginTop: 4 }}>
-        용어 {d.count}개. 노트와 코드 양쪽에 나타나는 것 {d.both_note_and_code}개.
-      </p>
-      <input type="search" placeholder="용어 검색" value={q}
-        onChange={(e) => setQ(e.target.value)} />
-      {items.slice(0, 120).map((x, i) => (
-        <div className="card" key={i}>
-          <div className="t">
-            <span className="n">
-              {x.term}
-              {!x.defined && <span className="pill warn" style={{ marginLeft: 6 }}>미정의</span>}
-            </span>
-            <span className="s">노트 {x.doc_count}</span>
-          </div>
-          <div className="d">
-            {x.docs.slice(0, 4).map((y) => `${y.doc}(${y.hits})`).join(" · ")}
-          </div>
-          {x.symbols.length > 0 && (
-            <div className="d mono">
-              심볼: {x.symbols.map((s2) => `${s2.name}@${s2.file.replace("src/", "")}:${s2.line}`).join(", ")}
-            </div>
-          )}
-          {x.logs.length > 0 && (
-            <div className="d mono">로그: {x.logs.map((l) => l.template).join(" | ")}</div>
-          )}
-          {x.runs.length > 0 && <div className="d">실험: {x.runs.join(", ")}</div>}
-          {x.papers.length > 0 && (
-            <div className="d">논문: {x.papers.map((p) => p.title || p.id).join(" · ")}</div>
-          )}
-        </div>
-      ))}
-    </>
-  );
-}
-
-/* ---------- 논문 ---------- */
+/* ================= 논문 ================= */
 function Papers() {
-  const d = useJson("papers.json");
-  if (!d) return <div className="empty">불러오는 중…</div>;
+  const { data: d, error } = useJson("papers.json");
+  if (error) return <Failed e={error} />;
+  if (!d) return <Loading />;
   return (
     <>
-      <p className="meta" style={{ marginTop: 4 }}>
-        research/refs.md 와 노트에서 추출한 시드 논문. 매일 브리핑의 기준점이 된다.
-      </p>
+      <p className="meta">research/refs.md 에서 추출한 선행연구. 매일 브리핑의 기준점입니다.</p>
       {d.items.map((p, i) => (
-        <Card key={i} name={p.title || p.id} side={p.id} href={p.url}>
-          {p.gap && <div style={{ marginBottom: 4 }}>간극: {p.gap}</div>}
-          인용 {p.cited_in.length}곳 — {p.cited_in.map((s) => s.replace("research/", "")).join(", ")}
-        </Card>
+        <a className="card block" key={i} href={p.url} target="_blank" rel="noreferrer">
+          <div className="t">
+            <span className="n">{p.title || p.id}</span>
+            <span className="s">{p.id}</span>
+          </div>
+          {p.gap && <div className="d">간극: {p.gap}</div>}
+          <div className="d">{p.cited_in.map((s) => s.replace("research/", "")).join(", ")}</div>
+        </a>
       ))}
     </>
   );
 }
 
+/* ================= 껍데기 ================= */
 export default function Page() {
-  const m = useJson("manifest.json");
+  const { data: m } = useJson("manifest.json");
   const [tab, setTab] = useState("brief");
-  const s = m?.summary;
   return (
     <>
       <header>
         <div className="hrow">
-          <h1>RepoScholar <span style={{ color: "var(--dim)", fontWeight: 400 }}>· inpyu/prefill-opt</span></h1>
-          <span className="meta">
-            {m ? `${ago(m.generated_at)} 갱신 · ${m.head_sha.slice(0, 8)}` : "…"}
-          </span>
+          <h1>RepoScholar <span className="dim">· inpyu/prefill-opt</span></h1>
+          <span className="meta">{m ? `${ago(m.generated_at)} 갱신` : ""}</span>
         </div>
         <nav>
           {TABS.map(([k, label]) => (
@@ -566,22 +402,9 @@ export default function Page() {
         </nav>
       </header>
       <main className="wrap">
-        {s && (
-          <div className="stats">
-            <div className="stat"><b>{s.concepts_defined}</b><span>정의된 개념</span></div>
-            <div className="stat"><b>{s.G3}</b><span>G3 미정의 용어</span></div>
-            <div className="stat"><b>{s.G4}/{s.src_files}</b><span>G4 미문서 파일</span></div>
-            <div className="stat"><b>{s.G5}/{s.flags}</b><span>G5 미문서 플래그</span></div>
-            <div className="stat"><b>{s.G6}/{s.runs}</b><span>G6 고아 실험</span></div>
-            <div className="stat"><b>{s.G7}</b><span>G7 출처 없는 수치</span></div>
-            <div className="stat"><b>{s.log_documented}/{s.log_templates}</b><span>설명된 로그</span></div>
-            <div className="stat"><b>{s.open_questions}</b><span>열린 질문</span></div>
-          </div>
-        )}
         {tab === "brief" && <Briefings />}
-        {tab === "gap" && <Gaps />}
         {tab === "concept" && <Concepts />}
-        {tab === "wiki" && <Wiki />}
+        {tab === "code" && <Code />}
         {tab === "paper" && <Papers />}
       </main>
     </>

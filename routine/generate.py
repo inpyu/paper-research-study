@@ -36,6 +36,7 @@ SCHEMA = {
             "relation": {"type": "string", "minLength": 5},
             "verdict": {"enum": ["must-read", "skim", "skip"]},
             "gap": {"type": "string"},
+            "topics": {"type": "array", "items": {"type": "string"}},
             "hypotheses": {"type": "array", "items":
                            {"type": "string", "pattern": "^H[1-9]$"}},
         }}}},
@@ -161,9 +162,18 @@ def main():
             dedup[b["id"]] = b
     items = sorted(dedup.values(), key=lambda b: (order[b["verdict"]],
                                                   -by_id[b["id"]]["score"]))
+    # 가설 번호(H2)만 보여주면 무슨 말인지 알 수 없다. 본문을 함께 넣는다.
+    hyp_text = {h["id"]: h["context"].strip("| ").split("|")[1].strip()
+                if "|" in h["context"] else h["context"]
+                for h in notes["hypotheses"].values()}
+
     def enrich(b):
         c = by_id[b["id"]]
-        return {**b, "title": c["title"], "url": c["url"],
+        notes_ = [f"{h}: {hyp_text.get(h, '')}"[:120]
+                  for h in (b.get("hypotheses") or []) if h in hyp_text]
+        return {**b, "hypothesis_notes": notes_,
+                "topics": b.get("topics", [])[:4],
+                "title": c["title"], "url": c["url"],
                 "published": c["published"], "authors": c["authors"][:5],
                 "categories": c["categories"][:4], "score": c["score"],
                 "abstract": c["abstract"][:600]}
