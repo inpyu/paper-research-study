@@ -108,7 +108,7 @@ def main():
     for e in notes["evidence"]:
         doc_of_file.setdefault(e["file"], set()).add(e["doc"])
     src = [{"path": f["path"], "loc": f["loc"], "churn": f["churn"],
-            "url": gh(f["path"], None, sha),
+            "in_refs": f.get("in_refs", 0), "url": gh(f["path"], None, sha),
             "notes": sorted(doc_of_file.get(f["path"], []))}
            for f in code["files"] if f["path"].startswith("src/")]
     files.append(write("wiki/files.json", {"count": len(src), "items": src}))
@@ -117,6 +117,16 @@ def main():
         "items": [{"flag": f["flag"], "sites": f["sites"],
                    "url": gh(f["sites"][0]["file"], f["sites"][0]["line"], sha)}
                   for f in code["flags"]]}))
+    try:
+        tr = load("trace.json")
+        for t in tr["traces"]:
+            t["covered"] = sum(1 for n in t["nodes"].values() if n["notes"])
+            for n in t["nodes"].values():
+                n["url"] = gh(n["file"], n["line"], sha)
+        files.append(write("wiki/trace.json", tr))
+    except FileNotFoundError:
+        tr = None
+
     log = [l for l in git("log", "--format=%h\t%ad\t%s", "--date=short").split("\n") if l]
     files.append(write("wiki/history.json", {
         "count": len(log),
@@ -137,7 +147,8 @@ def main():
     total = sum(n for _, _, n in files)
     print(f"데이터 파일 {len(files)+1}개, {total/1024:.0f} KB -> site/public/data/")
     print(f"  개념 {len(index)} · 논문 {len(papers)} · 소스파일 {len(src)} · "
-          f"플래그 {len(code['flags'])} · 커밋 {len(log)} · 브리핑 {len(bindex)}일치")
+          f"플래그 {len(code['flags'])} · 커밋 {len(log)} · 브리핑 {len(bindex)}일치 · "
+          f"실행경로 {len(tr['traces']) if tr else 0}개")
 
 
 if __name__ == "__main__":

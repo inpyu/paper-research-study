@@ -23,7 +23,8 @@ run() {
   # 1) 파싱·인덱싱·갭 — LLM 미사용. 항상 성공해야 한다.
   run "$PY" "$ROOT/routine/parse_notes.py" &&
   run "$PY" "$ROOT/routine/index_code.py" &&
-  run "$PY" "$ROOT/routine/gaps.py" --top 10 || echo "!! 파싱 단계 실패 — 배포 중단"
+  run "$PY" "$ROOT/routine/gaps.py" --top 10 &&
+  run "$PY" "$ROOT/routine/trace.py" || echo "!! 파싱 단계 실패 — 배포 중단"
 
   # 2) 논문 수집·브리핑 — 실패해도 배포는 계속한다(직전 브리핑 유지).
   run "$PY" "$ROOT/routine/arxiv.py" --days 3 --top 8 || echo "arXiv 수집 실패(계속)"

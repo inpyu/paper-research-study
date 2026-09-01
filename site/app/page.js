@@ -155,7 +155,7 @@ function Wiki() {
   return (
     <>
       <div style={{ display: "flex", gap: 6, margin: "4px 0 12px", flexWrap: "wrap" }}>
-        {[["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
+        {[["trace", "실행 경로"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
           <button key={k} className="pill" onClick={() => setView(k)}
             style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
                      color: view === k ? "#fff" : "var(--dim)",
@@ -163,9 +163,10 @@ function Wiki() {
         ))}
       </div>
       {!d ? <div className="empty">불러오는 중…</div> :
+        view === "trace" ? <Trace d={d} /> :
         view === "files" ? d.items.map((f, i) => (
           <Card key={i} name={<span className="mono">{f.path.replace("src/", "")}</span>}
-            side={`${f.loc}줄 · 변경 ${f.churn}회`} href={f.url}>
+            side={`${f.loc}줄 · 변경 ${f.churn} · 참조 ${f.in_refs ?? 0}`} href={f.url}>
             {f.notes.length ? `노트: ${f.notes.map((n) => n.replace("research/", "")).join(", ")}`
               : <span style={{ color: "var(--warn)" }}>노트 없음 (G4)</span>}
           </Card>
@@ -264,6 +265,61 @@ function Briefings() {
           </div>
         );
       })}
+    </>
+  );
+}
+
+/* ---------- 실행 경로 (위키 W2) ---------- */
+function Trace({ d }) {
+  const [i, setI] = useState(0);
+  const t = d.traces?.[i];
+  if (!t) return <div className="empty">경로 없음</div>;
+  const children = {};
+  t.edges.forEach((e) => (children[e.from] ||= []).push(e.to));
+  const rows = [];
+  const walk = (k, depth, seen) => {
+    if (depth > 4 || seen.has(k)) return;
+    const n = t.nodes[k];
+    if (!n) return;
+    rows.push({ k, n, depth });
+    (children[k] || []).forEach((c) => walk(c, depth + 1, new Set([...seen, k])));
+  };
+  walk(t.entry, 0, new Set());
+  return (
+    <>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+        {d.traces.map((x, j) => (
+          <button key={j} className="pill" onClick={() => setI(j)}
+            style={{ cursor: "pointer", background: i === j ? "var(--accent)" : "transparent",
+                     color: i === j ? "#fff" : "var(--dim)",
+                     borderColor: i === j ? "var(--accent)" : "var(--line)" }}>
+            {x.label}
+          </button>
+        ))}
+      </div>
+      <p className="meta" style={{ marginTop: 0 }}>
+        호출 그래프를 tree-sitter 로 뽑아 편 것. 노트가 설명하는 단계는{" "}
+        <b>{t.covered}/{Object.keys(t.nodes).length}</b> 뿐이다.
+      </p>
+      {rows.map(({ k, n, depth }, j) => (
+        <a key={j} href={n.url} target="_blank" rel="noreferrer"
+           style={{ textDecoration: "none", display: "block",
+                    marginLeft: Math.min(depth, 4) * 14 }}>
+          <div className="card" style={{ padding: "8px 11px", marginBottom: 5,
+               borderLeft: `3px solid ${n.notes.length ? "var(--ok)" : "var(--line)"}` }}>
+            <div className="t">
+              <span className="n mono" style={{ fontSize: 13 }}>{k.split("#")[1]}</span>
+              <span className="s">{n.refs ? `참조 ${n.refs}` : ""}</span>
+            </div>
+            <div className="d">
+              <span className="mono">{n.file.replace("src/", "")}:{n.line}</span>
+              {n.notes.length > 0
+                ? <span style={{ color: "var(--ok)" }}> · {n.notes.join(", ")}</span>
+                : <span style={{ color: "var(--dim)" }}> · 노트 설명 없음</span>}
+            </div>
+          </div>
+        </a>
+      ))}
     </>
   );
 }
