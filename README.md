@@ -38,6 +38,9 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `parse_notes.py` | `research/*.md` → 개념·링크·코드근거·논문시드·학습경로·가설 | 미사용 |
 | `index_code.py` | 심볼·CLI 플래그·주석 용어·파일 변경빈도 | 미사용 |
 | `gaps.py` | G1~G5 갭 산출 + 사람이 읽는 리포트 | 미사용 |
+| `trace.py` | 호출 그래프를 펴서 실행 경로 생성 (W2) | 미사용 |
+| `artifacts.py` | 실험 카드 + 고아 실험 G6 (W4) | 미사용 |
+| `numbers.py` | 수치 대사전 + G7·G8 (W6) | 미사용 |
 | `arxiv.py` | 시드 정규화 + arXiv 신규 수집 + BM25 랭킹 | 미사용 |
 | `generate.py` | 브리핑 생성 (Claude Code 헤드리스, 구독) + 스키마 검증 | **사용** |
 | `build.py` | `site/public/data/*.json` 생성 | 미사용 |

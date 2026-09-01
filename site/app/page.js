@@ -155,7 +155,7 @@ function Wiki() {
   return (
     <>
       <div style={{ display: "flex", gap: 6, margin: "4px 0 12px", flexWrap: "wrap" }}>
-        {[["trace", "실행 경로"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
+        {[["trace", "실행 경로"], ["artifacts", "실험"], ["numbers", "수치"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
           <button key={k} className="pill" onClick={() => setView(k)}
             style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
                      color: view === k ? "#fff" : "var(--dim)",
@@ -164,6 +164,8 @@ function Wiki() {
       </div>
       {!d ? <div className="empty">불러오는 중…</div> :
         view === "trace" ? <Trace d={d} /> :
+        view === "artifacts" ? <Runs d={d} /> :
+        view === "numbers" ? <Numbers d={d} /> :
         view === "files" ? d.items.map((f, i) => (
           <Card key={i} name={<span className="mono">{f.path.replace("src/", "")}</span>}
             side={`${f.loc}줄 · 변경 ${f.churn} · 참조 ${f.in_refs ?? 0}`} href={f.url}>
@@ -324,6 +326,108 @@ function Trace({ d }) {
   );
 }
 
+/* ---------- 실험 카드 (W4) ---------- */
+function Runs({ d }) {
+  return (
+    <>
+      <p className="meta" style={{ marginTop: 4 }}>
+        artifacts/ 의 run-id {d.count}개. manifest·hosts.tsv·raw 로그를 파싱한 것.
+        <b> 어떤 노트도 인용하지 않는 실험 {d.G6.length}개(G6)</b>.
+      </p>
+      {d.runs.map((r) => (
+        <div className="card" key={r.run_id}>
+          <div className="t">
+            <span className="n mono">{r.run_id}</span>
+            <span className="s">{(r.created_utc || "").slice(0, 10)}</span>
+          </div>
+          <div className="d">
+            {r.node_count ? `노드 ${r.node_count}` : "노드 정보 없음"}
+            {r.temp_range && ` · ${r.temp_range[0]}~${r.temp_range[1]}℃`}
+            {r.governor?.length ? ` · ${r.governor.join("/")}` : ""}
+            {` · 로그 ${r.raw_files}`}
+            {r.git_sha && ` · ${r.git_sha.slice(0, 8)}`}
+            {r.dirty && <span className="pill warn" style={{ marginLeft: 6 }}>dirty</span>}
+          </div>
+          {r.results && (
+            <div className="d">
+              결과 {r.results.rows}행 —{" "}
+              {Object.entries(r.results.summary).slice(0, 3).map(([k, v]) =>
+                `${k} ${v.min}~${v.max}(중앙 ${v.median})`).join(" · ")}
+            </div>
+          )}
+          {r.flags?.length > 0 && (
+            <div className="d mono">{r.flags.join(" ")}</div>
+          )}
+          <div className="d">
+            {r.cited_in.length
+              ? <span style={{ color: "var(--ok)" }}>인용: {r.cited_in.join(", ")}</span>
+              : <span style={{ color: "var(--warn)" }}>인용 없음 (G6)</span>}
+          </div>
+          {r.warnings.map((w, i) => (
+            <div className="d" key={i} style={{ color: "var(--warn)" }}>⚠ {w}</div>
+          ))}
+        </div>
+      ))}
+    </>
+  );
+}
+
+/* ---------- 수치 대사전 (W6) ---------- */
+function Numbers({ d }) {
+  const [view, setView] = useState("dict");
+  return (
+    <>
+      <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
+        {[["dict", `자주 쓰는 수치`], ["g8", `불일치 ${d.G8_count}`],
+          ["g7", `출처 없음 ${d.G7_count}`]].map(([k, label]) => (
+          <button key={k} className="pill" onClick={() => setView(k)}
+            style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
+                     color: view === k ? "#fff" : "var(--dim)",
+                     borderColor: view === k ? "var(--accent)" : "var(--line)" }}>{label}</button>
+        ))}
+      </div>
+      {view === "dict" && d.dictionary.map((x, i) => (
+        <Card key={i} name={<span className="mono">{x.value.toLocaleString()} {x.unit}</span>}
+          side={`${x.count}회`}>
+          {x.example}
+          <div style={{ marginTop: 3 }}>{x.docs.join(", ")}</div>
+        </Card>
+      ))}
+      {view === "g8" && (
+        <>
+          <p className="meta" style={{ marginTop: 0 }}>
+            같은 맥락에서 값이 다른 수치. 논문 쓰기 전에 확인할 것 — 후보이지 확정이 아니다.
+          </p>
+          {d.G8.map((x, i) => (
+            <div className="card" key={i}>
+              <div className="t">
+                <span className="n mono">{x.values.join(" / ")} {x.unit}</span>
+              </div>
+              <div className="d">{x.sig}</div>
+              {x.where.map((w, j) => (
+                <div className="d mono" key={j}>{w.doc}:{w.line} — {w.context}</div>
+              ))}
+            </div>
+          ))}
+        </>
+      )}
+      {view === "g7" && (
+        <>
+          <p className="meta" style={{ marginTop: 0 }}>
+            artifacts/README.md 규칙: “논문의 모든 수치는 run-id 를 인용해야 한다”.
+            run-id 를 인용하는 문서는 <b>{d.docs.filter((x) => x.run_ids.length).length}/{d.docs.length}</b> 뿐이다.
+          </p>
+          {d.docs.filter((x) => x.measured_unsourced > 0).map((x, i) => (
+            <Card key={i} name={x.doc} side={`측정값 ${x.measured_unsourced}개`}>
+              run-id 인용 없음
+            </Card>
+          ))}
+        </>
+      )}
+    </>
+  );
+}
+
 /* ---------- 논문 ---------- */
 function Papers() {
   const d = useJson("papers.json");
@@ -369,7 +473,8 @@ export default function Page() {
             <div className="stat"><b>{s.G3}</b><span>G3 미정의 용어</span></div>
             <div className="stat"><b>{s.G4}/{s.src_files}</b><span>G4 미문서 파일</span></div>
             <div className="stat"><b>{s.G5}/{s.flags}</b><span>G5 미문서 플래그</span></div>
-            <div className="stat"><b>{s.G2}</b><span>G2 근거 없음</span></div>
+            <div className="stat"><b>{s.G6}/{s.runs}</b><span>G6 고아 실험</span></div>
+            <div className="stat"><b>{s.G7}</b><span>G7 출처 없는 수치</span></div>
           </div>
         )}
         {tab === "brief" && <Briefings />}

@@ -69,6 +69,20 @@ def main():
             elif "path" in x:
                 x["url"] = gh(x["path"], None, sha)
         files.append(write(f"gap/{k}.json", {"count": len(items), "items": items}))
+    # 문서화 갭 G6~G8 을 요약에 합류시킨다
+    try:
+        art = load("artifacts.json")
+        gaps["summary"]["G6"] = len(art["G6"])
+        gaps["summary"]["runs"] = art["count"]
+    except FileNotFoundError:
+        pass
+    try:
+        num = load("numbers.json")
+        gaps["summary"]["G7"] = num["G7_count"]
+        gaps["summary"]["G8"] = num["G8_count"]
+        gaps["summary"]["numbers"] = num["count"]
+    except FileNotFoundError:
+        pass
     files.append(write("gaps.json", gaps["summary"]))
 
     # ---- 논문 시드 ----
@@ -126,6 +140,12 @@ def main():
         files.append(write("wiki/trace.json", tr))
     except FileNotFoundError:
         tr = None
+
+    for name in ("artifacts", "numbers"):
+        try:
+            files.append(write(f"wiki/{name}.json", load(f"{name}.json")))
+        except FileNotFoundError:
+            pass
 
     log = [l for l in git("log", "--format=%h\t%ad\t%s", "--date=short").split("\n") if l]
     files.append(write("wiki/history.json", {
