@@ -155,7 +155,7 @@ function Wiki() {
   return (
     <>
       <div style={{ display: "flex", gap: 6, margin: "4px 0 12px", flexWrap: "wrap" }}>
-        {[["trace", "실행 경로"], ["artifacts", "실험"], ["numbers", "수치"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
+        {[["trace", "실행 경로"], ["artifacts", "실험"], ["numbers", "수치"], ["logs", "로그"], ["questions", "열린 질문"], ["xref", "역인덱스"], ["files", "파일"], ["flags", "플래그"], ["history", "연대기"], ["plan", "계획"]].map(([k, label]) => (
           <button key={k} className="pill" onClick={() => setView(k)}
             style={{ cursor: "pointer", background: view === k ? "var(--accent)" : "transparent",
                      color: view === k ? "#fff" : "var(--dim)",
@@ -166,6 +166,9 @@ function Wiki() {
         view === "trace" ? <Trace d={d} /> :
         view === "artifacts" ? <Runs d={d} /> :
         view === "numbers" ? <Numbers d={d} /> :
+        view === "logs" ? <Logs d={d} /> :
+        view === "questions" ? <Questions d={d} /> :
+        view === "xref" ? <Xref d={d} /> :
         view === "files" ? d.items.map((f, i) => (
           <Card key={i} name={<span className="mono">{f.path.replace("src/", "")}</span>}
             side={`${f.loc}줄 · 변경 ${f.churn} · 참조 ${f.in_refs ?? 0}`} href={f.url}>
@@ -428,6 +431,102 @@ function Numbers({ d }) {
   );
 }
 
+/* ---------- 로그 사전 (W5) ---------- */
+function Logs({ d }) {
+  const [q, setQ] = useState("");
+  const items = d.items.filter((x) => !q ||
+    x.template.toLowerCase().includes(q.toLowerCase()));
+  return (
+    <>
+      <p className="meta" style={{ marginTop: 4 }}>
+        로그 {d.total_lines.toLocaleString()}줄 → 템플릿 {d.count}종.
+        코드 출력 지점을 찾은 것 {d.located}, <b>노트가 설명하는 것 {d.documented}</b>.
+      </p>
+      <input type="search" placeholder="로그 패턴 검색" value={q}
+        onChange={(e) => setQ(e.target.value)} />
+      {items.slice(0, 150).map((x, i) => (
+        <div className="card" key={i}
+          style={{ borderLeft: `3px solid ${x.is_error ? "var(--warn)" : "var(--line)"}` }}>
+          <div className="t">
+            <span className="n mono" style={{ fontSize: 12.5 }}>{x.template}</span>
+            <span className="s">{x.count}회 · run {x.run_count}</span>
+          </div>
+          <div className="d">
+            {x.origin
+              ? <a className="mono" href={`https://github.com/inpyu/prefill-opt/blob/main/${x.origin.file}#L${x.origin.line}`}
+                   target="_blank" rel="noreferrer">
+                  {x.origin.file.replace("src/", "")}:{x.origin.line}
+                </a>
+              : <span style={{ color: "var(--dim)" }}>출처 미상</span>}
+            {x.notes.length
+              ? <span style={{ color: "var(--ok)" }}> · 노트: {x.notes.join(", ")}</span>
+              : <span style={{ color: "var(--warn)" }}> · 설명 없음</span>}
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
+/* ---------- 열린 질문 (W7) ---------- */
+function Questions({ d }) {
+  return (
+    <>
+      <p className="meta" style={{ marginTop: 4 }}>
+        코드 {d.by_kind.code || 0} · 노트 {d.by_kind.note || 0} · 실험 {d.by_kind.run || 0}
+      </p>
+      {d.items.map((x, i) => (
+        <Card key={i} name={<span className="pill">{x.mark}</span>}
+          side={<span className="mono">{x.where}{x.line ? `:${x.line}` : ""}</span>}>
+          {x.text}
+        </Card>
+      ))}
+    </>
+  );
+}
+
+/* ---------- 용어 역인덱스 (W8) ---------- */
+function Xref({ d }) {
+  const [q, setQ] = useState("");
+  const items = d.items.filter((x) => !q ||
+    x.term.toLowerCase().includes(q.toLowerCase()));
+  return (
+    <>
+      <p className="meta" style={{ marginTop: 4 }}>
+        용어 {d.count}개. 노트와 코드 양쪽에 나타나는 것 {d.both_note_and_code}개.
+      </p>
+      <input type="search" placeholder="용어 검색" value={q}
+        onChange={(e) => setQ(e.target.value)} />
+      {items.slice(0, 120).map((x, i) => (
+        <div className="card" key={i}>
+          <div className="t">
+            <span className="n">
+              {x.term}
+              {!x.defined && <span className="pill warn" style={{ marginLeft: 6 }}>미정의</span>}
+            </span>
+            <span className="s">노트 {x.doc_count}</span>
+          </div>
+          <div className="d">
+            {x.docs.slice(0, 4).map((y) => `${y.doc}(${y.hits})`).join(" · ")}
+          </div>
+          {x.symbols.length > 0 && (
+            <div className="d mono">
+              심볼: {x.symbols.map((s2) => `${s2.name}@${s2.file.replace("src/", "")}:${s2.line}`).join(", ")}
+            </div>
+          )}
+          {x.logs.length > 0 && (
+            <div className="d mono">로그: {x.logs.map((l) => l.template).join(" | ")}</div>
+          )}
+          {x.runs.length > 0 && <div className="d">실험: {x.runs.join(", ")}</div>}
+          {x.papers.length > 0 && (
+            <div className="d">논문: {x.papers.map((p) => p.title || p.id).join(" · ")}</div>
+          )}
+        </div>
+      ))}
+    </>
+  );
+}
+
 /* ---------- 논문 ---------- */
 function Papers() {
   const d = useJson("papers.json");
@@ -475,6 +574,8 @@ export default function Page() {
             <div className="stat"><b>{s.G5}/{s.flags}</b><span>G5 미문서 플래그</span></div>
             <div className="stat"><b>{s.G6}/{s.runs}</b><span>G6 고아 실험</span></div>
             <div className="stat"><b>{s.G7}</b><span>G7 출처 없는 수치</span></div>
+            <div className="stat"><b>{s.log_documented}/{s.log_templates}</b><span>설명된 로그</span></div>
+            <div className="stat"><b>{s.open_questions}</b><span>열린 질문</span></div>
           </div>
         )}
         {tab === "brief" && <Briefings />}

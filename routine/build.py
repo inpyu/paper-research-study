@@ -77,6 +77,17 @@ def main():
     except FileNotFoundError:
         pass
     try:
+        lg = load("logs.json")
+        gaps["summary"]["log_templates"] = lg["count"]
+        gaps["summary"]["log_documented"] = lg["documented"]
+    except FileNotFoundError:
+        pass
+    try:
+        q = load("questions.json")
+        gaps["summary"]["open_questions"] = q["count"]
+    except FileNotFoundError:
+        pass
+    try:
         num = load("numbers.json")
         gaps["summary"]["G7"] = num["G7_count"]
         gaps["summary"]["G8"] = num["G8_count"]
@@ -141,7 +152,7 @@ def main():
     except FileNotFoundError:
         tr = None
 
-    for name in ("artifacts", "numbers"):
+    for name in ("artifacts", "numbers", "logs", "questions", "xref"):
         try:
             files.append(write(f"wiki/{name}.json", load(f"{name}.json")))
         except FileNotFoundError:

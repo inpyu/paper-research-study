@@ -41,6 +41,9 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `trace.py` | 호출 그래프를 펴서 실행 경로 생성 (W2) | 미사용 |
 | `artifacts.py` | 실험 카드 + 고아 실험 G6 (W4) | 미사용 |
 | `numbers.py` | 수치 대사전 + G7·G8 (W6) | 미사용 |
+| `logs.py` | 로그 템플릿 사전 + 코드 출력지점 연결 (W5) | 미사용 |
+| `questions.py` | 열린 질문 — TODO/FIXME·노트 미결·보류 실험 (W7) | 미사용 |
+| `xref.py` | 용어 역인덱스 (W8) | 미사용 |
 | `arxiv.py` | 시드 정규화 + arXiv 신규 수집 + BM25 랭킹 | 미사용 |
 | `generate.py` | 브리핑 생성 (Claude Code 헤드리스, 구독) + 스키마 검증 | **사용** |
 | `build.py` | `site/public/data/*.json` 생성 | 미사용 |

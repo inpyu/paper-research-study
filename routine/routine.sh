@@ -26,7 +26,10 @@ run() {
   run "$PY" "$ROOT/routine/gaps.py" --top 10 &&
   run "$PY" "$ROOT/routine/trace.py" &&
   run "$PY" "$ROOT/routine/artifacts.py" &&
-  run "$PY" "$ROOT/routine/numbers.py" || echo "!! 파싱 단계 실패 — 배포 중단"
+  run "$PY" "$ROOT/routine/numbers.py" &&
+  run "$PY" "$ROOT/routine/logs.py" &&
+  run "$PY" "$ROOT/routine/questions.py" &&
+  run "$PY" "$ROOT/routine/xref.py" || echo "!! 파싱 단계 실패 — 배포 중단"
 
   # 2) 논문 수집·브리핑 — 실패해도 배포는 계속한다(직전 브리핑 유지).
   run "$PY" "$ROOT/routine/arxiv.py" --days 3 --top 8 || echo "arXiv 수집 실패(계속)"
