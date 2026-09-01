@@ -30,39 +30,67 @@ SENTENCE_END = re.compile(r"(다|까|나|가|요|자|음|함|짓|봄|것|점)$")
 VERBISH = re.compile(r"(하는|되는|이란|인가|왜 |어떻게|무엇|어디|언제|그리고|라면)")
 # 섹션 제목의 표식: 부제 대시, 콜론, 번호 목록, '~부.'
 SECTIONISH = re.compile(r"[—–:：#]|^\d+부\.|^\d+\s|발견\s*#|Stage\s")
+# 개념이 아니라 '용어 묶음'의 제목인 것들
+#   '알고리즘 용어', '시스템·측정 용어', '통신·배리어', 'E. 방법론·기반'
+CATEGORY = re.compile(r"·|^[A-Z]\.\s|(용어|가이드|기호표|목록|정리|기반|조건)$")
+# 너무 일반적이라 학습 대상이 될 수 없는 낱말
+GENERIC = {"모델", "성능", "알고리즘", "체제", "문제 설정", "미해결", "선행 조건",
+           "세 가지 결론", "예외", "요약", "개요", "배경", "정의", "결론",
+           "리스크", "하드웨어", "에너지", "일반화", "진행 순서", "운영 규칙",
+           "워크로드", "실측", "관찰", "가정", "제약", "목표", "범위"}
 
 
 def heading_to_concept(text):
-    """헤딩 문자열 -> (개념명, 별칭들) 또는 None"""
+    """헤딩 문자열 -> [(개념명, 별칭들), ...] 또는 None
+
+    노트의 헤딩은 개념명이기도 하고 섹션 제목이기도 하다.
+    걸러내는 순서가 중요하다 — 괄호를 벗기고 병렬을 분해한 *뒤에도*
+    같은 필터를 다시 적용해야 '모델 (Llama-3)' 의 '모델' 이 새지 않는다.
+    """
     t = strip_md(text)
     t = NUM_PREFIX.sub("", t).strip()
     if not t or len(t) > 40:
         return None
-    low = t.lower()
-    if any(w in low for w in SECTION_WORDS):
-        return None
-    if VERBISH.search(t) or SECTIONISH.search(t):
-        return None
-    # 괄호 안은 별칭: 'GQA (Grouped-Query Attention)'
+
+    # 괄호는 별칭으로 뗀다: 'GQA (Grouped-Query Attention)'
     aliases = []
     m = re.match(r"^([^(]+)\(([^)]+)\)\s*$", t)
     if m:
-        t, alias = m.group(1).strip(), m.group(2).strip()
-        if alias and len(alias) < 40:
-            aliases.append(alias)
-    # 슬래시 병렬: 'all-reduce / ring / P2P' -> 개념 3개
-    # (어절 수 검사보다 먼저 해야 한다. 'a / b / c' 는 5어절로 세어지기 때문)
+        head, alias = m.group(1).strip(), m.group(2).strip()
+        if head:
+            t = head
+            if len(alias) < 40:
+                aliases.append(alias)
+
+    def acceptable(x):
+        if not x or len(x) > 40:
+            return False
+        low = x.lower()
+        if any(w in low for w in SECTION_WORDS):
+            return False
+        if VERBISH.search(x) or SECTIONISH.search(x) or CATEGORY.search(x):
+            return False
+        if x in GENERIC or low in GENERIC:
+            return False
+        if len(x.split()) >= 4:
+            return False
+        # 한글만으로 된 서술형 제목 ('깊이는 순차다', '버블은 정량화된다')
+        if SENTENCE_END.search(x) and not re.search(r"[A-Za-z]", x) \
+                and len(x.split()) >= 2:
+            return False
+        return True
+
+    # 병렬 헤딩을 조각낸다: 'all-reduce / ring / P2P', 'FFN 와 SwiGLU'
     parts = [p.strip() for p in t.split("/") if p.strip()]
-    if len(parts) > 1 and all(0 < len(p) <= 24 for p in parts):
-        return [(p, []) for p in parts]
-    # 4어절 이상이면 개념명이 아니라 문장이다
-    if len(t.split()) >= 4:
-        return None
-    if SENTENCE_END.search(t) and not re.search(r"[A-Za-z]", t):
-        # 한글만으로 된 서술형 제목은 버린다 ('깊이는 순차다')
-        if len(t.split()) > 2:
-            return None
-    return [(t, aliases)]
+    if len(parts) == 1:
+        m = re.match(r"^(.{2,20}?)\s*(?:와|과)\s+(.{2,20})$", t)
+        if m:
+            parts = [m.group(1).strip(), m.group(2).strip()]
+    if len(parts) > 1:
+        keep = [p for p in parts if len(p) <= 24 and acceptable(p)]
+        return [(p, []) for p in keep] if keep else None
+
+    return [(t, aliases)] if acceptable(t) else None
 
 
 # ---- 본문에서 '언급된 용어' 후보를 뽑는 규칙 --------------------------------

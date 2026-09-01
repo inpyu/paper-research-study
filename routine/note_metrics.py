@@ -3,7 +3,8 @@
 
 artifacts/README.md 는 "논문의 모든 수치는 run-id 를 인용해야 한다"고 규정한다.
 그 규칙을 기계가 검사한다. 논문 쓸 때 바로 쓸모 있는 갭이다.
-출력: out/numbers.json
+출력: out/numbers.json  (모듈명은 note_metrics — 표준 라이브러리 numbers 를 가리면
+       jsonschema 가 깨진다. 실제로 브리핑 생성이 이 이유로 실패했다.)
 """
 import os
 import re

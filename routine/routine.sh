@@ -24,9 +24,9 @@ run() {
   run "$PY" "$ROOT/routine/parse_notes.py" &&
   run "$PY" "$ROOT/routine/index_code.py" &&
   run "$PY" "$ROOT/routine/gaps.py" --top 10 &&
-  run "$PY" "$ROOT/routine/trace.py" &&
+  run "$PY" "$ROOT/routine/callpath.py" &&
   run "$PY" "$ROOT/routine/artifacts.py" &&
-  run "$PY" "$ROOT/routine/numbers.py" &&
+  run "$PY" "$ROOT/routine/note_metrics.py" &&
   run "$PY" "$ROOT/routine/logs.py" &&
   run "$PY" "$ROOT/routine/questions.py" &&
   run "$PY" "$ROOT/routine/xref.py" || echo "!! 파싱 단계 실패 — 배포 중단"

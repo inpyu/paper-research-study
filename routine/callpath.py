@@ -3,7 +3,7 @@
 
 "프롬프트 하나를 넣으면 무슨 일이 일어나는가"를 호출 그래프로 편다.
 각 단계에 노트의 어느 문서가 그 함수를 언급하는지 붙인다.
-출력: out/trace.json
+출력: out/trace.json  (모듈명은 callpath — 표준 라이브러리 trace 와 충돌 방지)
 """
 import sys
 from collections import defaultdict, deque

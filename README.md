@@ -38,9 +38,9 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `parse_notes.py` | `research/*.md` → 개념·링크·코드근거·논문시드·학습경로·가설 | 미사용 |
 | `index_code.py` | 심볼·CLI 플래그·주석 용어·파일 변경빈도 | 미사용 |
 | `gaps.py` | G1~G5 갭 산출 + 사람이 읽는 리포트 | 미사용 |
-| `trace.py` | 호출 그래프를 펴서 실행 경로 생성 (W2) | 미사용 |
+| `callpath.py` | 호출 그래프를 펴서 실행 경로 생성 (W2) | 미사용 |
 | `artifacts.py` | 실험 카드 + 고아 실험 G6 (W4) | 미사용 |
-| `numbers.py` | 수치 대사전 + G7·G8 (W6) | 미사용 |
+| `note_metrics.py` | 수치 대사전 + G7·G8 (W6) | 미사용 |
 | `logs.py` | 로그 템플릿 사전 + 코드 출력지점 연결 (W5) | 미사용 |
 | `questions.py` | 열린 질문 — TODO/FIXME·노트 미결·보류 실험 (W7) | 미사용 |
 | `xref.py` | 용어 역인덱스 (W8) | 미사용 |
