@@ -24,7 +24,10 @@ from common import OUT, dump, load  # noqa: E402
 
 API = "http://export.arxiv.org/api/query?"
 NS = {"a": "http://www.w3.org/2005/Atom"}
-UA = {"User-Agent": "RepoScholar/0.1 (personal research tool)"}
+UA = {"User-Agent": "RepoScholar/0.1 (personal research tool; "
+                    "mailto:caudcslab@gmail.com)"}
+GAP = 5          # arXiv 권고는 3초 이상. 여유를 둔다
+BUDGET = 180     # 전체 수집에 쓸 시간 상한(초). 넘으면 가진 것으로 진행한다
 CATS = ("cs.DC", "cs.LG", "cs.AR", "cs.PF")
 
 # refs.md 의 논문에서 자동 도출한 도메인 어휘 (질의 확장용)
@@ -46,18 +49,32 @@ def tok(text):
     return [w for w in WORD.findall(text.lower()) if w not in STOP and len(w) > 2]
 
 
-def fetch(params, retries=3):
+def fetch(params, retries=3, deadline=None):
+    """arXiv 는 과요청에 429 를 준다. 백오프하되 전체 시간 예산을 지킨다."""
     url = API + urllib.parse.urlencode(params)
     for i in range(retries):
+        if deadline and time.time() > deadline:
+            print("  시간 예산 초과 — 수집 중단")
+            return None
         try:
             req = urllib.request.Request(url, headers=UA)
-            with urllib.request.urlopen(req, timeout=45) as r:
+            with urllib.request.urlopen(req, timeout=30) as r:
                 return ET.fromstring(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = 20 * (i + 1)
+                print(f"  429 (요청 과다) — {wait}초 대기")
+                if deadline and time.time() + wait > deadline:
+                    return None
+                time.sleep(wait)
+                continue
+            print(f"  arXiv HTTP {e.code}")
+            return None
         except Exception as e:
             if i == retries - 1:
                 print(f"  arXiv 요청 실패: {e}")
                 return None
-            time.sleep(3 * (i + 1))
+            time.sleep(5 * (i + 1))
     return None
 
 
@@ -93,7 +110,7 @@ def seed_meta(ids, cache):
         for e in parse_entries(root):
             cache[e["id"]] = e
         if root is not None:
-            time.sleep(3)          # arXiv 권고 간격
+            time.sleep(GAP)        # arXiv 권고 간격
     return cache
 
 
@@ -156,6 +173,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=3, help="최근 며칠치 신규를 볼지")
     ap.add_argument("--top", type=int, default=8)
+    ap.add_argument("--queries", type=int, default=4,
+                    help="이번 실행에서 던질 질의 수 (arXiv 429 회피)")
     ap.add_argument("--repeat", action="store_true",
                     help="이미 브리핑한 논문도 다시 후보에 넣는다")
     ap.add_argument("--reuse", action="store_true",
@@ -188,19 +207,34 @@ def main():
     already = set() if args.repeat else briefed_ids()
     if already:
         print(f"이미 브리핑한 논문 {len(already)}편 제외")
+    # 매일 전체 질의를 다 던지면 요청이 많아 429 를 맞는다.
+    # 날짜로 회전시켜 하루 4개만 쓴다. 열흘이면 한 바퀴 돈다.
+    k = args.queries
+    start = (int(time.time() // 86400) * k) % len(QUERIES)
+    todays = [QUERIES[(start + i) % len(QUERIES)] for i in range(k)]
+    print(f"오늘의 질의 {k}개: {', '.join(todays)}")
+    deadline = time.time() + BUDGET
     seen, cands = set(seed_ids) | already, []
-    for q in QUERIES:
+    for q in todays:
         cat = " OR ".join(f"cat:{c}" for c in CATS)
         root = fetch({"search_query": f"({cat}) AND all:\"{q}\"",
                       "sortBy": "submittedDate", "sortOrder": "descending",
-                      "max_results": 25})
+                      "max_results": 40}, deadline=deadline)
         for e in parse_entries(root):
             if e["id"] in seen:
                 continue
             seen.add(e["id"])
             e["matched_query"] = q
             cands.append(e)
-        time.sleep(3)
+        time.sleep(GAP)
+    # 이전 수집분과 합친다(회전 질의라 하루치만으로는 얇다)
+    if os.path.exists(raw_path):
+        try:
+            old = json.load(open(raw_path, encoding="utf-8"))["items"]
+            have = {c["id"] for c in cands}
+            cands += [c for c in old if c["id"] not in have][:400]
+        except Exception:
+            pass
     dump("candidates_raw.json", {"items": cands})
     return rank_and_dump(cands, bm, args)
 
