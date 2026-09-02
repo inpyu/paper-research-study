@@ -225,6 +225,20 @@ def main():
     files.append(write("briefings.json", {"count": len(bindex), "items": bindex,
                                           "latest": bindex[0]["date"] if bindex else None}))
 
+    # ---- 학습 카탈로그 + 진단 문제 ----
+    cat_path = os.path.join(ROOT, "curriculum", "catalog.json")
+    if os.path.exists(cat_path):
+        cat = json.load(open(cat_path, encoding="utf-8"))
+        qdir = os.path.join(OUTDIR, "quiz")
+        for t in cat["tracks"]:
+            for c in t["courses"]:
+                qp = os.path.join(qdir, c["id"] + ".json")
+                c["has_quiz"] = os.path.exists(qp)
+                if c["has_quiz"]:
+                    files.append(write(f"quiz/{c['id']}.json",
+                                       json.load(open(qp, encoding="utf-8"))))
+        files.append(write("catalog.json", cat))
+
     # ---- 코드 문서 (파일·함수 설명) ----
     doc_dir = os.path.join(OUTDIR, "codedoc")
     cdocs = {}

@@ -1,0 +1,4491 @@
+{
+ "tracks": [
+  {
+   "id": "research",
+   "title": "연구의 기초 — 학문의 뿌리와 방법론",
+   "courses": [
+    {
+     "id": "philosophy",
+     "title": "철학의 핵심 — 공학 박사는 왜 철학 박사(Ph.D.)일까?",
+     "summary": "연구자로서 스스로의 방법론을 성찰할 수 있도록 철학의 핵심 개념과 과학철학의 주요 논쟁을 다루고, 이를 CPU 추론 연구의 측정·검증 관행과 연결한다.",
+     "lessons": [
+      {
+       "id": "philosophy-01",
+       "title": "철학이란 무엇인가",
+       "one_liner": "철학의 정의와 하위 분야(형이상학·인식론·논리학·윤리학)를 개괄하고 '공학 박사(Ph.D.)'라는 명칭의 유래를 이해한다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "철학의 4대 하위분야 구분",
+        "Ph.D.라는 학위명이 자연철학에서 유래한 이유"
+       ]
+      },
+      {
+       "id": "philosophy-02",
+       "title": "지식이란 무엇인가 — 인식론 입문",
+       "one_liner": "정당화된 참인 믿음(JTB)이라는 지식의 고전적 정의와 그 한계(게티어 문제)를 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "JTB 정의의 세 조건",
+        "게티어 문제가 보여주는 반례"
+       ]
+      },
+      {
+       "id": "philosophy-03",
+       "title": "존재란 무엇인가 — 존재론 입문",
+       "one_liner": "실재와 현상, 보편자와 개별자 구분 등 존재론의 기본 질문을 이해한다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "보편자 논쟁의 두 입장",
+        "존재론적 질문과 인식론적 질문의 차이"
+       ]
+      },
+      {
+       "id": "philosophy-04",
+       "title": "논리학 기초 — 타당성과 건전성",
+       "one_liner": "논증의 구조, 전제와 결론, 타당한 논증과 건전한 논증의 차이를 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "타당성 vs 건전성 구분",
+        "형식적 오류와 비형식적 오류 예시"
+       ]
+      },
+      {
+       "id": "philosophy-05",
+       "title": "연역과 귀납",
+       "one_liner": "연역 추론과 귀납 추론의 차이, 귀납의 정당화 문제(흄의 문제)를 이해한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "연역과 귀납의 결론 확실성 차이",
+        "흄이 제기한 귀납의 문제"
+       ]
+      },
+      {
+       "id": "philosophy-06",
+       "title": "귀추법 — 최선의 설명으로의 추론",
+       "one_liner": "관찰된 현상을 가장 잘 설명하는 가설을 선택하는 귀추적 추론 방식을 배우고 연구 가설 설정에 적용한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "연역·귀납·귀추 세 추론 방식 비교",
+        "실험 결과에서 가설을 도출하는 귀추적 과정 예시"
+       ]
+      },
+      {
+       "id": "philosophy-07",
+       "title": "반증가능성 — 포퍼의 과학 구획 기준",
+       "one_liner": "포퍼가 제시한 반증가능성 기준으로 과학과 유사과학을 구분하는 방법을 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "반증가능성 기준의 정의",
+        "반증 불가능한 이론의 예시와 문제점"
+       ]
+      },
+      {
+       "id": "philosophy-08",
+       "title": "정상과학과 패러다임 — 쿤의 과학혁명",
+       "one_liner": "쿤이 말한 정상과학, 이상현상 축적, 패러다임 전환의 개념을 이해한다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "정상과학과 패러다임 전환의 관계",
+        "공약불가능성 개념 설명"
+       ]
+      },
+      {
+       "id": "philosophy-09",
+       "title": "연구 프로그램 방법론 — 라카토슈",
+       "one_liner": "포퍼와 쿤을 절충한 라카토슈의 '견고한 핵'과 '보호대' 개념으로 연구 프로그램의 진보·퇴행을 판별한다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "견고한 핵과 보호대 가설의 역할",
+        "진보적 연구 프로그램과 퇴행적 연구 프로그램 구분"
+       ]
+      },
+      {
+       "id": "philosophy-10",
+       "title": "방법에 반대한다 — 파이어아벤트의 인식론적 무정부주의",
+       "one_liner": "고정된 과학적 방법이 존재하는가라는 파이어아벤트의 도전과 방법론적 다원주의를 살펴본다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "'무엇이든 좋다(anything goes)' 명제의 의미",
+        "단일 과학적 방법론에 대한 비판 논거"
+       ]
+      },
+      {
+       "id": "philosophy-11",
+       "title": "실증주의와 경험주의",
+       "one_liner": "논리실증주의의 검증 원리와 경험을 지식의 근원으로 보는 경험주의 전통을 이해한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "검증 원리와 반증가능성의 차이",
+        "경험주의와 합리주의의 대비"
+       ]
+      },
+      {
+       "id": "philosophy-12",
+       "title": "과학적 실재론 대 도구주의",
+       "one_liner": "과학 이론이 실재를 기술하는가, 유용한 예측 도구일 뿐인가라는 논쟁을 이해하고 모델 해석에 적용한다.",
+       "minutes": 30,
+       "concepts": [
+        "roofline",
+        "machine balance"
+       ],
+       "quiz_topics": [
+        "실재론과 도구주의의 핵심 쟁점",
+        "roofline 모델을 도구주의 관점에서 해석하기"
+       ]
+      },
+      {
+       "id": "philosophy-13",
+       "title": "인과성과 상관관계",
+       "one_liner": "흄의 인과론부터 개입주의적 인과 개념까지 살펴보고, 실험에서 상관관계를 인과관계로 오인하는 오류를 경계한다.",
+       "minutes": 30,
+       "concepts": [
+        "baseline 위생",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "상관관계와 인과관계 혼동 사례",
+        "실험 설계에서 교란변수를 통제하는 이유"
+       ]
+      },
+      {
+       "id": "philosophy-14",
+       "title": "측정의 철학 — 조작화와 타당성",
+       "one_liner": "추상적 개념을 측정 가능한 지표로 조작화하는 과정과 측정의 타당성·신뢰성 개념을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "measurement study",
+        "ttft",
+        "정확도 벤치마크"
+       ],
+       "quiz_topics": [
+        "조작적 정의란 무엇인가",
+        "타당성과 신뢰성의 차이를 TTFT 측정에 적용"
+       ]
+      },
+      {
+       "id": "philosophy-15",
+       "title": "재현성 위기와 과학적 검증",
+       "one_liner": "재현성 위기의 원인과 사전등록·홀드아웃 검증 등 대응 방법론을 이해하고 자신의 실험 관행에 연결한다.",
+       "minutes": 40,
+       "concepts": [
+        "holdout",
+        "baseline 위생",
+        "byte for byte 동일"
+       ],
+       "quiz_topics": [
+        "재현성 위기의 주요 원인",
+        "홀드아웃 검증이 과적합 주장을 방지하는 원리"
+       ]
+      },
+      {
+       "id": "philosophy-16",
+       "title": "연구윤리와 학문적 정직성",
+       "one_liner": "데이터 조작, 표절, 편의적 보고(p-hacking)의 문제와 정직한 연구 보고의 원칙을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "과적합"
+       ],
+       "quiz_topics": [
+        "p-hacking의 정의와 위험성",
+        "선택적 결과 보고가 과학 신뢰에 미치는 영향"
+       ]
+      },
+      {
+       "id": "philosophy-17",
+       "title": "공학의 철학 — 설계는 지식인가",
+       "one_liner": "공학적 설계와 만듦(making)이 과학적 앎(knowing)과 어떻게 다르면서도 지식을 생산하는지 살펴본다.",
+       "minutes": 35,
+       "concepts": [
+        "분산 축 실측"
+       ],
+       "quiz_topics": [
+        "과학적 지식과 공학적 노하우의 차이",
+        "시스템 구현이 그 자체로 연구 기여가 되는 조건"
+       ]
+      },
+      {
+       "id": "philosophy-18",
+       "title": "수학과 계산의 철학 — 모델은 실재인가",
+       "one_liner": "수학적 모델과 계산적 추상화가 물리적 시스템을 얼마나 '설명'하는지, 플라톤주의와 형식주의 관점에서 검토한다.",
+       "minutes": 35,
+       "concepts": [
+        "roofline",
+        "최소제곱",
+        "선형 사상"
+       ],
+       "quiz_topics": [
+        "수학적 플라톤주의와 형식주의의 차이",
+        "roofline 같은 단순화된 모델이 갖는 설명력의 한계"
+       ]
+      },
+      {
+       "id": "philosophy-19",
+       "title": "박사학위논문의 논리 — 기여 주장과 방어",
+       "one_liner": "학위논문이 요구하는 '독창적 기여'의 철학적 의미와, 반증가능한 주장으로 논문을 구조화하고 방어하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "measurement study",
+        "phase diagram"
+       ],
+       "quiz_topics": [
+        "학위논문에서 '기여'가 성립하는 철학적 조건",
+        "반증가능한 연구 주장으로 논문 챕터를 구성하는 방법"
+       ]
+      }
+     ],
+     "minutes": 610
+    },
+    {
+     "id": "paper-reading",
+     "title": "논문 읽기 & 연구 방법론 — 연구자로 성장하기",
+     "summary": "시스템 논문을 전략적으로 읽고, 자신의 연구를 선행연구 지도 위에 위치시키며, 재현 가능한 실험과 논문 초안으로 연결하는 연구 방법론을 익힌다.",
+     "lessons": [
+      {
+       "id": "paper-reading-01",
+       "title": "논문을 왜 읽는가 — 목적별 읽기 전략",
+       "one_liner": "survey용/구현용/방어용 등 목적에 따라 읽기 깊이와 순서가 달라짐을 이해한다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "읽기 목적에 따른 전략 구분",
+        "3-pass reading의 각 단계가 답해야 하는 질문"
+       ]
+      },
+      {
+       "id": "paper-reading-02",
+       "title": "3-Pass 읽기법 — 초록·그림·결론 먼저",
+       "one_liner": "제목·초록·그림·결론만으로 논문의 핵심 주장을 5분 안에 파악하는 훈련을 한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "1차 pass에서 확인해야 할 5가지 항목",
+        "그림만 보고 논문의 주장을 추측하는 연습"
+       ]
+      },
+      {
+       "id": "paper-reading-03",
+       "title": "시스템 논문의 표준 구조 읽기",
+       "one_liner": "motivation-design-implementation-evaluation 구조에서 각 절이 하는 역할을 파악한다.",
+       "minutes": 30,
+       "concepts": [
+        "ttft",
+        "prefill"
+       ],
+       "quiz_topics": [
+        "시스템 논문 각 절의 역할 구분",
+        "motivation과 evaluation의 논리적 연결 확인"
+       ]
+      },
+      {
+       "id": "paper-reading-04",
+       "title": "핵심 주장과 근거 분리하기",
+       "one_liner": "저자의 주장(claim)과 이를 뒷받침하는 실험적 근거(evidence)를 구분해서 읽는다.",
+       "minutes": 30,
+       "concepts": [
+        "baseline 위생",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "claim과 evidence를 짝짓는 연습",
+        "근거 없는 주장을 찾아내는 연습"
+       ]
+      },
+      {
+       "id": "paper-reading-05",
+       "title": "Related Work 계보 그리기",
+       "one_liner": "인용 관계를 따라가며 한 분야의 연구 계보와 문제의식 변화를 지도로 그린다.",
+       "minutes": 35,
+       "concepts": [
+        "tp",
+        "pp",
+        "cp",
+        "sp"
+       ],
+       "quiz_topics": [
+        "논문 간 인용 관계로 계보 재구성하기",
+        "같은 문제를 다르게 푸는 논문들 분류하기"
+       ]
+      },
+      {
+       "id": "paper-reading-06",
+       "title": "Figure·Table 비판적으로 읽기",
+       "one_liner": "로그축, 생략된 오차막대, 유리한 baseline 선택 등 그래프의 함정을 식별한다.",
+       "minutes": 30,
+       "concepts": [
+        "roofline",
+        "phase diagram",
+        "상대 오차"
+       ],
+       "quiz_topics": [
+        "로그축 그래프 오독 사례 찾기",
+        "불공정한 baseline 비교 식별하기"
+       ]
+      },
+      {
+       "id": "paper-reading-07",
+       "title": "정확도 벤치마크 논문 읽는 법",
+       "one_liner": "LongBench, RULER 같은 벤치마크 논문이 무엇을 측정하고 무엇을 놓치는지 판단한다.",
+       "minutes": 35,
+       "concepts": [
+        "longbench",
+        "ruler",
+        "needle in haystack",
+        "정확도 벤치마크"
+       ],
+       "quiz_topics": [
+        "벤치마크가 측정하지 않는 것 식별하기",
+        "벤치마크 결과를 자신의 연구에 인용할 때 주의점"
+       ]
+      },
+      {
+       "id": "paper-reading-08",
+       "title": "Measurement Study 설계와 읽기",
+       "one_liner": "무엇을, 왜, 어떤 조건에서 측정했는지를 기준으로 실측 연구의 신뢰성을 평가한다.",
+       "minutes": 35,
+       "concepts": [
+        "measurement study",
+        "분산 축 실측",
+        "memory bound",
+        "compute bound"
+       ],
+       "quiz_topics": [
+        "측정 조건 재현에 필요한 정보 목록 작성",
+        "측정 결과의 일반화 가능 범위 판단"
+       ]
+      },
+      {
+       "id": "paper-reading-09",
+       "title": "연구 질문 만들기 — Gap 찾기",
+       "one_liner": "기존 연구들이 다루지 않은 빈틈(gap)을 찾아 구체적인 연구 질문으로 좁히는 법을 익힌다.",
+       "minutes": 40,
+       "concepts": [
+        "straggler",
+        "kv migration",
+        "d disaggregation"
+       ],
+       "quiz_topics": [
+        "여러 논문을 비교해 공통 gap 도출하기",
+        "incremental 개선과 novel 기여 구분하기"
+       ]
+      },
+      {
+       "id": "paper-reading-10",
+       "title": "나의 연구를 선행연구 지도에 위치시키기",
+       "one_liner": "자신의 연구를 관련 논문들과 비교표로 정리해 novelty와 한계를 명확히 한다.",
+       "minutes": 40,
+       "concepts": [
+        "ttft",
+        "kv cache",
+        "chunked prefill"
+       ],
+       "quiz_topics": [
+        "비교표에 넣을 축(axis) 선정하기",
+        "자신의 연구의 한계를 정직하게 서술하기"
+       ]
+      },
+      {
+       "id": "paper-reading-11",
+       "title": "실험 설계와 재현성 확보",
+       "one_liner": "baseline 위생, holdout, ablation을 갖춘 재현 가능한 실험 계획을 세운다.",
+       "minutes": 40,
+       "concepts": [
+        "baseline 위생",
+        "holdout",
+        "byte for byte 동일",
+        "turbo mode"
+       ],
+       "quiz_topics": [
+        "재현성을 해치는 실험 설계 오류 찾기",
+        "ablation 실험 항목 설계 연습"
+       ]
+      },
+      {
+       "id": "paper-reading-12",
+       "title": "논문 초안 쓰기와 스토리텔링",
+       "one_liner": "Introduction의 문제-공백-기여 구조를 세우고 동료 피드백으로 다듬는 과정을 익힌다.",
+       "minutes": 45,
+       "concepts": [
+        "measurement study",
+        "비용 구성비"
+       ],
+       "quiz_topics": [
+        "Introduction 4문단 구조 채워보기",
+        "기여(contribution) 문장을 검증 가능하게 쓰는 법"
+       ]
+      }
+     ],
+     "minutes": 415
+    },
+    {
+     "id": "grad-life",
+     "title": "대학원생이 알았으면 좋았을 것들",
+     "summary": "논문을 완성하기까지 필요한 연구 방법론과 습관을 질문 정의부터 리버틀 대응까지 단계별로 다진다.",
+     "lessons": [
+      {
+       "id": "grad-life-01",
+       "title": "연구란 무엇인가 — 좋은 질문 정의하기",
+       "one_liner": "막연한 관심사를 검증 가능한 연구 질문으로 좁히는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "좋은 연구 질문의 조건",
+        "관심 주제를 질문으로 좁히는 절차"
+       ]
+      },
+      {
+       "id": "grad-life-02",
+       "title": "논문 읽는 법 — 3-pass 리딩과 속독",
+       "one_liner": "제목·초록만 보고 버릴지, 정독할지 빠르게 판단하는 3단계 독해법을 익힌다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "3-pass 리딩의 각 단계 목적",
+        "논문을 빠르게 거를 때 보는 신호"
+       ]
+      },
+      {
+       "id": "grad-life-03",
+       "title": "문헌 조사 — 관련 연구를 지도로 그리기",
+       "one_liner": "인용 네트워크를 따라가며 분야의 계보와 빈틈을 찾는 방법을 배운다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "citation snowballing 방법",
+        "연구 공백을 찾는 절차"
+       ]
+      },
+      {
+       "id": "grad-life-04",
+       "title": "연구 노트와 지식 관리 시스템",
+       "one_liner": "읽은 논문, 실험 결과, 아이디어를 잃어버리지 않게 기록하는 습관을 세운다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "좋은 연구 노트가 갖춰야 할 요소",
+        "실험 로그와 아이디어 노트의 차이"
+       ]
+      },
+      {
+       "id": "grad-life-05",
+       "title": "질문에서 가설로 — 검증 가능하게 만들기",
+       "one_liner": "모호한 직관을 반증 가능한 가설과 예측으로 바꾸는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "가설이 반증 가능해야 하는 이유",
+        "가설과 연구 질문의 관계"
+       ]
+      },
+      {
+       "id": "grad-life-06",
+       "title": "실험 설계의 기본 — 변인 통제와 대조군",
+       "one_liner": "하나의 요인만 바꾸고 나머지를 고정하는 통제 실험의 원칙을 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "baseline 위생"
+       ],
+       "quiz_topics": [
+        "통제 변인과 조작 변인 구분",
+        "실험 설계에서 흔한 교란 요인"
+       ]
+      },
+      {
+       "id": "grad-life-07",
+       "title": "베이스라인 위생 — 공정한 비교의 조건",
+       "one_liner": "내 방법과 베이스라인을 같은 조건에서 비교하지 않으면 결론이 무너지는 이유를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "baseline 위생",
+        "byte for byte 동일",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "베이스라인 위생이 깨지는 흔한 사례",
+        "공정 비교를 위해 통제해야 할 조건"
+       ]
+      },
+      {
+       "id": "grad-life-08",
+       "title": "측정 연구 설계하기",
+       "one_liner": "시스템의 병목을 주장하기 전에 무엇을, 어떻게 재야 하는지 설계하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "measurement study",
+        "roofline",
+        "산술 강도",
+        "memory bound"
+       ],
+       "quiz_topics": [
+        "measurement study와 벤치마크의 차이",
+        "측정 지표 선택 기준"
+       ]
+      },
+      {
+       "id": "grad-life-09",
+       "title": "과적합과 홀드아웃 — 내 결과를 믿지 않는 법",
+       "one_liner": "같은 데이터로 튜닝하고 평가하면 왜 결과가 부풀려지는지 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "과적합",
+        "holdout",
+        "정확도 벤치마크"
+       ],
+       "quiz_topics": [
+        "홀드아웃 세트가 필요한 이유",
+        "과적합을 의심해야 하는 신호"
+       ]
+      },
+      {
+       "id": "grad-life-10",
+       "title": "오차와 노이즈 다루기 — 상대 오차와 반복 측정",
+       "one_liner": "한 번의 측정값을 결론으로 삼지 않고 오차 범위를 다루는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "상대 오차",
+        "정확도",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "측정 반복이 필요한 이유",
+        "오차 범위 보고 방법"
+       ]
+      },
+      {
+       "id": "grad-life-11",
+       "title": "재현성 — 남이 내 실험을 다시 돌릴 수 있게",
+       "one_liner": "코드, 데이터, 환경, 시드를 기록해 실험을 재현 가능하게 만드는 실무를 익힌다.",
+       "minutes": 30,
+       "concepts": [
+        "byte for byte 동일",
+        "캘리브레이션 덤프"
+       ],
+       "quiz_topics": [
+        "재현성을 위해 기록해야 할 항목",
+        "재현 실패의 흔한 원인"
+       ]
+      },
+      {
+       "id": "grad-life-12",
+       "title": "실험 코드와 버전 관리",
+       "one_liner": "결과와 코드 버전을 짝지어 관리해서 나중에 어떤 커밋이 어떤 그래프를 냈는지 추적하는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "실험-코드 매핑을 관리하는 방법",
+        "버전 관리 없이 실험할 때의 문제"
+       ]
+      },
+      {
+       "id": "grad-life-13",
+       "title": "결과를 그림과 표로 보여주기",
+       "one_liner": "주장을 한눈에 전달하는 그래프와 표를 설계하는 기준을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "roofline",
+        "phase diagram",
+        "비용 구성비"
+       ],
+       "quiz_topics": [
+        "좋은 결과 그래프의 조건",
+        "표와 그래프 중 무엇을 쓸지 판단하는 기준"
+       ]
+      },
+      {
+       "id": "grad-life-14",
+       "title": "논문 스토리텔링 — 서론과 기여 쓰기",
+       "one_liner": "독자가 첫 페이지에서 왜 읽어야 하는지 납득하게 만드는 서론 구조를 배운다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "논문 서론의 필수 구성 요소",
+        "기여(contribution)를 명확히 쓰는 법"
+       ]
+      },
+      {
+       "id": "grad-life-15",
+       "title": "관련 연구 절 쓰기 — 위치 잡기",
+       "one_liner": "기존 연구를 나열하지 않고 내 연구가 서 있는 자리를 보여주는 related work를 쓰는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "related work 나열형 서술의 문제",
+        "내 연구를 차별화하는 서술 방식"
+       ]
+      },
+      {
+       "id": "grad-life-16",
+       "title": "실험 결과 절 쓰기 — 주장과 증거 연결하기",
+       "one_liner": "각 그래프와 표가 어떤 주장을 뒷받침하는지 명시적으로 연결하는 글쓰기를 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "산술 강도",
+        "phase diagram"
+       ],
+       "quiz_topics": [
+        "결과 절에서 주장-증거 연결 실패 사례",
+        "ablation을 배치하는 위치"
+       ]
+      },
+      {
+       "id": "grad-life-17",
+       "title": "셀프 리뷰 — 리뷰어처럼 내 논문 읽기",
+       "one_liner": "제출 전 리뷰어 관점에서 약점과 반박 가능성을 미리 찾아내는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "baseline 위생"
+       ],
+       "quiz_topics": [
+        "리뷰어가 흔히 지적하는 약점 유형",
+        "셀프 리뷰 체크리스트 구성"
+       ]
+      },
+      {
+       "id": "grad-life-18",
+       "title": "지도교수·공동연구자와 협업하기",
+       "one_liner": "미팅을 생산적으로 만들고 피드백을 실험 계획에 반영하는 협업 습관을 배운다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "효과적인 미팅 준비 방법",
+        "피드백을 실험 계획에 반영하는 절차"
+       ]
+      },
+      {
+       "id": "grad-life-19",
+       "title": "학회 발표·포스터 준비하기",
+       "one_liner": "짧은 시간에 연구의 핵심을 전달하는 발표와 포스터 설계 원칙을 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "포스터 vs 구두 발표 설계 차이",
+        "엘리베이터 피치 구성"
+       ]
+      },
+      {
+       "id": "grad-life-20",
+       "title": "피어리뷰와 리버틀 대응, 그리고 다음 연구로",
+       "one_liner": "리뷰 코멘트를 분류해 리버틀을 쓰고, 게재 후 다음 연구 질문으로 이어가는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "리뷰 코멘트 유형 분류와 대응 전략",
+        "리버틀 작성 시 지켜야 할 태도"
+       ]
+      }
+     ],
+     "minutes": 670
+    }
+   ],
+   "minutes": 1695,
+   "course_count": 3
+  },
+  {
+   "id": "ai",
+   "title": "인공지능(AI) — 기계가 생각하는 법",
+   "courses": [
+    {
+     "id": "ai-math",
+     "title": "인공지능 수학 — AI를 떠받치는 수학적 기초",
+     "summary": "벡터·행렬부터 저랭크 근사, 분산 선형대수까지 SBC 클러스터 LLM 추론 최적화 연구에 필요한 수학적 기초를 다진다.",
+     "lessons": [
+      {
+       "id": "ai-math-01",
+       "title": "벡터와 행렬의 기본 연산",
+       "one_liner": "스칼라·벡터·행렬의 표현과 기본 연산을 익힌다.",
+       "minutes": 30,
+       "concepts": [
+        "vector",
+        "matrix"
+       ],
+       "quiz_topics": [
+        "벡터/행렬 차원 표기",
+        "내적과 외적의 차이",
+        "행렬 전치와 대칭성"
+       ]
+      },
+      {
+       "id": "ai-math-02",
+       "title": "행렬곱셈과 연산 비용 추정",
+       "one_liner": "행렬곱의 FLOPs를 계산하고 GEMM/GEMV의 비용 차이를 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "matrix multiplication",
+        "computational cost estimation",
+        "flops",
+        "gemm"
+       ],
+       "quiz_topics": [
+        "행렬곱 FLOPs 공식 유도",
+        "GEMM vs GEMV 비용 비교",
+        "배치 크기가 FLOPs에 미치는 영향"
+       ]
+      },
+      {
+       "id": "ai-math-03",
+       "title": "부동소수점 표현과 양자화 기초",
+       "one_liner": "부동소수점의 정밀도 한계와 양자화가 오차를 만드는 이유를 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "floating point representation",
+        "양자화",
+        "q40",
+        "q80"
+       ],
+       "quiz_topics": [
+        "부동소수점 반올림 오차 발생 원리",
+        "q40 vs q80 정밀도 트레이드오프",
+        "양자화 오차와 상대 오차 계산"
+       ]
+      },
+      {
+       "id": "ai-math-04",
+       "title": "메모리 계층과 대역폭·지연",
+       "one_liner": "캐시-메모리 계층 구조와 대역폭·지연이 연산 속도를 어떻게 제한하는지 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "지연 대 대역폭",
+        "memory bound"
+       ],
+       "quiz_topics": [
+        "캐시 미스가 성능에 미치는 영향",
+        "대역폭 vs 지연 병목 구분",
+        "memory bound 연산 예시"
+       ]
+      },
+      {
+       "id": "ai-math-05",
+       "title": "배열 메모리 레이아웃과 타일링",
+       "one_liner": "행/열 우선 레이아웃과 타일링이 캐시 효율에 미치는 영향을 계산한다.",
+       "minutes": 30,
+       "concepts": [
+        "array memory layout",
+        "메모리 레이아웃",
+        "타일링"
+       ],
+       "quiz_topics": [
+        "행우선 vs 열우선 접근 패턴 성능",
+        "타일 크기와 캐시 적중률 관계",
+        "블록 양자화와 레이아웃의 연관"
+       ]
+      },
+      {
+       "id": "ai-math-06",
+       "title": "산술 강도와 루프라인 모델",
+       "one_liner": "산술 강도를 계산해 연산이 compute-bound인지 memory-bound인지 판별한다.",
+       "minutes": 40,
+       "concepts": [
+        "roofline",
+        "산술 강도",
+        "machine balance",
+        "compute bound"
+       ],
+       "quiz_topics": [
+        "산술 강도 공식 적용",
+        "roofline 그래프에서 병목 위치 판단",
+        "machine balance와 실측 비교"
+       ]
+      },
+      {
+       "id": "ai-math-07",
+       "title": "최소제곱법과 선형회귀",
+       "one_liner": "정규방정식을 유도하고 선형회귀 문제를 최소제곱으로 푸는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "linear regression and least squares",
+        "최소제곱",
+        "정규방정식",
+        "ridge"
+       ],
+       "quiz_topics": [
+        "정규방정식 유도 과정",
+        "릿지 정규화가 필요한 이유",
+        "최소제곱 적합의 기하학적 해석"
+       ]
+      },
+      {
+       "id": "ai-math-08",
+       "title": "경사하강법과 과적합·홀드아웃",
+       "one_liner": "경사하강법의 학습 루프와 과적합을 홀드아웃으로 진단하는 법을 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "gradient descent and training loop",
+        "과적합",
+        "overfitting generalization and holdout",
+        "holdout"
+       ],
+       "quiz_topics": [
+        "경사하강법 스텝 업데이트 계산",
+        "과적합 징후 판별",
+        "홀드아웃 vs 교차검증 차이"
+       ]
+      },
+      {
+       "id": "ai-math-09",
+       "title": "특이값분해와 저랭크 근사",
+       "one_liner": "SVD로 행렬을 분해하고 저랭크 근사의 재구성 오차를 계산한다.",
+       "minutes": 45,
+       "concepts": [
+        "low rank approximation via svd",
+        "특이값",
+        "저랭크 근사",
+        "재구성 오차"
+       ],
+       "quiz_topics": [
+        "SVD 분해 성분 해석",
+        "랭크 절단과 오차 트레이드오프",
+        "저랭크 근사가 가중치 압축에 쓰이는 이유"
+       ]
+      },
+      {
+       "id": "ai-math-10",
+       "title": "softmax의 수치 안정성과 온라인 계산",
+       "one_liner": "softmax 오버플로우 문제와 online softmax·LSE 병합 기법을 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "softmax and numerical stability",
+        "online softmax",
+        "lse log sum exp merge",
+        "분산 softmax"
+       ],
+       "quiz_topics": [
+        "softmax 오버플로우 방지 트릭",
+        "online softmax 누적 갱신 유도",
+        "분산 환경에서 softmax 병합 방법"
+       ]
+      },
+      {
+       "id": "ai-math-11",
+       "title": "어텐션의 선형대수와 위치 인코딩",
+       "one_liner": "self-attention의 행렬 연산과 RoPE 위치 인코딩의 수학을 분석한다.",
+       "minutes": 45,
+       "concepts": [
+        "self-attention mechanism",
+        "rope",
+        "positional information",
+        "causal mask"
+       ],
+       "quiz_topics": [
+        "attention 스코어 행렬 차원 추적",
+        "RoPE 회전 행렬 원리",
+        "causal mask가 적용되는 위치"
+       ]
+      },
+      {
+       "id": "ai-math-12",
+       "title": "분산 선형대수와 집합통신 연산",
+       "one_liner": "텐서 병렬화에서 필요한 all-reduce·all-gather 등 집합통신의 수학적 의미를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "collective communication patterns",
+        "all reduce",
+        "allgather",
+        "tp"
+       ],
+       "quiz_topics": [
+        "all-reduce가 텐서 병렬 결과를 합치는 원리",
+        "allgather vs all-reduce 통신량 비교",
+        "tp 분할 시 행렬곱 재구성 방법"
+       ]
+      }
+     ],
+     "minutes": 450
+    },
+    {
+     "id": "ml",
+     "title": "머신러닝 — 데이터에서 지식을 추출하다",
+     "summary": "데이터로부터 패턴을 학습하는 머신러닝의 기초 개념부터 트랜스포머 기반 LLM과 분산 추론까지 이어지는 15개 레슨.",
+     "lessons": [
+      {
+       "id": "ml-01",
+       "title": "벡터와 행렬로 데이터 표현하기",
+       "one_liner": "머신러닝의 모든 계산이 벡터/행렬 연산으로 표현되는 이유를 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "vector",
+        "matrix",
+        "matrix multiplication"
+       ],
+       "quiz_topics": [
+        "행렬 곱셈의 차원 규칙",
+        "벡터 내적의 의미"
+       ]
+      },
+      {
+       "id": "ml-02",
+       "title": "부동소수점과 컴퓨터의 수 표현",
+       "one_liner": "컴퓨터가 실수를 근사하는 방식과 정밀도 손실의 원리를 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "floating point representation"
+       ],
+       "quiz_topics": [
+        "부동소수점 오차의 원인",
+        "정밀도와 표현 범위의 trade-off"
+       ]
+      },
+      {
+       "id": "ml-03",
+       "title": "메모리 계층과 대역폭·지연",
+       "one_liner": "CPU 캐시부터 RAM까지 메모리 계층이 연산 속도에 미치는 영향을 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "메모리 계층",
+        "지연 대 대역폭"
+       ],
+       "quiz_topics": [
+        "캐시 미스가 느린 이유",
+        "대역폭과 지연의 차이"
+       ]
+      },
+      {
+       "id": "ml-04",
+       "title": "연산 비용 추정과 Roofline 모델",
+       "one_liner": "FLOPs와 메모리 접근량으로 연산이 compute-bound인지 memory-bound인지 판단한다.",
+       "minutes": 35,
+       "concepts": [
+        "computational cost estimation",
+        "flops",
+        "roofline",
+        "compute bound"
+       ],
+       "quiz_topics": [
+        "산술 강도 계산",
+        "roofline에서 병목 위치 판단"
+       ]
+      },
+      {
+       "id": "ml-05",
+       "title": "퍼셉트론과 뉴런의 계산 모델",
+       "one_liner": "단일 뉴런이 입력을 가중합하고 활성화하는 기본 계산 단위임을 이해한다.",
+       "minutes": 25,
+       "concepts": [
+        "perceptron and neuron",
+        "nonlinear activation functions"
+       ],
+       "quiz_topics": [
+        "퍼셉트론의 한계",
+        "활성화 함수가 필요한 이유"
+       ]
+      },
+      {
+       "id": "ml-06",
+       "title": "경사하강법과 학습 루프",
+       "one_liner": "손실 함수를 줄이기 위해 파라미터를 반복 갱신하는 학습 과정을 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "gradient descent and training loop",
+        "정규화",
+        "과적합"
+       ],
+       "quiz_topics": [
+        "학습률이 너무 크거나 작을 때의 문제",
+        "경사하강법의 수렴 조건"
+       ]
+      },
+      {
+       "id": "ml-07",
+       "title": "선형회귀와 최소제곱법",
+       "one_liner": "가장 단순한 학습 모델인 선형회귀를 정규방정식과 최소제곱으로 풀어본다.",
+       "minutes": 35,
+       "concepts": [
+        "linear regression and least squares",
+        "최소제곱",
+        "최소제곱 적합",
+        "정규방정식"
+       ],
+       "quiz_topics": [
+        "정규방정식 유도",
+        "ridge 정규화가 필요한 상황"
+       ]
+      },
+      {
+       "id": "ml-08",
+       "title": "과적합, 일반화, 홀드아웃 평가",
+       "one_liner": "모델이 학습 데이터에만 맞춰지는 과적합을 홀드아웃으로 어떻게 탐지하는지 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "overfitting generalization and holdout",
+        "holdout",
+        "과적합"
+       ],
+       "quiz_topics": [
+        "train/val/test 분리 이유",
+        "과적합 징후 판별"
+       ]
+      },
+      {
+       "id": "ml-09",
+       "title": "특이값 분해와 저랭크 근사",
+       "one_liner": "SVD로 행렬을 압축하고 근사 오차를 정량화하는 방법을 배운다. 연구의 양자화·압축 배경 지식이 된다.",
+       "minutes": 40,
+       "concepts": [
+        "low rank approximation via svd",
+        "특이값",
+        "랭크",
+        "저랭크 근사"
+       ],
+       "quiz_topics": [
+        "SVD의 랭크-k 근사가 최적인 이유",
+        "재구성 오차와 특이값의 관계"
+       ]
+      },
+      {
+       "id": "ml-10",
+       "title": "신경망의 층: 순전파, 정규화, 잔차 연결",
+       "one_liner": "피드포워드 층, 정규화, 잔차 연결이 깊은 네트워크 학습을 안정화하는 원리를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "feedforward layers",
+        "normalization in neural networks",
+        "residual connections",
+        "rmsnorm"
+       ],
+       "quiz_topics": [
+        "잔차 연결이 기울기 소실을 완화하는 이유",
+        "정규화 위치에 따른 차이"
+       ]
+      },
+      {
+       "id": "ml-11",
+       "title": "토큰화와 임베딩",
+       "one_liner": "텍스트를 토큰으로 쪼개고 벡터 공간에 임베딩하는 과정을 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "tokenization",
+        "embedding lookup",
+        "토큰",
+        "토큰 임베딩"
+       ],
+       "quiz_topics": [
+        "서브워드 토큰화의 장점",
+        "임베딩 룩업의 계산 비용"
+       ]
+      },
+      {
+       "id": "ml-12",
+       "title": "셀프 어텐션과 위치 인코딩",
+       "one_liner": "쿼리-키-밸류로 토큰 간 관계를 학습하는 어텐션과 위치 정보 주입 방식을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "self-attention mechanism",
+        "positional information",
+        "rope",
+        "attention"
+       ],
+       "quiz_topics": [
+        "어텐션 스코어 계산 순서",
+        "causal mask가 필요한 이유",
+        "online softmax의 수치 안정성"
+       ]
+      },
+      {
+       "id": "ml-13",
+       "title": "멀티헤드 어텐션과 트랜스포머 블록",
+       "one_liner": "멀티헤드 어텐션, GQA 변형, 트랜스포머 블록 전체 구조와 출력 로짓 생성을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "multi-head attention and variants",
+        "transformer block architecture",
+        "output projection and logits",
+        "gqa"
+       ],
+       "quiz_topics": [
+        "멀티헤드가 단일헤드보다 유리한 이유",
+        "GQA가 KV 캐시를 줄이는 원리"
+       ]
+      },
+      {
+       "id": "ml-14",
+       "title": "자기회귀 생성과 KV 캐시, Prefill/Decode",
+       "one_liner": "토큰을 순차 생성하는 autoregressive 구조와 KV 캐시가 이 연구의 핵심 병목인 prefill 단계를 어떻게 결정하는지 배운다.",
+       "minutes": 50,
+       "concepts": [
+        "autoregressive generation",
+        "kv cache concept",
+        "batching inference requests",
+        "prefill and decode phases"
+       ],
+       "quiz_topics": [
+        "prefill과 decode의 연산 특성 차이",
+        "KV 캐시 크기가 메모리에 미치는 영향",
+        "TTFT를 결정하는 요인"
+       ]
+      },
+      {
+       "id": "ml-15",
+       "title": "양자화와 분산 추론: 병렬화·통신·평가",
+       "one_liner": "모델을 양자화하고 여러 노드에 나눠 추론하는 텐서/파이프라인 병렬화, 집합 통신, 장문 평가 벤치마크를 종합한다.",
+       "minutes": 60,
+       "concepts": [
+        "quantization fundamentals",
+        "block quantization and repacking",
+        "tensor and pipeline parallelism",
+        "sequence and context parallelism"
+       ],
+       "quiz_topics": [
+        "TP와 PP의 통신 패턴 차이",
+        "분산 환경에서 straggler가 TTFT에 미치는 영향",
+        "KV 마이그레이션이 필요한 disaggregation 시나리오"
+       ]
+      }
+     ],
+     "minutes": 550
+    },
+    {
+     "id": "dl",
+     "title": "딥러닝(Deep Learning) — 인공 신경망의 세계",
+     "summary": "벡터 연산부터 트랜스포머의 prefill/decode 추론까지, LLM 추론 최적화 연구에 필요한 딥러닝 기초를 순서대로 쌓는 과목이다.",
+     "lessons": [
+      {
+       "id": "dl-01",
+       "title": "벡터와 행렬: 신경망의 언어",
+       "one_liner": "신경망 연산이 왜 전부 벡터·행렬 연산으로 표현되는지 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "vector",
+        "matrix"
+       ],
+       "quiz_topics": [
+        "벡터/행렬 표기와 형상(shape) 맞추기",
+        "내적과 행렬-벡터 곱의 의미"
+       ]
+      },
+      {
+       "id": "dl-02",
+       "title": "행렬 곱셈과 연산 비용 계산",
+       "one_liner": "행렬곱의 FLOPs를 직접 계산하고 모델 크기와 연산량의 관계를 파악한다.",
+       "minutes": 35,
+       "concepts": [
+        "matrix multiplication",
+        "computational cost estimation",
+        "flops",
+        "gemm"
+       ],
+       "quiz_topics": [
+        "행렬곱 FLOPs 공식 유도",
+        "GEMM과 GEMV의 차이와 사용 시점"
+       ]
+      },
+      {
+       "id": "dl-03",
+       "title": "부동소수점 표현과 정밀도",
+       "one_liner": "FP32/FP16 등 부동소수점 표현 방식과 오차의 근원을 이해한다.",
+       "minutes": 25,
+       "concepts": [
+        "floating point representation"
+       ],
+       "quiz_topics": [
+        "가수/지수 비트와 정밀도 관계",
+        "정밀도 손실이 누적되는 상황"
+       ]
+      },
+      {
+       "id": "dl-04",
+       "title": "메모리 계층과 대역폭·지연",
+       "one_liner": "캐시-DRAM 계층 구조가 연산 속도를 어떻게 제약하는지 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "메모리 계층",
+        "지연 대 대역폭"
+       ],
+       "quiz_topics": [
+        "캐시 미스와 지연의 관계",
+        "대역폭 병목 vs 지연 병목 구분"
+       ]
+      },
+      {
+       "id": "dl-05",
+       "title": "배열 메모리 레이아웃과 산술 강도",
+       "one_liner": "row-major/col-major 레이아웃과 산술 강도가 실제 성능에 미치는 영향을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "array memory layout",
+        "메모리 레이아웃",
+        "산술 강도",
+        "roofline"
+       ],
+       "quiz_topics": [
+        "레이아웃 불일치로 인한 캐시 미스",
+        "산술 강도로 compute/memory bound 판별"
+       ]
+      },
+      {
+       "id": "dl-06",
+       "title": "퍼셉트론과 인공 뉴런",
+       "one_liner": "단일 뉴런의 가중합-활성화 구조에서 신경망의 기본 단위를 이해한다.",
+       "minutes": 25,
+       "concepts": [
+        "perceptron and neuron"
+       ],
+       "quiz_topics": [
+        "퍼셉트론의 입출력 계산",
+        "선형 분리 가능성의 한계"
+       ]
+      },
+      {
+       "id": "dl-07",
+       "title": "경사하강법과 학습 루프",
+       "one_liner": "손실함수를 최소화하는 파라미터 업데이트 과정을 단계별로 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "학습률과 수렴의 관계",
+        "순전파-역전파-업데이트 루프 순서"
+       ]
+      },
+      {
+       "id": "dl-08",
+       "title": "선형회귀와 최소제곱",
+       "one_liner": "최소제곱 적합과 정규방정식으로 선형회귀를 풀고 릿지 정규화를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "linear regression and least squares",
+        "최소제곱",
+        "최소제곱 적합",
+        "정규방정식"
+       ],
+       "quiz_topics": [
+        "정규방정식 유도와 계산 비용",
+        "릿지 정규화가 과적합을 줄이는 원리"
+       ]
+      },
+      {
+       "id": "dl-09",
+       "title": "과적합, 일반화, 홀드아웃 검증",
+       "one_liner": "모델이 훈련 데이터에만 맞춰지는 문제와 홀드아웃 평가 방법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "overfitting generalization and holdout",
+        "과적합",
+        "holdout",
+        "정확도"
+       ],
+       "quiz_topics": [
+        "과적합 징후 판별",
+        "홀드아웃/검증셋 분리 이유"
+       ]
+      },
+      {
+       "id": "dl-10",
+       "title": "순전파 레이어와 FFN",
+       "one_liner": "완전연결 순전파 레이어와 트랜스포머 FFN 블록의 구조를 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "feedforward layers",
+        "ffn"
+       ],
+       "quiz_topics": [
+        "FFN의 입출력 차원 변화",
+        "FFN이 연산량에서 차지하는 비중"
+       ]
+      },
+      {
+       "id": "dl-11",
+       "title": "신경망 정규화 기법",
+       "one_liner": "학습 안정화를 위한 정규화 기법과 RMSNorm의 동작을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "normalization in neural networks",
+        "rmsnorm",
+        "정규화"
+       ],
+       "quiz_topics": [
+        "LayerNorm과 RMSNorm의 차이",
+        "정규화가 학습 안정성에 미치는 영향"
+       ]
+      },
+      {
+       "id": "dl-12",
+       "title": "비선형 활성 함수",
+       "one_liner": "비선형성이 왜 필요한지, SwiGLU 같은 최신 활성 함수를 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "nonlinear activation functions",
+        "swiglu"
+       ],
+       "quiz_topics": [
+        "비선형성이 없으면 생기는 문제",
+        "SwiGLU 구조 이해"
+       ]
+      },
+      {
+       "id": "dl-13",
+       "title": "잔차 연결과 잔차 스트림",
+       "one_liner": "깊은 네트워크 학습을 가능케 하는 잔차 연결과 잔차 스트림 개념을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "residual connections",
+        "residual stream"
+       ],
+       "quiz_topics": [
+        "잔차 연결이 그래디언트 소실을 완화하는 원리",
+        "잔차 스트림에 레이어 출력이 누적되는 방식"
+       ]
+      },
+      {
+       "id": "dl-14",
+       "title": "토큰화의 원리",
+       "one_liner": "텍스트를 토큰 단위로 나누는 방법과 토큰 수가 연산량에 미치는 영향을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "tokenization",
+        "토큰"
+       ],
+       "quiz_topics": [
+        "서브워드 토큰화 동작 방식",
+        "토큰 수와 prefill 비용의 관계"
+       ]
+      },
+      {
+       "id": "dl-15",
+       "title": "임베딩 룩업",
+       "one_liner": "토큰 ID를 벡터로 매핑하는 임베딩 테이블의 구조와 조회 비용을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "embedding lookup",
+        "임베딩",
+        "토큰 임베딩"
+       ],
+       "quiz_topics": [
+        "임베딩 테이블 크기 계산",
+        "임베딩 조회의 메모리 접근 패턴"
+       ]
+      },
+      {
+       "id": "dl-16",
+       "title": "위치 인코딩과 RoPE",
+       "one_liner": "순서 정보가 없는 어텐션에 위치 정보를 주입하는 방법, 특히 RoPE를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "positional information",
+        "rope",
+        "위치 인코딩"
+       ],
+       "quiz_topics": [
+        "RoPE의 회전 인코딩 원리",
+        "절대 위치 인코딩과 RoPE의 차이"
+       ]
+      },
+      {
+       "id": "dl-17",
+       "title": "셀프 어텐션 메커니즘",
+       "one_liner": "Q, K, V로부터 어텐션 스코어를 계산하는 셀프 어텐션의 핵심 원리를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "self-attention mechanism",
+        "attention",
+        "causal mask",
+        "dotprod"
+       ],
+       "quiz_topics": [
+        "Q/K/V 계산과 어텐션 스코어 유도",
+        "causal mask가 필요한 이유"
+       ]
+      },
+      {
+       "id": "dl-18",
+       "title": "멀티헤드 어텐션과 GQA",
+       "one_liner": "여러 헤드로 어텐션을 병렬화하는 방식과 GQA로 KV 캐시를 줄이는 방법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "multi-head attention and variants",
+        "gqa",
+        "attention"
+       ],
+       "quiz_topics": [
+        "멀티헤드가 표현력을 높이는 이유",
+        "GQA가 KV 캐시 크기를 줄이는 원리"
+       ]
+      },
+      {
+       "id": "dl-19",
+       "title": "Softmax와 수치 안정성",
+       "one_liner": "softmax 계산의 오버플로우 문제와 온라인/분산 softmax 기법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "softmax and numerical stability",
+        "online softmax",
+        "lse log sum exp merge",
+        "분산 softmax"
+       ],
+       "quiz_topics": [
+        "softmax 오버플로우 방지 트릭",
+        "온라인 softmax의 점진적 갱신 방식"
+       ]
+      },
+      {
+       "id": "dl-20",
+       "title": "트랜스포머 블록 구조",
+       "one_liner": "어텐션과 FFN, 정규화, 잔차 연결이 결합된 트랜스포머 블록 전체 흐름을 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "transformer block architecture",
+        "dense",
+        "attention",
+        "ffn"
+       ],
+       "quiz_topics": [
+        "트랜스포머 블록 내 데이터 흐름 순서",
+        "블록 반복이 모델 깊이에 미치는 영향"
+       ]
+      },
+      {
+       "id": "dl-21",
+       "title": "출력 프로젝션과 로짓",
+       "one_liner": "마지막 은닉 상태를 어휘 확률로 변환하는 LM head와 로짓 계산을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "output projection and logits",
+        "lmhead",
+        "로짓"
+       ],
+       "quiz_topics": [
+        "LM head 연산량과 어휘 크기의 관계",
+        "로짓에서 다음 토큰 확률로의 변환 과정"
+       ]
+      },
+      {
+       "id": "dl-22",
+       "title": "로컬·희소 어텐션 패턴과 청크 분할",
+       "one_liner": "긴 입력을 청크로 나누고 지역/희소 어텐션으로 비용을 줄이는 기법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "local and sparse attention patterns",
+        "블록 로컬 attention",
+        "chunked prefill",
+        "청크 chunk"
+       ],
+       "quiz_topics": [
+        "전체 어텐션 대비 지역/희소 어텐션의 비용 절감",
+        "청크 단위 prefill이 필요한 이유"
+       ]
+      },
+      {
+       "id": "dl-23",
+       "title": "자기회귀 생성과 KV 캐시",
+       "one_liner": "토큰을 하나씩 생성하는 자기회귀 방식과 이를 가속하는 KV 캐시 개념을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "autoregressive generation",
+        "kv cache concept",
+        "kv cache"
+       ],
+       "quiz_topics": [
+        "KV 캐시가 없을 때 재계산 비용",
+        "KV 캐시 메모리 사용량 계산"
+       ]
+      },
+      {
+       "id": "dl-24",
+       "title": "추론 배치와 prefill/decode 단계",
+       "one_liner": "prefill과 decode 단계의 연산 특성 차이와 배치·TTFT 최적화 관점을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "batching inference requests",
+        "prefill and decode phases",
+        "prefill",
+        "decode"
+       ],
+       "quiz_topics": [
+        "prefill이 compute bound, decode가 memory bound인 이유",
+        "continuous batching이 TTFT/처리량에 미치는 영향"
+       ]
+      }
+     ],
+     "minutes": 810
+    },
+    {
+     "id": "cv",
+     "title": "컴퓨터 비전(Computer Vision) — 기계에게 눈을 주다",
+     "summary": "픽셀 배열부터 CNN, Vision Transformer, 경량화·분산 추론까지 컴퓨터 비전의 기초를 훑고 CPU 추론 연구로 이어지는 다리를 놓는다.",
+     "lessons": [
+      {
+       "id": "cv-01",
+       "title": "이미지는 어떻게 숫자가 되는가",
+       "one_liner": "이미지가 픽셀 값의 다차원 배열로 메모리에 저장되는 원리를 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "array memory layout",
+        "computer memory hierarchy",
+        "vector"
+       ],
+       "quiz_topics": [
+        "이미지의 (H,W,C) 텐서 표현",
+        "메모리 레이아웃(행 우선 vs 열 우선)이 접근 속도에 미치는 영향"
+       ]
+      },
+      {
+       "id": "cv-02",
+       "title": "색공간과 이미지 전처리",
+       "one_liner": "RGB/그레이스케일 변환과 정규화가 왜 모델 입력 전에 필요한지 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "floating point representation"
+       ],
+       "quiz_topics": [
+        "픽셀 값 정규화의 목적",
+        "부동소수점 표현과 정밀도 손실"
+       ]
+      },
+      {
+       "id": "cv-03",
+       "title": "합성곱 연산의 수학",
+       "one_liner": "컨볼루션이 결국 지역적 내적(dot product)의 반복임을 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "dotprod",
+        "matrix multiplication",
+        "flops"
+       ],
+       "quiz_topics": [
+        "컨볼루션 필터의 슬라이딩 윈도우 연산",
+        "컨볼루션의 FLOPs 계산"
+       ]
+      },
+      {
+       "id": "cv-04",
+       "title": "CNN 구조 — 필터, 채널, 풀링",
+       "one_liner": "합성곱층과 풀링층이 쌓여 특징 계층을 만드는 방식을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "feedforward layers",
+        "nonlinear activation functions"
+       ],
+       "quiz_topics": [
+        "채널 수 증가와 공간 해상도 감소의 관계",
+        "풀링의 역할"
+       ]
+      },
+      {
+       "id": "cv-05",
+       "title": "학습 안정화 — 정규화와 경사하강",
+       "one_liner": "배치/레이어 정규화가 CNN 학습을 안정시키는 원리를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "normalization in neural networks",
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "정규화가 그래디언트 흐름에 미치는 영향",
+        "학습률과 수렴"
+       ]
+      },
+      {
+       "id": "cv-06",
+       "title": "과적합과 데이터 증강",
+       "one_liner": "제한된 이미지 데이터에서 일반화 성능을 확보하는 방법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "overfitting generalization and holdout",
+        "holdout",
+        "과적합"
+       ],
+       "quiz_topics": [
+        "홀드아웃 검증의 목적",
+        "데이터 증강이 과적합을 줄이는 원리"
+       ]
+      },
+      {
+       "id": "cv-07",
+       "title": "잔차 연결과 깊은 네트워크",
+       "one_liner": "ResNet의 residual connection이 깊은 CNN 학습을 가능케 한 이유를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "residual connections"
+       ],
+       "quiz_topics": [
+        "잔차 연결과 그래디언트 소실 문제",
+        "스킵 커넥션의 구조"
+       ]
+      },
+      {
+       "id": "cv-08",
+       "title": "이미지 분류 벤치마크와 정확도 평가",
+       "one_liner": "분류 모델의 성능을 정확도 지표와 벤치마크로 비교하는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "정확도",
+        "정확도 벤치마크",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "top-1/top-5 정확도의 의미",
+        "벤치마크 간 공정한 비교 조건"
+       ]
+      },
+      {
+       "id": "cv-09",
+       "title": "객체 탐지와 분할의 기초",
+       "one_liner": "분류를 넘어 위치와 경계를 예측하는 탐지·분할 문제의 구조를 이해한다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "분류 vs 탐지 vs 분할의 출력 차이",
+        "바운딩 박스와 마스크 표현"
+       ]
+      },
+      {
+       "id": "cv-10",
+       "title": "Vision Transformer — 이미지를 토큰으로",
+       "one_liner": "이미지를 패치로 쪼개 토큰 시퀀스로 다루는 ViT의 아이디어를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "tokenization",
+        "embedding lookup",
+        "positional information",
+        "self-attention mechanism"
+       ],
+       "quiz_topics": [
+        "이미지 패치와 토큰의 대응 관계",
+        "ViT에서의 위치 인코딩 필요성"
+       ]
+      },
+      {
+       "id": "cv-11",
+       "title": "ViT의 어텐션 연산과 비용",
+       "one_liner": "패치 임베딩과 멀티헤드 어텐션의 연산 비용을 정량적으로 따져본다.",
+       "minutes": 40,
+       "concepts": [
+        "multi-head attention and variants",
+        "flops",
+        "gemm",
+        "computational cost estimation"
+       ],
+       "quiz_topics": [
+        "패치 수 증가에 따른 어텐션 비용 증가율",
+        "gemm 연산으로 표현되는 어텐션 계산"
+       ]
+      },
+      {
+       "id": "cv-12",
+       "title": "CNN vs ViT, CPU 추론 관점의 비교",
+       "one_liner": "두 아키텍처의 연산 특성을 roofline 모델로 놓고 CPU에서의 병목을 비교한다.",
+       "minutes": 45,
+       "concepts": [
+        "roofline",
+        "compute bound",
+        "memory bound",
+        "simd"
+       ],
+       "quiz_topics": [
+        "CNN과 ViT 중 어느 쪽이 메모리 바운드에 가까운가",
+        "SIMD 활용이 유리한 연산 패턴"
+       ]
+      },
+      {
+       "id": "cv-13",
+       "title": "비전 모델의 양자화",
+       "one_liner": "비전 모델을 저비트로 양자화해 CPU에서 가볍게 돌리는 원리를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "quantization fundamentals",
+        "block quantization and repacking",
+        "양자화"
+       ],
+       "quiz_topics": [
+        "양자화가 정확도에 미치는 영향",
+        "블록 양자화와 리패킹의 목적"
+       ]
+      },
+      {
+       "id": "cv-14",
+       "title": "저랭크 근사를 통한 모델 압축",
+       "one_liner": "SVD 기반 저랭크 근사로 비전 모델 가중치를 압축하는 방법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "low rank approximation via svd",
+        "저랭크 근사",
+        "svd",
+        "특이값"
+       ],
+       "quiz_topics": [
+        "특이값 절단과 재구성 오차의 관계",
+        "저랭크 근사의 압축률-정확도 트레이드오프"
+       ]
+      },
+      {
+       "id": "cv-15",
+       "title": "비전-언어 모델과 분산 추론으로의 확장",
+       "one_liner": "멀티모달 모델의 이미지 인코더가 LLM prefill 파이프라인과 만나는 지점을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "kv cache concept",
+        "prefill and decode phases",
+        "tensor and pipeline parallelism",
+        "batching inference requests"
+       ],
+       "quiz_topics": [
+        "이미지 인코더 출력이 LLM prefill 입력으로 들어가는 과정",
+        "비전-언어 모델에서 배치 처리의 특수성"
+       ]
+      }
+     ],
+     "minutes": 565
+    },
+    {
+     "id": "nlp",
+     "title": "자연어처리(NLP) — 기계가 언어를 이해하다",
+     "summary": "텍스트가 토큰이 되고 벡터가 되어 트랜스포머를 통과해 다음 토큰으로 예측되기까지의 전 과정을, prefill·KV 캐시·서빙 단계로 이어지는 관점에서 배운다.",
+     "lessons": [
+      {
+       "id": "nlp-01",
+       "title": "토큰화: 텍스트를 토큰으로 쪼개기",
+       "one_liner": "문장이 서브워드 단위 토큰 시퀀스로 변환되는 원리를 배운다.",
+       "minutes": 20,
+       "concepts": [
+        "tokenization",
+        "토큰"
+       ],
+       "quiz_topics": [
+        "서브워드 토큰화가 필요한 이유",
+        "토큰 수와 프롬프트 길이(0.5~4K)의 관계",
+        "어휘 크기와 OOV 문제"
+       ]
+      },
+      {
+       "id": "nlp-02",
+       "title": "임베딩: 토큰을 벡터로 배치하기",
+       "one_liner": "토큰 ID가 임베딩 테이블 조회를 통해 연속 벡터로 바뀌는 과정을 이해한다.",
+       "minutes": 25,
+       "concepts": [
+        "embedding lookup",
+        "임베딩"
+       ],
+       "quiz_topics": [
+        "임베딩 테이블의 크기 계산",
+        "조회 연산의 메모리 접근 패턴",
+        "임베딩 차원과 모델 크기의 관계"
+       ]
+      },
+      {
+       "id": "nlp-03",
+       "title": "위치 정보 인코딩하기",
+       "one_liner": "순서 정보가 없는 어텐션에 위치 정보를 주입하는 RoPE 방식을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "positional information",
+        "rope",
+        "위치 인코딩"
+       ],
+       "quiz_topics": [
+        "RoPE가 상대 위치를 인코딩하는 방식",
+        "위치 인코딩이 없을 때 생기는 문제",
+        "긴 문맥에서 RoPE 확장 이슈"
+       ]
+      },
+      {
+       "id": "nlp-04",
+       "title": "셀프 어텐션의 원리",
+       "one_liner": "쿼리·키·밸류로 토큰 간 관계를 계산하는 셀프 어텐션 메커니즘을 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "self-attention mechanism",
+        "attention",
+        "dotprod"
+       ],
+       "quiz_topics": [
+        "Q,K,V의 역할 구분",
+        "어텐션 스코어 계산 순서",
+        "어텐션의 시간·공간 복잡도"
+       ]
+      },
+      {
+       "id": "nlp-05",
+       "title": "멀티헤드 어텐션과 GQA",
+       "one_liner": "여러 헤드로 병렬 어텐션을 계산하고, GQA로 KV 헤드를 줄이는 이유를 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "multi-head attention and variants",
+        "gqa",
+        "attention"
+       ],
+       "quiz_topics": [
+        "멀티헤드가 단일 헤드보다 나은 이유",
+        "GQA가 KV 캐시 메모리를 줄이는 원리",
+        "헤드 수와 head_dim의 트레이드오프"
+       ]
+      },
+      {
+       "id": "nlp-06",
+       "title": "Softmax와 수치 안정성",
+       "one_liner": "어텐션 스코어를 확률로 바꾸는 softmax와 오버플로를 막는 온라인 softmax를 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "softmax and numerical stability",
+        "online softmax",
+        "lse log sum exp merge"
+       ],
+       "quiz_topics": [
+        "softmax 오버플로 방지 기법",
+        "온라인 softmax의 점진적 갱신 원리",
+        "분산 환경에서 softmax 병합이 필요한 이유"
+       ]
+      },
+      {
+       "id": "nlp-07",
+       "title": "트랜스포머 블록 조립하기",
+       "one_liner": "어텐션과 FFN, 잔차 연결, 정규화가 결합되어 하나의 블록을 이루는 구조를 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "transformer block architecture",
+        "ffn",
+        "residual connections",
+        "rmsnorm"
+       ],
+       "quiz_topics": [
+        "블록 내 연산 순서(정규화-어텐션-잔차-FFN)",
+        "잔차 연결이 학습 안정성에 기여하는 이유",
+        "RMSNorm과 LayerNorm의 차이"
+       ]
+      },
+      {
+       "id": "nlp-08",
+       "title": "출력층과 로짓: 다음 토큰 예측",
+       "one_liner": "마지막 은닉 상태가 lm head를 거쳐 어휘 전체에 대한 로짓으로 변환되는 과정을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "output projection and logits",
+        "lmhead",
+        "로짓"
+       ],
+       "quiz_topics": [
+        "lm head의 출력 차원 계산",
+        "로짓에서 확률로의 변환 과정",
+        "출력 임베딩과 입력 임베딩의 가중치 공유"
+       ]
+      },
+      {
+       "id": "nlp-09",
+       "title": "자기회귀 생성과 인과 마스크",
+       "one_liner": "미래 토큰을 보지 못하게 막는 인과 마스크와 한 토큰씩 생성하는 자기회귀 과정을 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "causal mask",
+        "autoregressive generation"
+       ],
+       "quiz_topics": [
+        "인과 마스크가 학습·추론에서 각각 적용되는 방식",
+        "자기회귀 생성이 느린 이유",
+        "마스크 없이 학습하면 생기는 문제"
+       ]
+      },
+      {
+       "id": "nlp-10",
+       "title": "샘플링과 디코딩 전략",
+       "one_liner": "greedy, top-k, top-p 등 다음 토큰을 선택하는 다양한 디코딩 전략을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "sampling and decoding strategies"
+       ],
+       "quiz_topics": [
+        "temperature가 분포에 미치는 영향",
+        "top-k와 top-p의 차이",
+        "재현성(reproducibility)을 위한 디코딩 설정"
+       ]
+      },
+      {
+       "id": "nlp-11",
+       "title": "지역·희소 어텐션과 청크 단위 처리",
+       "one_liner": "모든 토큰을 다 보지 않고 지역·블록 단위로 어텐션을 계산해 긴 입력을 다루는 방법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "local and sparse attention patterns",
+        "블록 로컬 attention",
+        "chunked prefill",
+        "청크 chunk"
+       ],
+       "quiz_topics": [
+        "블록 로컬 어텐션이 계산량을 줄이는 원리",
+        "청크 단위 prefill이 필요한 이유",
+        "희소 어텐션의 정확도-속도 트레이드오프"
+       ]
+      },
+      {
+       "id": "nlp-12",
+       "title": "긴 문맥 평가: LongBench와 RULER",
+       "one_liner": "모델이 실제로 긴 문맥을 활용하는지 측정하는 벤치마크와 needle-in-haystack 방법론을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "long context evaluation benchmarks",
+        "longbench",
+        "ruler",
+        "needle in haystack"
+       ],
+       "quiz_topics": [
+        "needle-in-haystack 테스트의 설계 목적",
+        "LongBench와 RULER의 평가 관점 차이",
+        "긴 문맥 성능 저하가 나타나는 지점 찾기"
+       ]
+      },
+      {
+       "id": "nlp-13",
+       "title": "KV 캐시: prefill과 decode의 연결고리",
+       "one_liner": "prefill에서 계산한 키·밸류를 캐시에 저장해 decode 단계에서 재사용하는 원리를 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "kv cache concept",
+        "kv cache",
+        "prefill and decode phases",
+        "decode"
+       ],
+       "quiz_topics": [
+        "KV 캐시가 재계산을 없애는 원리",
+        "KV 캐시 메모리 사용량 계산",
+        "prefill과 decode의 연산 특성 차이(compute bound vs memory bound)"
+       ]
+      },
+      {
+       "id": "nlp-14",
+       "title": "배칭과 서빙 파이프라인",
+       "one_liner": "여러 요청을 continuous batching으로 묶어 처리하는 실제 서빙 파이프라인의 동작을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "batching inference requests",
+        "continuous batching",
+        "back pressure"
+       ],
+       "quiz_topics": [
+        "continuous batching이 정적 배칭보다 나은 이유",
+        "back pressure가 발생하는 상황과 대응",
+        "배칭이 prefill/decode 혼재 요청에 미치는 영향"
+       ]
+      }
+     ],
+     "minutes": 425
+    },
+    {
+     "id": "rl",
+     "title": "강화학습(RL) — 시행착오로 배우는 에이전트",
+     "summary": "보상을 통한 시행착오로 에이전트가 최적 행동을 학습하는 과정을 기초 개념부터 심층강화학습, 시스템 자원 스케줄링 응용까지 단계적으로 익힌다.",
+     "lessons": [
+      {
+       "id": "rl-01",
+       "title": "강화학습이란 무엇인가",
+       "one_liner": "에이전트, 환경, 상태, 행동, 보상의 상호작용 루프를 이해한다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "에이전트-환경 상호작용 루프의 구성요소",
+        "지도학습·비지도학습과 강화학습의 차이",
+        "보상 신호와 목표(objective)의 관계"
+       ]
+      },
+      {
+       "id": "rl-02",
+       "title": "마르코프 결정 과정(MDP)",
+       "one_liner": "상태·행동·전이확률·보상으로 순차적 의사결정 문제를 수식화한다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "마르코프 성질의 의미와 가정",
+        "MDP의 구성요소 5가지",
+        "에피소드형 vs 연속형 과제 구분"
+       ]
+      },
+      {
+       "id": "rl-03",
+       "title": "정책과 가치함수",
+       "one_liner": "정책(policy), 상태가치함수, 행동가치함수의 정의와 관계를 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "V(s)와 Q(s,a)의 차이",
+        "결정론적 정책 vs 확률적 정책",
+        "할인율(discount factor)이 가치에 미치는 영향"
+       ]
+      },
+      {
+       "id": "rl-04",
+       "title": "벨만 방정식",
+       "one_liner": "가치함수를 재귀적으로 정의하는 벨만 기대/최적 방정식을 유도한다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "벨만 기대방정식과 벨만 최적방정식의 차이",
+        "재귀적 분해가 계산에 주는 이점",
+        "최적 정책과 최적 가치함수의 관계"
+       ]
+      },
+      {
+       "id": "rl-05",
+       "title": "동적계획법: 정책·가치 반복",
+       "one_liner": "환경 모델이 알려진 경우 정책반복과 가치반복으로 최적해를 구한다.",
+       "minutes": 40,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "정책 평가와 정책 개선의 반복 구조",
+        "정책반복 vs 가치반복의 수렴 방식 차이",
+        "모델 기반(model-based) 방법의 한계"
+       ]
+      },
+      {
+       "id": "rl-06",
+       "title": "몬테카를로 방법",
+       "one_liner": "환경 모델 없이 에피소드 샘플로부터 가치를 추정하는 방법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "holdout"
+       ],
+       "quiz_topics": [
+        "모델 프리(model-free) 학습의 필요성",
+        "전체 에피소드 종료가 필요한 이유",
+        "탐험(exploration)과 활용(exploitation)의 균형"
+       ]
+      },
+      {
+       "id": "rl-07",
+       "title": "시간차 학습: Q-러닝과 SARSA",
+       "one_liner": "부트스트래핑으로 매 스텝마다 가치를 갱신하는 TD 학습을 익힌다.",
+       "minutes": 40,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "온-폴리시(SARSA)와 오프-폴리시(Q-러닝)의 차이",
+        "TD 오차(TD error)의 정의",
+        "몬테카를로 대비 TD의 분산·편향 트레이드오프"
+       ]
+      },
+      {
+       "id": "rl-08",
+       "title": "함수 근사와 신경망 강화학습",
+       "one_liner": "상태 공간이 클 때 신경망으로 가치함수를 근사하는 원리를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "perceptron and neuron",
+        "nonlinear activation functions",
+        "overfitting generalization and holdout"
+       ],
+       "quiz_topics": [
+        "테이블 기반 방법의 한계와 함수 근사의 필요성",
+        "신경망 근사에서 발산 위험(비정상 타겟)",
+        "일반화와 과적합이 RL에 미치는 영향"
+       ]
+      },
+      {
+       "id": "rl-09",
+       "title": "정책 경사법",
+       "one_liner": "가치함수 대신 정책 자체를 직접 파라미터화하고 경사 상승으로 개선한다.",
+       "minutes": 40,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "가치 기반 방법과 정책 기반 방법의 차이",
+        "REINFORCE 알고리즘의 핵심 아이디어",
+        "분산 감소를 위한 베이스라인의 역할"
+       ]
+      },
+      {
+       "id": "rl-10",
+       "title": "액터-크리틱 방법",
+       "one_liner": "정책(액터)과 가치함수(크리틱)를 함께 학습해 분산을 줄이는 구조를 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "액터와 크리틱 각각의 역할",
+        "어드밴티지 함수가 학습 안정성에 주는 이점",
+        "정책 경사 단독 대비 액터-크리틱의 장점"
+       ]
+      },
+      {
+       "id": "rl-11",
+       "title": "심층강화학습: DQN과 안정화 기법",
+       "one_liner": "경험 재생과 타겟 네트워크로 딥러닝을 강화학습에 안정적으로 결합하는 방법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "feedforward layers",
+        "overfitting generalization and holdout"
+       ],
+       "quiz_topics": [
+        "경험 재생(replay buffer)이 필요한 이유",
+        "타겟 네트워크가 학습 안정성에 기여하는 방식",
+        "DQN이 Q-러닝을 신경망으로 확장한 지점"
+       ]
+      },
+      {
+       "id": "rl-12",
+       "title": "분산 시스템 자원 스케줄링에 강화학습 적용하기",
+       "one_liner": "배칭·백프레셔·straggler 대응 같은 스케줄링 결정을 RL 문제로 재구성하는 관점을 익힌다.",
+       "minutes": 45,
+       "concepts": [
+        "continuous batching",
+        "back pressure",
+        "straggler",
+        "poll 대기"
+       ],
+       "quiz_topics": [
+        "스케줄링 결정을 상태·행동·보상으로 정의하는 방법",
+        "지연시간과 처리량 트레이드오프를 보상함수에 반영하는 방법",
+        "straggler·백프레셔 상황을 상태 표현에 포함시키는 이유"
+       ]
+      }
+     ],
+     "minutes": 450
+    },
+    {
+     "id": "mlops",
+     "title": "MLOps & 실전 배포 — 모델을 세상에 내보내기",
+     "summary": "학습이 끝난 LLM을 실제로 서빙 가능한 시스템으로 만드는 과정을, CPU 전용 분산 클러스터에서 prefill을 최적화하는 연구자의 관점으로 훑는 과목.",
+     "lessons": [
+      {
+       "id": "mlops-01",
+       "title": "학습과 배포는 다른 문제다",
+       "one_liner": "모델을 '만드는 것'과 '서빙하는 것' 사이의 요구사항 차이(지연, 처리량, 비용)를 구분한다.",
+       "minutes": 25,
+       "concepts": [
+        "ttft",
+        "compute bound",
+        "memory bound"
+       ],
+       "quiz_topics": [
+        "학습 최적화 지표 vs 서빙 최적화 지표",
+        "TTFT가 왜 별도 지표로 다뤄지는가"
+       ]
+      },
+      {
+       "id": "mlops-02",
+       "title": "재현 가능한 배포의 조건",
+       "one_liner": "배포 전후 결과가 달라지지 않았음을 증명하는 baseline 위생과 byte-for-byte 비교 방법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "baseline 위생",
+        "byte for byte 동일",
+        "measurement study"
+       ],
+       "quiz_topics": [
+        "배포 후 결과가 달라졌을 때 원인 분리 방법",
+        "measurement study 설계 시 통제해야 할 변수"
+       ]
+      },
+      {
+       "id": "mlops-03",
+       "title": "서빙 성능을 재는 법",
+       "one_liner": "지연(latency)과 처리량(throughput), 대역폭의 관계를 실측 관점에서 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "지연 대 대역폭",
+        "ttft",
+        "roofline"
+       ],
+       "quiz_topics": [
+        "latency-bound vs bandwidth-bound 구간 판별",
+        "roofline 모델로 병목 진단하기"
+       ]
+      },
+      {
+       "id": "mlops-04",
+       "title": "모델을 가볍게: 양자화 배포",
+       "one_liner": "배포 크기와 속도를 줄이는 양자화 기법(q40/q80)과 블록 단위 repack을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "양자화",
+        "q40",
+        "q80",
+        "블록 양자화"
+       ],
+       "quiz_topics": [
+        "양자화 비트수와 정확도 손실의 트레이드오프",
+        "repack이 SIMD 연산에 왜 필요한가"
+       ]
+      },
+      {
+       "id": "mlops-05",
+       "title": "요청을 어떻게 묶을까: 배칭 전략",
+       "one_liner": "continuous batching과 chunked prefill로 여러 요청을 효율적으로 처리하는 서빙 엔진 설계를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "continuous batching",
+        "chunked prefill",
+        "back pressure"
+       ],
+       "quiz_topics": [
+        "continuous batching이 처리량을 높이는 원리",
+        "back pressure가 걸리는 상황과 대응"
+       ]
+      },
+      {
+       "id": "mlops-06",
+       "title": "상태를 재사용하기: KV 캐시 서빙",
+       "one_liner": "prefill 결과를 저장·재사용하는 KV 캐시가 서빙 아키텍처에 미치는 영향을 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "kv cache",
+        "kv cache concept",
+        "kv affinity"
+       ],
+       "quiz_topics": [
+        "KV 캐시 미스가 TTFT에 미치는 영향",
+        "kv affinity 라우팅이 필요한 이유"
+       ]
+      },
+      {
+       "id": "mlops-07",
+       "title": "한 대로는 안 될 때: 분산 서빙 아키텍처",
+       "one_liner": "tensor/pipeline parallelism과 disaggregated serving으로 모델을 여러 노드에 나눠 배포하는 구조를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "tp",
+        "pp",
+        "d disaggregation"
+       ],
+       "quiz_topics": [
+        "TP와 PP를 언제 각각 선택하는가",
+        "prefill/decode를 분리 배포하는 이유"
+       ]
+      },
+      {
+       "id": "mlops-08",
+       "title": "클러스터는 느려지고 멈춘다",
+       "one_liner": "집합 통신, 동기화 배리어, straggler 문제 등 분산 배포 운영에서 실제로 부딪히는 이슈를 다룬다.",
+       "minutes": 40,
+       "concepts": [
+        "집합 통신",
+        "동기",
+        "straggler",
+        "barrier"
+       ],
+       "quiz_topics": [
+        "straggler가 전체 지연을 좌우하는 이유",
+        "barrier 동기화 비용을 줄이는 방법"
+       ]
+      },
+      {
+       "id": "mlops-09",
+       "title": "배포된 모델의 품질을 계속 지키기",
+       "one_liner": "배포 후에도 정확도를 검증하는 벤치마크 파이프라인(LongBench, RULER 등)을 운영에 통합하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "정확도 벤치마크",
+        "longbench",
+        "ruler",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "배포 후 정확도 회귀를 잡는 벤치마크 설계",
+        "matched accuracy 비교가 필요한 상황"
+       ]
+      },
+      {
+       "id": "mlops-10",
+       "title": "배포 파이프라인과 회귀 방지",
+       "one_liner": "holdout셋과 캘리브레이션 덤프를 이용해 배포 전 변경을 검증하는 CI 성격의 파이프라인을 설계한다.",
+       "minutes": 45,
+       "concepts": [
+        "holdout",
+        "캘리브레이션 덤프",
+        "baseline 위생"
+       ],
+       "quiz_topics": [
+        "holdout셋을 배포 검증에 쓰는 이유",
+        "캘리브레이션 덤프가 재현성에 기여하는 방식"
+       ]
+      }
+     ],
+     "minutes": 365
+    },
+    {
+     "id": "genai",
+     "title": "생성형 AI 엔지니어링",
+     "summary": "벡터 연산부터 트랜스포머 내부 구조, KV 캐시·양자화·저랭크 근사를 거쳐 CPU 클러스터에서의 분산 prefill/decode 서빙까지, LLM 추론 최적화 연구에 필요한 개념을 순서대로 쌓아가는 생성형 AI 엔지니어링 과목이다.",
+     "lessons": [
+      {
+       "id": "genai-01",
+       "title": "벡터와 행렬 연산의 기초",
+       "one_liner": "신경망 연산의 기본 단위인 벡터·행렬과 행렬곱을 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "vector",
+        "matrix",
+        "matrix multiplication"
+       ],
+       "quiz_topics": [
+        "행렬곱의 차원 규칙",
+        "벡터 내적과 행렬곱의 관계"
+       ]
+      },
+      {
+       "id": "genai-02",
+       "title": "부동소수점 표현과 메모리 계층",
+       "one_liner": "숫자가 비트로 저장되는 방식과 캐시-메모리-디스크로 이어지는 계층 구조를 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "floating point representation",
+        "computer memory hierarchy",
+        "메모리 계층"
+       ],
+       "quiz_topics": [
+        "부동소수점 정밀도 손실 사례",
+        "메모리 계층별 접근 속도 차이"
+       ]
+      },
+      {
+       "id": "genai-03",
+       "title": "배열 메모리 레이아웃과 캐시 친화성",
+       "one_liner": "행 우선/열 우선 배열 배치가 연산 속도에 미치는 영향을 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "array memory layout",
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "row-major와 column-major 접근 패턴 비교",
+        "캐시 미스가 발생하는 순회 방식"
+       ]
+      },
+      {
+       "id": "genai-04",
+       "title": "연산량, 대역폭, 지연시간과 루프라인 모델",
+       "one_liner": "FLOPs와 데이터 이동 비용을 함께 따져 compute-bound와 memory-bound를 구분하는 법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "flops",
+        "bandwidth and latency",
+        "산술 강도",
+        "roofline"
+       ],
+       "quiz_topics": [
+        "산술 강도 계산",
+        "특정 연산이 compute-bound인지 memory-bound인지 판별"
+       ]
+      },
+      {
+       "id": "genai-05",
+       "title": "퍼셉트론과 뉴런",
+       "one_liner": "인공 뉴런의 입출력 구조와 신경망의 가장 작은 단위를 이해한다.",
+       "minutes": 25,
+       "concepts": [
+        "perceptron and neuron"
+       ],
+       "quiz_topics": [
+        "퍼셉트론의 가중합과 활성화 과정"
+       ]
+      },
+      {
+       "id": "genai-06",
+       "title": "경사하강법과 학습 루프",
+       "one_liner": "손실함수를 줄여가며 가중치를 갱신하는 학습 과정의 전체 흐름을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "학습률이 수렴에 미치는 영향",
+        "순전파-역전파-갱신 순서"
+       ]
+      },
+      {
+       "id": "genai-07",
+       "title": "선형회귀와 최소제곱",
+       "one_liner": "최소제곱법으로 선형 모델을 적합시키는 원리를 정규방정식으로 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "linear regression and least squares",
+        "최소제곱",
+        "최소제곱 적합",
+        "정규방정식"
+       ],
+       "quiz_topics": [
+        "정규방정식 유도",
+        "릿지 정규화가 필요한 이유"
+       ]
+      },
+      {
+       "id": "genai-08",
+       "title": "과적합, 일반화, 홀드아웃",
+       "one_liner": "모델이 학습 데이터에만 맞춰지는 문제와 검증셋을 통한 평가법을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "overfitting generalization and holdout",
+        "과적합",
+        "holdout",
+        "정규화"
+       ],
+       "quiz_topics": [
+        "과적합 징후 판별",
+        "홀드아웃과 교차검증의 차이"
+       ]
+      },
+      {
+       "id": "genai-09",
+       "title": "피드포워드층, 정규화, 활성함수",
+       "one_liner": "FFN·RMSNorm·SwiGLU 등 트랜스포머 내부 비선형 구성요소를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "feedforward layers",
+        "normalization in neural networks",
+        "nonlinear activation functions",
+        "ffn"
+       ],
+       "quiz_topics": [
+        "RMSNorm과 LayerNorm의 차이",
+        "SwiGLU가 FFN에서 하는 역할"
+       ]
+      },
+      {
+       "id": "genai-10",
+       "title": "토큰화와 임베딩, 위치 인코딩",
+       "one_liner": "텍스트가 토큰-임베딩-위치 정보로 변환되는 과정을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "tokenization",
+        "embedding lookup",
+        "positional information",
+        "토큰"
+       ],
+       "quiz_topics": [
+        "토큰화가 어휘 크기에 미치는 영향",
+        "RoPE가 절대 위치 인코딩과 다른 점"
+       ]
+      },
+      {
+       "id": "genai-11",
+       "title": "셀프 어텐션과 softmax",
+       "one_liner": "쿼리-키-값 구조와 softmax 수치 안정화, causal mask의 역할을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "self-attention mechanism",
+        "softmax and numerical stability",
+        "attention",
+        "causal mask"
+       ],
+       "quiz_topics": [
+        "softmax 오버플로 방지 트릭",
+        "causal mask가 필요한 이유",
+        "online softmax의 동작 원리"
+       ]
+      },
+      {
+       "id": "genai-12",
+       "title": "멀티헤드 어텐션과 GQA",
+       "one_liner": "헤드를 나누어 병렬로 어텐션을 계산하는 방식과 GQA로 KV 헤드를 줄이는 변형을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "multi-head attention and variants",
+        "gqa",
+        "local and sparse attention patterns",
+        "블록 로컬 attention"
+       ],
+       "quiz_topics": [
+        "MHA 대비 GQA의 메모리 절감 원리",
+        "블록 로컬 어텐션의 트레이드오프"
+       ]
+      },
+      {
+       "id": "genai-13",
+       "title": "트랜스포머 블록과 출력 로짓",
+       "one_liner": "잔차 연결로 이어지는 블록 구조와 최종 로짓 산출 과정을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "transformer block architecture",
+        "residual connections",
+        "output projection and logits",
+        "residual stream"
+       ],
+       "quiz_topics": [
+        "잔차 연결이 학습 안정성에 미치는 영향",
+        "lm_head에서 로짓이 만들어지는 과정"
+       ]
+      },
+      {
+       "id": "genai-14",
+       "title": "자기회귀 생성과 디코딩 전략",
+       "one_liner": "한 토큰씩 생성하는 자기회귀 과정과 샘플링 전략을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "autoregressive generation",
+        "sampling and decoding strategies",
+        "decode"
+       ],
+       "quiz_topics": [
+        "그리디 디코딩과 샘플링의 차이",
+        "temperature가 출력 다양성에 미치는 영향"
+       ]
+      },
+      {
+       "id": "genai-15",
+       "title": "KV 캐시와 배치 추론",
+       "one_liner": "반복 계산을 피하는 KV 캐시 개념과 여러 요청을 묶는 배칭 기법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "kv cache concept",
+        "batching inference requests",
+        "kv cache",
+        "continuous batching"
+       ],
+       "quiz_topics": [
+        "KV 캐시가 없을 때의 중복 계산량",
+        "continuous batching이 처리량을 높이는 원리"
+       ]
+      },
+      {
+       "id": "genai-16",
+       "title": "Prefill/Decode 분리와 청크드 prefill",
+       "one_liner": "prefill과 decode 단계의 연산 특성 차이와 긴 입력을 청크로 나누는 기법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "prefill and decode phases",
+        "chunking long inputs",
+        "prefill",
+        "chunked prefill"
+       ],
+       "quiz_topics": [
+        "prefill이 compute-bound인 이유",
+        "chunked prefill이 TTFT에 미치는 영향",
+        "prefill/decode 분리 서빙의 장단점"
+       ]
+      },
+      {
+       "id": "genai-17",
+       "title": "장문 컨텍스트 평가 벤치마크",
+       "one_liner": "LongBench, RULER, needle-in-haystack 등으로 긴 컨텍스트 성능을 측정하는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "long context evaluation benchmarks",
+        "longbench",
+        "ruler",
+        "needle in haystack"
+       ],
+       "quiz_topics": [
+        "needle-in-haystack 테스트가 측정하는 것",
+        "LongBench와 RULER의 평가 목적 차이"
+       ]
+      },
+      {
+       "id": "genai-18",
+       "title": "양자화 기초와 블록 양자화",
+       "one_liner": "가중치를 저비트로 표현하는 양자화 원리와 블록 단위 양자화·리팩을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "quantization fundamentals",
+        "block quantization and repacking",
+        "양자화",
+        "q40"
+       ],
+       "quiz_topics": [
+        "Q4_0과 Q8_0의 정밀도-속도 트레이드오프",
+        "블록 양자화에서 repack이 필요한 이유"
+       ]
+      },
+      {
+       "id": "genai-19",
+       "title": "저랭크 근사와 SVD",
+       "one_liner": "특이값 분해로 가중치 행렬을 저랭크로 근사하고 재구성 오차를 평가하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "low rank approximation via svd",
+        "approximation error and reconstruction",
+        "svd",
+        "저랭크 근사"
+       ],
+       "quiz_topics": [
+        "SVD 절단 랭크와 재구성 오차의 관계",
+        "저랭크 근사가 연산량을 줄이는 원리"
+       ]
+      },
+      {
+       "id": "genai-20",
+       "title": "텐서/파이프라인/시퀀스 병렬화",
+       "one_liner": "모델을 여러 노드에 나누는 TP·PP·SP·CP 전략의 원리와 차이를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "tensor and pipeline parallelism",
+        "sequence and context parallelism",
+        "tp",
+        "pp"
+       ],
+       "quiz_topics": [
+        "TP와 PP가 나누는 축의 차이",
+        "SP/CP가 긴 시퀀스 처리에 필요한 이유"
+       ]
+      },
+      {
+       "id": "genai-21",
+       "title": "집합 통신, 동기화, 분리형 서빙",
+       "one_liner": "all-reduce·barrier 같은 집합 통신과 straggler 문제, KV 마이그레이션 기반 분리형 서빙을 배운다.",
+       "minutes": 50,
+       "concepts": [
+        "collective communication patterns",
+        "synchronization barriers and stragglers",
+        "disaggregated serving and kv transfer",
+        "all reduce"
+       ],
+       "quiz_topics": [
+        "all-reduce와 all-gather의 통신 패턴 차이",
+        "straggler가 barrier 동기화에 미치는 영향",
+        "분리형 서빙에서 KV 마이그레이션이 필요한 시점"
+       ]
+      }
+     ],
+     "minutes": 780
+    },
+    {
+     "id": "stats",
+     "title": "연구를 위한 통계학",
+     "summary": "SBC 클러스터에서 측정한 지연시간·정확도 데이터를 통계적으로 요약, 추정, 검정하고 논문에 신뢰성 있게 보고하는 법을 배우는 연구방법론 과목.",
+     "lessons": [
+      {
+       "id": "stats-01",
+       "title": "평균과 퍼짐: 대푯값과 산포도",
+       "one_liner": "평균, 중앙값, 분산, 표준편차로 데이터를 요약하는 법을 배운다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "평균 vs 중앙값이 다르게 나오는 상황",
+        "분산과 표준편차의 계산 및 해석"
+       ]
+      },
+      {
+       "id": "stats-02",
+       "title": "데이터 분포와 히스토그램",
+       "one_liner": "TTFT 같은 측정값의 분포 모양을 히스토그램으로 읽는 법을 배운다.",
+       "minutes": 25,
+       "concepts": [
+        "ttft"
+       ],
+       "quiz_topics": [
+        "히스토그램에서 꼬리(tail)와 치우침 읽기",
+        "구간(bin) 선택이 해석에 미치는 영향"
+       ]
+      },
+      {
+       "id": "stats-03",
+       "title": "확률의 기본 개념",
+       "one_liner": "사건, 확률, 조건부확률의 기초 정의를 익힌다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "조건부확률 계산",
+        "독립 사건 판별"
+       ]
+      },
+      {
+       "id": "stats-04",
+       "title": "확률분포: 정규분포와 꼬리가 긴 분포",
+       "one_liner": "정규분포와 지수/파레토 같은 긴 꼬리 분포가 지연시간 데이터에 왜 중요한지 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "ttft",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "정규분포와 파레토분포의 꼬리 차이",
+        "네트워크 지연이 긴 꼬리를 갖는 이유"
+       ]
+      },
+      {
+       "id": "stats-05",
+       "title": "모집단과 표본, 표본추출",
+       "one_liner": "모집단과 표본의 차이, 무작위 추출이 왜 필요한지 이해한다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "표본편향의 예시",
+        "반복 측정이 표본인 이유"
+       ]
+      },
+      {
+       "id": "stats-06",
+       "title": "중심극한정리와 표본평균의 분포",
+       "one_liner": "측정을 반복 평균 낼 때 결과가 왜 정규분포에 가까워지는지 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "표본 크기와 표본평균 분산의 관계",
+        "중심극한정리가 성립하지 않는 경우"
+       ]
+      },
+      {
+       "id": "stats-07",
+       "title": "점추정과 신뢰구간",
+       "one_liner": "측정한 평균 TTFT에 신뢰구간을 붙여 불확실성을 표현하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "ttft"
+       ],
+       "quiz_topics": [
+        "95% 신뢰구간의 올바른 해석",
+        "표본 크기가 신뢰구간 폭에 미치는 영향"
+       ]
+      },
+      {
+       "id": "stats-08",
+       "title": "가설검정의 논리",
+       "one_liner": "귀무가설과 대립가설, 검정통계량의 개념을 익힌다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "귀무가설을 기각/채택하는 논리",
+        "1종 오류와 2종 오류 구분"
+       ]
+      },
+      {
+       "id": "stats-09",
+       "title": "p-value와 유의성의 함정",
+       "one_liner": "p-value가 실제로 의미하는 것과 흔한 오해를 짚는다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "p-value 오독 사례 판별",
+        "p-hacking이 발생하는 상황"
+       ]
+      },
+      {
+       "id": "stats-10",
+       "title": "효과크기와 검정력",
+       "one_liner": "유의성뿐 아니라 차이의 크기와 실험이 그 차이를 탐지할 힘을 평가하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "효과크기 계산과 해석",
+        "검정력이 낮을 때 생기는 문제"
+       ]
+      },
+      {
+       "id": "stats-11",
+       "title": "상관관계 읽기",
+       "one_liner": "두 변수(예: 프롬프트 길이와 TTFT) 사이의 선형 관계를 상관계수로 측정한다.",
+       "minutes": 25,
+       "concepts": [
+        "ttft"
+       ],
+       "quiz_topics": [
+        "상관계수 해석",
+        "상관과 인과의 차이"
+       ]
+      },
+      {
+       "id": "stats-12",
+       "title": "단순선형회귀와 최소제곱",
+       "one_liner": "산점도에 직선을 맞추는 최소제곱 회귀의 원리를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "linear regression and least squares",
+        "최소제곱",
+        "최소제곱 적합",
+        "정규방정식"
+       ],
+       "quiz_topics": [
+        "최소제곱 목적함수 유도",
+        "잔차 해석"
+       ]
+      },
+      {
+       "id": "stats-13",
+       "title": "다중회귀와 정규화",
+       "one_liner": "여러 설명변수를 다루는 다중회귀와 과적합을 막는 ridge 정규화를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "ridge",
+        "정규화",
+        "과적합"
+       ],
+       "quiz_topics": [
+        "다중공선성이 회귀에 미치는 영향",
+        "ridge가 계수를 줄이는 이유"
+       ]
+      },
+      {
+       "id": "stats-14",
+       "title": "편향-분산 트레이드오프와 검증",
+       "one_liner": "모델/추정이 과적합되지 않았는지 홀드아웃으로 확인하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "과적합",
+        "holdout"
+       ],
+       "quiz_topics": [
+        "편향-분산 트레이드오프 설명",
+        "홀드아웃 세트를 나누는 이유"
+       ]
+      },
+      {
+       "id": "stats-15",
+       "title": "실험 설계와 통제변수",
+       "one_liner": "클러스터 벤치마크에서 조건을 통제하고 반복하는 실험 설계 원칙을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "baseline 위생",
+        "byte for byte 동일",
+        "measurement study"
+       ],
+       "quiz_topics": [
+        "교란변수 통제 방법",
+        "baseline을 동일 조건으로 맞추는 이유"
+       ]
+      },
+      {
+       "id": "stats-16",
+       "title": "여러 설정 비교: 분산분석(ANOVA)",
+       "one_liner": "두 개를 넘는 설정(청크 크기, worker 수 등)의 평균을 동시에 비교하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "chunked prefill"
+       ],
+       "quiz_topics": [
+        "ANOVA가 t-검정 반복보다 나은 이유",
+        "F-통계량 해석"
+       ]
+      },
+      {
+       "id": "stats-17",
+       "title": "비모수 검정: 분포를 가정하지 않을 때",
+       "one_liner": "지연시간처럼 정규분포를 따르지 않는 데이터를 비모수 검정으로 비교하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "ttft",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "모수검정과 비모수검정을 고르는 기준",
+        "순위 기반 검정의 원리"
+       ]
+      },
+      {
+       "id": "stats-18",
+       "title": "부트스트랩으로 불확실성 추정",
+       "one_liner": "이론적 공식 없이 리샘플링만으로 신뢰구간을 만드는 부트스트랩을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "ttft"
+       ],
+       "quiz_topics": [
+        "부트스트랩 절차 순서",
+        "부트스트랩이 유용한 상황"
+       ]
+      },
+      {
+       "id": "stats-19",
+       "title": "다중비교 문제와 보정",
+       "one_liner": "여러 설정을 동시에 검정할 때 거짓양성이 늘어나는 문제와 보정법을 배운다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "다중비교로 거짓양성이 느는 이유",
+        "본페로니 보정 적용"
+       ]
+      },
+      {
+       "id": "stats-20",
+       "title": "벤치마크 결과를 통계적으로 보고하기",
+       "one_liner": "반복 측정, 이상치(straggler) 제거, 신뢰구간을 포함해 논문에 결과를 쓰는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "ttft",
+        "straggler",
+        "measurement study",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "논문에 넣을 통계 요소 판별",
+        "이상치를 다루는 올바른/잘못된 방법"
+       ]
+      }
+     ],
+     "minutes": 645
+    }
+   ],
+   "minutes": 5040,
+   "course_count": 9
+  },
+  {
+   "id": "cs",
+   "title": "컴퓨터 과학 & 프로그래밍 — 문제 해결의 도구",
+   "courses": [
+    {
+     "id": "python",
+     "title": "Python 프로그래밍 — 첫 코드에서 실전까지",
+     "summary": "변수와 제어문부터 넘파이 벡터 연산, 멀티프로세싱, 소켓 통신까지 — SBC 클러스터 실험 코드를 직접 짤 수 있는 실전 파이썬을 배운다.",
+     "lessons": [
+      {
+       "id": "python-01",
+       "title": "변수와 자료형, 첫 코드 실행",
+       "one_liner": "파이썬 인터프리터를 실행하고 정수·실수·문자열·불리언 변수를 다룬다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "동적 타입과 변수 재바인딩",
+        "기본 자료형과 형 변환",
+        "print와 f-string 사용법"
+       ]
+      },
+      {
+       "id": "python-02",
+       "title": "조건문과 반복문",
+       "one_liner": "if/elif/else와 for/while로 분기와 반복을 제어한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "조건식 평가 순서",
+        "for-else 구문의 동작",
+        "break/continue의 차이"
+       ]
+      },
+      {
+       "id": "python-03",
+       "title": "리스트, 튜플, 딕셔너리, 집합",
+       "one_liner": "파이썬의 4대 내장 컨테이너를 상황에 맞게 골라 쓴다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "가변/불변 자료구조 구분",
+        "딕셔너리 해시 조회의 시간복잡도",
+        "리스트 컴프리헨션 작성"
+       ]
+      },
+      {
+       "id": "python-04",
+       "title": "함수와 스코프",
+       "one_liner": "함수를 정의하고 인자 전달·기본값·지역/전역 스코프를 이해한다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "*args, **kwargs 사용법",
+        "가변 기본 인자의 함정",
+        "클로저와 스코프 규칙"
+       ]
+      },
+      {
+       "id": "python-05",
+       "title": "문자열 처리와 파일 입출력",
+       "one_liner": "텍스트를 파싱하고 로그·설정 파일을 읽고 쓴다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "문자열 슬라이싱과 split/join",
+        "with문과 파일 컨텍스트 매니저",
+        "CSV/JSON 파싱"
+       ]
+      },
+      {
+       "id": "python-06",
+       "title": "예외 처리와 디버깅",
+       "one_liner": "try/except로 오류를 다루고 traceback을 읽어 원인을 추적한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "예외 계층 구조와 except 순서",
+        "커스텀 예외 정의",
+        "assert와 디버깅 전략"
+       ]
+      },
+      {
+       "id": "python-07",
+       "title": "모듈과 패키지, 가상환경",
+       "one_liner": "코드를 모듈로 분리하고 venv/pip로 의존성을 관리한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "import 경로 탐색 순서",
+        "__main__ 가드의 의미",
+        "venv와 requirements.txt 관리"
+       ]
+      },
+      {
+       "id": "python-08",
+       "title": "객체지향 프로그래밍 기초",
+       "one_liner": "클래스로 상태와 동작을 묶고 상속·매직 메서드를 활용한다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "클래스 vs 인스턴스 속성",
+        "상속과 메서드 오버라이딩",
+        "__init__, __repr__ 등 매직 메서드"
+       ]
+      },
+      {
+       "id": "python-09",
+       "title": "넘파이로 벡터·행렬 다루기",
+       "one_liner": "numpy 배열로 벡터화 연산을 수행하고 브로드캐스팅을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "vector",
+        "matrix",
+        "matrix multiplication",
+        "array memory layout"
+       ],
+       "quiz_topics": [
+        "브로드캐스팅 규칙",
+        "행렬 곱 shape 맞추기",
+        "넘파이 vs 순수 파이썬 루프 속도 차이"
+       ]
+      },
+      {
+       "id": "python-10",
+       "title": "성능 측정과 프로파일링",
+       "one_liner": "timeit과 cProfile로 코드의 병목 구간을 정량적으로 찾는다.",
+       "minutes": 40,
+       "concepts": [
+        "computational cost estimation",
+        "flops"
+       ],
+       "quiz_topics": [
+        "timeit 사용법과 함정",
+        "cProfile 결과 해석",
+        "연산 횟수 대 실측 시간 비교"
+       ]
+      },
+      {
+       "id": "python-11",
+       "title": "메모리 레이아웃과 배열 연산 최적화",
+       "one_liner": "C-order/F-order, 캐시 지역성을 고려해 배열 연산을 빠르게 짠다.",
+       "minutes": 45,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "array memory layout",
+        "simd"
+       ],
+       "quiz_topics": [
+        "행 우선 vs 열 우선 순회 성능",
+        "캐시 미스가 발생하는 코드 패턴",
+        "벡터화 가능한 연산 식별"
+       ]
+      },
+      {
+       "id": "python-12",
+       "title": "멀티프로세싱과 병렬 처리",
+       "one_liner": "GIL의 한계를 이해하고 multiprocessing으로 CPU 바운드 작업을 병렬화한다.",
+       "minutes": 45,
+       "concepts": [
+        "barrier",
+        "synchronization barriers and stragglers",
+        "동기",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "GIL이 스레드 병렬성에 미치는 영향",
+        "Process와 Pool의 차이",
+        "barrier로 작업자 동기화하기"
+       ]
+      },
+      {
+       "id": "python-13",
+       "title": "소켓 네트워킹과 프로세스 간 통신",
+       "one_liner": "socket 모듈로 노드 간 메시지를 주고받는 기본 통신 코드를 작성한다.",
+       "minutes": 50,
+       "concepts": [
+        "p2p",
+        "collective communication patterns",
+        "bandwidth and latency"
+       ],
+       "quiz_topics": [
+        "TCP 소켓 연결 수립 과정",
+        "블로킹 vs 논블로킹 통신",
+        "지연과 대역폭이 통신 설계에 미치는 영향"
+       ]
+      },
+      {
+       "id": "python-14",
+       "title": "벤치마크 자동화 스크립트 작성",
+       "one_liner": "반복 실행·로깅·결과 집계를 자동화해 재현 가능한 실험 파이프라인을 만든다.",
+       "minutes": 50,
+       "concepts": [
+        "baseline 위생",
+        "measurement study",
+        "ttft",
+        "prefill"
+       ],
+       "quiz_topics": [
+        "측정 반복과 워밍업의 필요성",
+        "실험 결과를 재현 가능하게 기록하는 방법",
+        "TTFT 같은 지표를 자동 집계하는 코드 구조"
+       ]
+      }
+     ],
+     "minutes": 540
+    },
+    {
+     "id": "c",
+     "title": "C 프로그래밍 — 하드웨어에 가장 가까운 언어",
+     "summary": "포인터와 메모리를 직접 다루는 법부터 SIMD·멀티스레딩까지, SBC CPU 클러스터에서 LLM prefill 코드를 읽고 최적화할 수 있는 C 실력을 기른다.",
+     "lessons": [
+      {
+       "id": "c-01",
+       "title": "C 컴파일과 실행 — 소스에서 바이너리까지",
+       "one_liner": "gcc로 컴파일·링크되는 과정과 변수·타입·연산자 등 C의 기본 문법을 익힌다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "컴파일과 링크 단계의 차이",
+        "C 기본 타입의 크기와 표현 범위"
+       ]
+      },
+      {
+       "id": "c-02",
+       "title": "제어 흐름과 함수 — 조건, 반복, 스코프",
+       "one_liner": "if/for/while과 함수 정의·호출, 스택 프레임과 지역 변수의 생명주기를 이해한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "함수 호출 시 스택에 쌓이는 것",
+        "반복문 선택 기준(for vs while)"
+       ]
+      },
+      {
+       "id": "c-03",
+       "title": "배열과 메모리 레이아웃",
+       "one_liner": "배열이 메모리에 연속으로 배치되는 방식과 인덱싱이 주소 계산으로 바뀌는 원리를 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "2차원 배열의 행 우선(row-major) 저장 방식",
+        "인덱스에서 메모리 주소를 계산하는 식"
+       ]
+      },
+      {
+       "id": "c-04",
+       "title": "포인터의 정체 — 주소, 역참조, 배열과의 관계",
+       "one_liner": "포인터가 가리키는 것과 역참조 연산을 이해하고, 배열이 포인터로 어떻게 다루어지는지 익힌다.",
+       "minutes": 40,
+       "concepts": [
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "포인터 산술이 타입 크기만큼 이동하는 이유",
+        "배열 이름과 포인터의 차이"
+       ]
+      },
+      {
+       "id": "c-05",
+       "title": "동적 메모리 관리 — malloc, free, 그리고 버그",
+       "one_liner": "힙에서 메모리를 직접 할당·해제하며, 메모리 누수와 use-after-free 같은 흔한 버그를 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "메모리 계층"
+       ],
+       "quiz_topics": [
+        "malloc과 free를 짝지어야 하는 이유",
+        "메모리 누수와 use-after-free의 차이"
+       ]
+      },
+      {
+       "id": "c-06",
+       "title": "구조체와 데이터 표현",
+       "one_liner": "구조체로 관련 데이터를 묶고, 메모리 정렬(alignment)과 패딩이 구조체 크기에 미치는 영향을 파악한다.",
+       "minutes": 35,
+       "concepts": [
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "구조체 패딩이 발생하는 이유",
+        "필드 순서가 구조체 크기에 미치는 영향"
+       ]
+      },
+      {
+       "id": "c-07",
+       "title": "비트 연산과 저정밀 자료형 — 양자화의 밑바닥",
+       "one_liner": "비트 단위 연산과 정수/부동소수점 표현을 익히고, q40/q80처럼 값을 저비트로 눌러 담는 양자화의 원리를 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "양자화",
+        "블록 양자화",
+        "q40",
+        "q80"
+       ],
+       "quiz_topics": [
+        "비트 시프트·마스킹으로 값을 뽑아내는 방법",
+        "저비트 표현이 오차를 만드는 이유"
+       ]
+      },
+      {
+       "id": "c-08",
+       "title": "메모리 계층과 캐시 친화적 코드",
+       "one_liner": "L1/L2 캐시와 지역성(locality)을 이해하고, 접근 패턴이 성능에 미치는 영향을 체감한다.",
+       "minutes": 40,
+       "concepts": [
+        "메모리 계층",
+        "memory bound",
+        "산술 강도"
+       ],
+       "quiz_topics": [
+        "공간 지역성과 시간 지역성의 차이",
+        "캐시 미스가 늘어나는 접근 패턴 예시"
+       ]
+      },
+      {
+       "id": "c-09",
+       "title": "함수 포인터와 저수준 인터페이스",
+       "one_liner": "함수 포인터로 콜백을 구현하고, 헤더/소스 분리와 컴파일 단위를 이해한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "함수 포인터를 사용하는 전형적인 상황",
+        "헤더 파일과 소스 파일을 분리하는 이유"
+       ]
+      },
+      {
+       "id": "c-10",
+       "title": "연산 비용 어림잡기 — 반복문에서 FLOPs 세고 GEMM 짜기",
+       "one_liner": "중첩 반복문의 연산 횟수를 세어 계산 비용을 어림잡고, 순수 C로 작은 행렬곱(GEMM/GEMV)을 직접 구현한다.",
+       "minutes": 40,
+       "concepts": [
+        "flops",
+        "gemm",
+        "gemv",
+        "roofline"
+       ],
+       "quiz_topics": [
+        "행렬곱 반복문에서 곱셈·덧셈 횟수 세기",
+        "루프 순서를 바꾸면 캐시 적중률이 달라지는 이유"
+       ]
+      },
+      {
+       "id": "c-11",
+       "title": "SIMD 입문 — 벡터 명령어로 여러 개를 한 번에",
+       "one_liner": "내적 같은 연산을 벡터 명령어로 한 번에 처리하는 SIMD의 기본 아이디어를 익히고 GEMV 커널을 벡터화한다.",
+       "minutes": 45,
+       "concepts": [
+        "simd",
+        "내적 명령어",
+        "dotprod"
+       ],
+       "quiz_topics": [
+        "SIMD가 스칼라 루프보다 빠른 이유",
+        "SIMD 적용이 어려운 코드 패턴"
+       ]
+      },
+      {
+       "id": "c-12",
+       "title": "멀티스레딩과 동기화 — pthread로 병렬 구간 나누기",
+       "one_liner": "pthread로 작업을 나누어 실행하고, 락과 배리어로 스레드 간 동기화·대기 문제를 다룬다.",
+       "minutes": 45,
+       "concepts": [
+        "동기",
+        "barrier",
+        "poll 대기"
+       ],
+       "quiz_topics": [
+        "레이스 컨디션이 발생하는 조건",
+        "배리어가 필요한 병렬 처리 상황"
+       ]
+      }
+     ],
+     "minutes": 445
+    },
+    {
+     "id": "cpp",
+     "title": "C++ 프로그래밍 — 성능과 추상화의 균형",
+     "summary": "C++의 문법부터 메모리 모델, SIMD, 멀티스레딩까지 익혀 CPU 기반 LLM 추론 커널을 직접 작성하고 최적화할 수 있는 실력을 기른다.",
+     "lessons": [
+      {
+       "id": "cpp-01",
+       "title": "C++ 기초 문법과 컴파일 과정",
+       "one_liner": "변수, 타입, 제어문을 익히고 소스가 실행 파일이 되는 컴파일-링크 과정을 이해한다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "컴파일 단계(전처리/컴파일/링크) 순서",
+        "정적 타입과 타입 변환 오류"
+       ]
+      },
+      {
+       "id": "cpp-02",
+       "title": "함수, 스코프, 스택과 힙",
+       "one_liner": "함수 호출 시 스택 프레임이 만들어지는 방식과 스택/힙 메모리의 차이를 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "computer memory hierarchy"
+       ],
+       "quiz_topics": [
+        "스택 오버플로우가 발생하는 상황",
+        "스택 vs 힙 할당 비용 비교"
+       ]
+      },
+      {
+       "id": "cpp-03",
+       "title": "포인터와 참조",
+       "one_liner": "포인터 연산, 참조, 널 포인터 위험을 이해하고 배열이 포인터로 어떻게 동작하는지 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "포인터 산술과 배열 인덱싱의 관계",
+        "참조와 포인터의 차이"
+       ]
+      },
+      {
+       "id": "cpp-04",
+       "title": "배열과 메모리 레이아웃",
+       "one_liner": "다차원 배열이 실제 메모리에 어떤 순서로 저장되는지, row-major 레이아웃이 성능에 미치는 영향을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "array memory layout",
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "row-major vs column-major 접근 패턴의 캐시 영향",
+        "2차원 배열 인덱스를 1차원 오프셋으로 변환하기"
+       ]
+      },
+      {
+       "id": "cpp-05",
+       "title": "동적 메모리 관리와 RAII",
+       "one_liner": "new/delete, 스마트 포인터, RAII 패턴으로 메모리 누수 없이 자원을 관리하는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "RAII가 예외 안전성을 보장하는 원리",
+        "unique_ptr vs shared_ptr 선택 기준"
+       ]
+      },
+      {
+       "id": "cpp-06",
+       "title": "클래스와 구조체, 캡슐화",
+       "one_liner": "클래스 설계, 생성자/소멸자, 접근 제어를 통해 데이터와 동작을 묶는 법을 배운다.",
+       "minutes": 35,
+       "concepts": [],
+       "quiz_topics": [
+        "생성자/소멸자 호출 순서",
+        "구조체와 클래스의 차이"
+       ]
+      },
+      {
+       "id": "cpp-07",
+       "title": "템플릿과 제네릭 프로그래밍",
+       "one_liner": "함수/클래스 템플릿으로 타입에 독립적인 재사용 가능한 코드를 작성하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "템플릿 인스턴스화 시점",
+        "템플릿 특수화가 필요한 경우"
+       ]
+      },
+      {
+       "id": "cpp-08",
+       "title": "STL 컨테이너와 반복자",
+       "one_liner": "vector, array, unordered_map 등 표준 컨테이너의 내부 동작과 반복자 패턴을 이해한다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "vector 재할당 시 비용",
+        "반복자 무효화가 발생하는 상황"
+       ]
+      },
+      {
+       "id": "cpp-09",
+       "title": "부동소수점 표현과 수치 오차",
+       "one_liner": "IEEE754 부동소수점 표현 방식과 누적 오차가 계산 정확도에 미치는 영향을 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "floating point representation",
+        "상대 오차"
+       ],
+       "quiz_topics": [
+        "float와 double의 정밀도 차이",
+        "덧셈 순서에 따른 오차 누적"
+       ]
+      },
+      {
+       "id": "cpp-10",
+       "title": "캐시와 메모리 계층 최적화",
+       "one_liner": "캐시 라인, 지역성, 대역폭/지연 개념을 바탕으로 메모리 접근 패턴을 최적화하는 법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "memory bound"
+       ],
+       "quiz_topics": [
+        "캐시 라인 크기와 false sharing",
+        "공간 지역성을 활용한 루프 순서 최적화"
+       ]
+      },
+      {
+       "id": "cpp-11",
+       "title": "SIMD와 벡터 명령어",
+       "one_liner": "컴파일러 자동 벡터화와 인트린식을 이용해 내적 같은 연산을 SIMD로 가속하는 법을 배운다.",
+       "minutes": 50,
+       "concepts": [
+        "simd",
+        "내적 명령어",
+        "dotprod"
+       ],
+       "quiz_topics": [
+        "SIMD 레지스터 폭과 처리량 관계",
+        "자동 벡터화를 막는 코드 패턴"
+       ]
+      },
+      {
+       "id": "cpp-12",
+       "title": "멀티스레딩과 동기화",
+       "one_liner": "std::thread, mutex, 배리어를 이용해 병렬 작업을 안전하게 동기화하는 법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "동기",
+        "barrier",
+        "배리어"
+       ],
+       "quiz_topics": [
+        "데이터 레이스가 발생하는 조건",
+        "배리어와 뮤텍스의 역할 차이"
+       ]
+      },
+      {
+       "id": "cpp-13",
+       "title": "소켓 통신과 노드 간 데이터 전송",
+       "one_liner": "TCP 소켓으로 여러 프로세스/노드 간에 바이트 스트림을 주고받는 기본 통신 코드를 작성한다.",
+       "minutes": 45,
+       "concepts": [
+        "p2p",
+        "집합 통신"
+       ],
+       "quiz_topics": [
+        "블로킹 소켓에서 발생하는 대기 문제",
+        "직렬화 시 바이트 순서(endian) 이슈"
+       ]
+      },
+      {
+       "id": "cpp-14",
+       "title": "성능 프로파일링과 산술 강도 분석",
+       "one_liner": "프로파일러로 병목을 찾고 roofline 모델로 연산이 compute-bound인지 memory-bound인지 판단해 커널을 튜닝한다.",
+       "minutes": 50,
+       "concepts": [
+        "roofline",
+        "산술 강도",
+        "compute bound",
+        "memory bound"
+       ],
+       "quiz_topics": [
+        "roofline 모델에서 산술 강도 계산법",
+        "타일링이 캐시 재사용률을 높이는 원리"
+       ]
+      }
+     ],
+     "minutes": 555
+    },
+    {
+     "id": "ds",
+     "title": "자료구조 — 효율적인 데이터 관리의 핵심",
+     "summary": "배열부터 분산 KV 캐시 구조까지, CPU 추론 연구에 바로 쓰이는 자료구조의 원리와 트레이드오프를 익힌다.",
+     "lessons": [
+      {
+       "id": "ds-01",
+       "title": "배열과 메모리 레이아웃",
+       "one_liner": "배열이 왜 캐시에 유리한 자료구조인지, 순차 접근과 메모리 레이아웃의 관계를 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "array memory layout",
+        "computer memory hierarchy",
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "행/열 우선 레이아웃과 접근 패턴",
+        "배열 접근이 캐시 미스에 미치는 영향"
+       ]
+      },
+      {
+       "id": "ds-02",
+       "title": "연결 리스트와 포인터 기반 구조",
+       "one_liner": "배열 대비 연결 리스트의 삽입/삭제 이점과 캐시 비친화성의 트레이드오프를 비교한다.",
+       "minutes": 30,
+       "concepts": [
+        "computer memory hierarchy",
+        "bandwidth and latency"
+       ],
+       "quiz_topics": [
+        "연결 리스트 순회 시 캐시 미스 원인",
+        "배열 vs 연결 리스트 선택 기준"
+       ]
+      },
+      {
+       "id": "ds-03",
+       "title": "스택, 큐, 링 버퍼",
+       "one_liner": "LIFO/FIFO 구조와 원형 버퍼가 파이프라인 큐잉·백프레셔에 어떻게 쓰이는지 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "ring",
+        "back pressure"
+       ],
+       "quiz_topics": [
+        "링 버퍼의 오버플로우 처리 방식",
+        "큐 기반 백프레셔 구현"
+       ]
+      },
+      {
+       "id": "ds-04",
+       "title": "해시테이블과 키-값 조회",
+       "one_liner": "해싱과 충돌 해결 전략으로 O(1) 조회를 구현하는 원리를 익힌다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "체이닝 vs 오픈 어드레싱",
+        "해시 함수 품질과 충돌률"
+       ]
+      },
+      {
+       "id": "ds-05",
+       "title": "트리와 이진 탐색 트리",
+       "one_liner": "계층적 자료구조로 정렬된 데이터를 로그 시간에 탐색하는 방법을 배운다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "BST 삽입/삭제 시 균형 붕괴",
+        "탐색 시간복잡도 분석"
+       ]
+      },
+      {
+       "id": "ds-06",
+       "title": "힙과 우선순위 큐",
+       "one_liner": "힙 구조로 최솟값/최댓값을 빠르게 꺼내는 방법과 스케줄링에서의 활용을 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "straggler"
+       ],
+       "quiz_topics": [
+        "힙 삽입/삭제 복잡도",
+        "우선순위 큐로 지연 노드(straggler) 스케줄링"
+       ]
+      },
+      {
+       "id": "ds-07",
+       "title": "균형 트리와 탐색 인덱스",
+       "one_liner": "AVL/B-tree 등 균형 트리가 메모리 계층을 고려해 인덱스를 설계하는 방식을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "computer memory hierarchy"
+       ],
+       "quiz_topics": [
+        "B-tree 분기 수와 디스크/메모리 접근 횟수",
+        "회전 연산으로 균형 복구"
+       ]
+      },
+      {
+       "id": "ds-08",
+       "title": "그래프 표현과 순회",
+       "one_liner": "인접 리스트/행렬로 그래프를 표현하고 BFS/DFS로 통신 토폴로지를 탐색하는 방법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "ring",
+        "p2p"
+       ],
+       "quiz_topics": [
+        "인접 리스트 vs 인접 행렬 선택 기준",
+        "링/P2P 토폴로지를 그래프로 모델링"
+       ]
+      },
+      {
+       "id": "ds-09",
+       "title": "캐시 친화적 자료구조와 타일링",
+       "one_liner": "블로킹·타일링으로 자료구조 접근의 산술 강도를 높여 메모리 대역폭 병목을 줄이는 기법을 익힌다.",
+       "minutes": 50,
+       "concepts": [
+        "타일링",
+        "gemm",
+        "roofline",
+        "산술 강도"
+       ],
+       "quiz_topics": [
+        "타일 크기와 캐시 재사용률의 관계",
+        "루프라인 모델로 자료구조 접근 패턴 분석"
+       ]
+      },
+      {
+       "id": "ds-10",
+       "title": "락, 배리어, 동시성 자료구조",
+       "one_liner": "락, 배리어, 동기화 기법으로 여러 스레드/프로세스가 안전하게 공유 자료구조에 접근하는 방법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "barrier",
+        "배리어",
+        "동기",
+        "back pressure"
+       ],
+       "quiz_topics": [
+        "락 경쟁과 데드락 발생 조건",
+        "배리어 동기화가 성능에 미치는 영향"
+       ]
+      },
+      {
+       "id": "ds-11",
+       "title": "분산 자료구조와 컨시스턴트 해싱",
+       "one_liner": "노드 간 데이터를 분산 저장하는 컨시스턴트 해싱과 링 토폴로지 설계를 배운다.",
+       "minutes": 50,
+       "concepts": [
+        "ring",
+        "p2p",
+        "kv affinity",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "컨시스턴트 해싱의 리밸런싱 비용",
+        "링 토폴로지에서 straggler 노드 영향"
+       ]
+      },
+      {
+       "id": "ds-12",
+       "title": "KV 캐시를 위한 자료구조 설계",
+       "one_liner": "블록 양자화와 마이그레이션을 고려한 KV 캐시 저장 구조를 설계하는 캡스톤 레슨.",
+       "minutes": 60,
+       "concepts": [
+        "kv cache",
+        "kv migration",
+        "블록 양자화"
+       ],
+       "quiz_topics": [
+        "블록 양자화된 KV 캐시의 메모리 절감 계산",
+        "KV 마이그레이션 시 자료구조 일관성 유지"
+       ]
+      }
+     ],
+     "minutes": 500
+    },
+    {
+     "id": "algo",
+     "title": "알고리즘 — 문제 해결의 체계적 접근",
+     "summary": "복잡도 분석부터 분산 집합 통신까지, 문제를 체계적으로 쪼개고 최적의 자원으로 푸는 알고리즘적 사고를 기른다.",
+     "lessons": [
+      {
+       "id": "algo-01",
+       "title": "알고리즘과 복잡도 분석",
+       "one_liner": "시간·공간 복잡도(빅오)로 알고리즘의 효율성을 비교하는 법을 배운다.",
+       "minutes": 30,
+       "concepts": [
+        "computational cost estimation",
+        "flops"
+       ],
+       "quiz_topics": [
+        "빅오 표기법 계산",
+        "최선/평균/최악 케이스 구분",
+        "복잡도와 실행시간의 관계"
+       ]
+      },
+      {
+       "id": "algo-02",
+       "title": "배열, 메모리 레이아웃과 캐시 효율",
+       "one_liner": "데이터가 메모리에 배치되는 방식이 알고리즘 성능에 미치는 영향을 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "array memory layout",
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "행/열 우선 순회와 캐시 미스",
+        "메모리 계층별 지연시간 비교",
+        "연속 접근 vs 랜덤 접근"
+       ]
+      },
+      {
+       "id": "algo-03",
+       "title": "정렬 알고리즘과 분할정복",
+       "one_liner": "병합정렬·퀵정렬을 통해 분할정복 패러다임의 기본 구조를 익힌다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "병합정렬 vs 퀵정렬 복잡도",
+        "분할정복 재귀 관계식",
+        "불안정 정렬이 문제되는 경우"
+       ]
+      },
+      {
+       "id": "algo-04",
+       "title": "탐색 알고리즘: 선형 탐색과 이진 탐색",
+       "one_liner": "정렬된 데이터에서 로그 시간에 탐색하는 원리를 배운다.",
+       "minutes": 25,
+       "concepts": [],
+       "quiz_topics": [
+        "이진 탐색 적용 조건",
+        "탐색 복잡도 비교",
+        "경계 조건 처리(off-by-one)"
+       ]
+      },
+      {
+       "id": "algo-05",
+       "title": "재귀와 동적 프로그래밍 기초",
+       "one_liner": "중복 부분 문제를 메모이제이션으로 제거하는 DP의 기본기를 익힌다.",
+       "minutes": 45,
+       "concepts": [
+        "중복 계산 문제"
+       ],
+       "quiz_topics": [
+        "점화식 세우기",
+        "메모이제이션 vs 타뷸레이션",
+        "DP 적용 가능 조건"
+       ]
+      },
+      {
+       "id": "algo-06",
+       "title": "그래프 표현과 BFS/DFS 탐색",
+       "one_liner": "그래프를 인접 리스트/행렬로 표현하고 너비/깊이 우선 탐색을 적용한다.",
+       "minutes": 40,
+       "concepts": [],
+       "quiz_topics": [
+        "인접 리스트 vs 인접 행렬",
+        "BFS로 최단 경로 찾기",
+        "DFS로 사이클 탐지"
+       ]
+      },
+      {
+       "id": "algo-07",
+       "title": "최단 경로와 그리디 알고리즘",
+       "one_liner": "다익스트라 알고리즘과 그리디 선택의 최적성 조건을 이해한다.",
+       "minutes": 45,
+       "concepts": [],
+       "quiz_topics": [
+        "다익스트라 동작 과정",
+        "그리디가 최적해를 보장하는 조건",
+        "음수 가중치에서 실패하는 이유"
+       ]
+      },
+      {
+       "id": "algo-08",
+       "title": "스케줄링과 자원 할당 알고리즘",
+       "one_liner": "작업을 큐에 넣고 처리하는 스케줄링 전략과 back pressure의 필요성을 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "back pressure",
+        "poll 대기"
+       ],
+       "quiz_topics": [
+        "스케줄링 정책 비교(FIFO/우선순위)",
+        "back pressure가 필요한 상황",
+        "폴링 vs 이벤트 기반 대기"
+       ]
+      },
+      {
+       "id": "algo-09",
+       "title": "분할정복과 병렬 알고리즘 설계",
+       "one_liner": "작업을 독립적인 블록/타일로 나눠 병렬로 처리하는 설계 원칙을 익힌다.",
+       "minutes": 45,
+       "concepts": [
+        "청크 chunk",
+        "블록 병렬"
+       ],
+       "quiz_topics": [
+        "타일링으로 병렬화 가능한 조건",
+        "청크 크기와 오버헤드의 트레이드오프",
+        "의존성이 병렬화를 막는 경우"
+       ]
+      },
+      {
+       "id": "algo-10",
+       "title": "행렬 곱셈 알고리즘과 연산 강도",
+       "one_liner": "GEMM 알고리즘의 연산량과 메모리 접근을 분석해 compute-bound/memory-bound를 판별한다.",
+       "minutes": 50,
+       "concepts": [
+        "matrix multiplication",
+        "gemm",
+        "산술 강도",
+        "roofline"
+       ],
+       "quiz_topics": [
+        "행렬 곱셈 연산 복잡도 계산",
+        "산술 강도로 병목 판별",
+        "roofline 모델 해석"
+       ]
+      },
+      {
+       "id": "algo-11",
+       "title": "저랭크 근사와 SVD 알고리즘",
+       "one_liner": "특이값 분해로 행렬을 근사해 계산량을 줄이는 원리를 배운다.",
+       "minutes": 50,
+       "concepts": [
+        "low rank approximation via svd",
+        "svd",
+        "특이값",
+        "재구성 오차"
+       ],
+       "quiz_topics": [
+        "SVD로 랭크 절감하는 원리",
+        "근사 오차와 랭크의 관계",
+        "저랭크 근사 적용 사례"
+       ]
+      },
+      {
+       "id": "algo-12",
+       "title": "분산 알고리즘 기초: 동기화와 배리어",
+       "one_liner": "여러 프로세스를 동기화하는 배리어와 스트래글러 문제의 기본 개념을 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "barrier",
+        "synchronization barriers and stragglers",
+        "동기",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "배리어 동기화의 동작 방식",
+        "스트래글러가 전체 성능에 미치는 영향",
+        "동기 vs 비동기 알고리즘 비교"
+       ]
+      },
+      {
+       "id": "algo-13",
+       "title": "집합 통신 알고리즘: allreduce와 ring",
+       "one_liner": "ring allreduce 등 집합 통신 알고리즘의 통신량과 지연을 분석한다.",
+       "minutes": 50,
+       "concepts": [
+        "all reduce",
+        "ring",
+        "allgather",
+        "collective communication patterns"
+       ],
+       "quiz_topics": [
+        "ring allreduce 통신 단계 수 계산",
+        "트리 vs 링 알고리즘 비교",
+        "대역폭-지연 트레이드오프"
+       ]
+      },
+      {
+       "id": "algo-14",
+       "title": "스트래글러 대응과 부하 분산 알고리즘",
+       "one_liner": "불균등한 처리 속도를 가진 노드들 사이에서 부하를 재분배하는 알고리즘 전략을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "straggler",
+        "wave",
+        "back pressure",
+        "phase diagram"
+       ],
+       "quiz_topics": [
+        "스트래글러 완화 전략 비교",
+        "부하 분산 알고리즘 설계",
+        "phase diagram으로 병목 구간 파악"
+       ]
+      }
+     ],
+     "minutes": 575
+    }
+   ],
+   "minutes": 2615,
+   "course_count": 5
+  },
+  {
+   "id": "thisresearch",
+   "title": "이 연구 — prefill/TTFT 최적화",
+   "courses": [
+    {
+     "id": "prefill-foundations",
+     "title": "기초 다지기 — 연구 코드를 읽기 위한 최소 지식",
+     "summary": "CPU 전용 SBC 클러스터에서 LLM prefill/TTFT 최적화 연구 코드를 읽고 이해하는 데 필요한 최소한의 선형대수·트랜스포머·분산추론 개념을 쌓는다.",
+     "lessons": [
+      {
+       "id": "prefill-foundations-01",
+       "title": "벡터·행렬 연산과 GEMM/GEMV",
+       "one_liner": "트랜스포머 연산의 뼈대인 행렬곱, 내적, GEMM/GEMV 구분을 익힌다.",
+       "minutes": 40,
+       "concepts": [
+        "matrix multiplication",
+        "gemm",
+        "gemv",
+        "dotprod"
+       ],
+       "quiz_topics": [
+        "GEMM과 GEMV의 연산량 차이",
+        "행렬곱 순서에 따른 계산 비용",
+        "배치 1(prefill vs decode)에서 어떤 커널이 쓰이는가"
+       ]
+      },
+      {
+       "id": "prefill-foundations-02",
+       "title": "부동소수점 표현과 메모리 계층",
+       "one_liner": "fp32/fp16 표현 방식과 캐시-메모리 계층, 지연 대 대역폭 개념을 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "floating point representation",
+        "computer memory hierarchy",
+        "bandwidth and latency",
+        "지연 대 대역폭"
+       ],
+       "quiz_topics": [
+        "fp32 대비 fp16/양자화의 비트 구성 차이",
+        "캐시 계층별 접근 지연 순서",
+        "1GbE 환경에서 지연 vs 대역폭 중 무엇이 병목인가"
+       ]
+      },
+      {
+       "id": "prefill-foundations-03",
+       "title": "연산 비용 추정과 Roofline 모델",
+       "one_liner": "FLOPs와 산술 강도로 연산이 compute-bound인지 memory-bound인지 판별하는 법을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "computational cost estimation",
+        "flops",
+        "roofline",
+        "산술 강도"
+       ],
+       "quiz_topics": [
+        "특정 GEMM의 산술 강도 계산",
+        "roofline 그래프에서 prefill과 decode의 위치 차이",
+        "machine balance와 병목 판단"
+       ]
+      },
+      {
+       "id": "prefill-foundations-04",
+       "title": "퍼셉트론과 경사하강법",
+       "one_liner": "신경망 최소 단위인 퍼셉트론과 학습 루프(경사하강법)의 동작 원리를 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "perceptron and neuron",
+        "gradient descent and training loop"
+       ],
+       "quiz_topics": [
+        "경사하강법의 업데이트 규칙",
+        "학습률이 수렴에 미치는 영향",
+        "순전파/역전파 개념 구분"
+       ]
+      },
+      {
+       "id": "prefill-foundations-05",
+       "title": "선형회귀·최소제곱과 과적합",
+       "one_liner": "최소제곱 적합과 정규방정식, 과적합·holdout 검증의 원리를 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "linear regression and least squares",
+        "overfitting generalization and holdout",
+        "최소제곱",
+        "holdout"
+       ],
+       "quiz_topics": [
+        "정규방정식 유도 과정",
+        "holdout이 필요한 이유",
+        "과적합과 일반화 오차의 관계"
+       ]
+      },
+      {
+       "id": "prefill-foundations-06",
+       "title": "신경망 레이어: FFN·정규화·비선형·잔차",
+       "one_liner": "트랜스포머 블록을 구성하는 FFN, 정규화, 비선형 활성화, residual connection을 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "feedforward layers",
+        "normalization in neural networks",
+        "swiglu",
+        "residual connections"
+       ],
+       "quiz_topics": [
+        "RMSNorm이 LayerNorm과 다른 점",
+        "SwiGLU FFN의 구조",
+        "residual stream이 정보 흐름에서 하는 역할"
+       ]
+      },
+      {
+       "id": "prefill-foundations-07",
+       "title": "토큰화·임베딩·위치 인코딩",
+       "one_liner": "텍스트가 토큰-임베딩-위치정보로 변환되는 과정과 RoPE의 원리를 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "tokenization",
+        "embedding lookup",
+        "positional information",
+        "rope"
+       ],
+       "quiz_topics": [
+        "토큰화가 프롬프트 길이에 미치는 영향",
+        "임베딩 룩업 테이블 구조",
+        "RoPE가 절대 위치 인코딩과 다른 점"
+       ]
+      },
+      {
+       "id": "prefill-foundations-08",
+       "title": "Self-Attention과 Softmax 수치안정성",
+       "one_liner": "셀프어텐션, 멀티헤드, causal mask, softmax 수치안정화 기법을 이해한다.",
+       "minutes": 50,
+       "concepts": [
+        "self-attention mechanism",
+        "multi-head attention and variants",
+        "softmax and numerical stability",
+        "causal mask"
+       ],
+       "quiz_topics": [
+        "attention score 계산 순서와 복잡도",
+        "causal mask가 prefill에서 하는 역할",
+        "softmax 오버플로 방지 기법(online softmax와 연결)"
+       ]
+      },
+      {
+       "id": "prefill-foundations-09",
+       "title": "트랜스포머 블록 구조와 출력 로짓",
+       "one_liner": "어텐션·FFN을 결합한 트랜스포머 블록 전체 구조와 lm_head의 로짓 산출을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "transformer block architecture",
+        "output projection and logits",
+        "autoregressive generation",
+        "lmhead"
+       ],
+       "quiz_topics": [
+        "트랜스포머 블록 내 연산 순서 정리",
+        "logits에서 다음 토큰 확률로 가는 과정",
+        "autoregressive 생성과 prefill의 관계"
+       ]
+      },
+      {
+       "id": "prefill-foundations-10",
+       "title": "KV 캐시와 Prefill/Decode, 청킹",
+       "one_liner": "KV 캐시 구조, prefill·decode 단계 차이, 긴 입력을 청크로 나누는 이유와 TTFT를 이해한다.",
+       "minutes": 50,
+       "concepts": [
+        "kv cache concept",
+        "prefill and decode phases",
+        "chunking long inputs",
+        "ttft"
+       ],
+       "quiz_topics": [
+        "prefill과 decode의 연산 특성 차이(compute bound vs memory bound)",
+        "KV 캐시가 메모리를 차지하는 방식",
+        "chunked prefill이 TTFT/지연에 주는 영향"
+       ]
+      },
+      {
+       "id": "prefill-foundations-11",
+       "title": "롱컨텍스트 평가, 양자화와 저랭크 근사",
+       "one_liner": "RULER/NIAH 같은 롱컨텍스트 평가와 블록 양자화, SVD 기반 저랭크 근사의 원리를 익힌다.",
+       "minutes": 50,
+       "concepts": [
+        "long context evaluation benchmarks",
+        "quantization fundamentals",
+        "block quantization and repacking",
+        "low rank approximation via svd"
+       ],
+       "quiz_topics": [
+        "NIAH·RULER가 측정하려는 능력",
+        "block quantization에서 repack이 필요한 이유",
+        "SVD 저랭크 근사의 오차-랭크 트레이드오프"
+       ]
+      },
+      {
+       "id": "prefill-foundations-12",
+       "title": "분산 추론: 병렬화·집합통신·동기화·Disaggregation",
+       "one_liner": "TP/PP/SP/CP 병렬화, 집합통신, 배리어·straggler, disaggregated serving의 개념을 CPU 클러스터 맥락에서 이해한다.",
+       "minutes": 60,
+       "concepts": [
+        "tensor and pipeline parallelism",
+        "collective communication patterns",
+        "synchronization barriers and stragglers",
+        "disaggregated serving and kv transfer"
+       ],
+       "quiz_topics": [
+        "TP와 PP가 통신 패턴에서 다른 점",
+        "all-reduce/allgather가 필요한 시점",
+        "1GbE 클러스터에서 straggler가 TTFT에 미치는 영향"
+       ]
+      }
+     ],
+     "minutes": 525
+    },
+    {
+     "id": "prefill-research",
+     "title": "연구 용어 — 노트에 정의된 개념들",
+     "summary": "SBC CPU-only 클러스터에서 LLM prefill/TTFT를 최적화하는 연구를 위해, 성능 모델링부터 병렬화·양자화·측정 방법론까지 노트에 정의된 핵심 용어를 순서대로 정리한다.",
+     "lessons": [
+      {
+       "id": "prefill-research-01",
+       "title": "TTFT, prefill, decode 구분",
+       "one_liner": "LLM 추론이 prefill과 decode 두 단계로 나뉘는 이유와 TTFT가 왜 별도 지표인지 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "ttft",
+        "prefill",
+        "decode",
+        "autoregressive generation"
+       ],
+       "quiz_topics": [
+        "prefill과 decode의 연산 특성 차이",
+        "TTFT를 줄이는 것과 처리량을 늘리는 것의 차이"
+       ]
+      },
+      {
+       "id": "prefill-research-02",
+       "title": "roofline과 compute/memory bound",
+       "one_liner": "산술 강도로 어떤 연산이 compute-bound인지 memory-bound인지 판단하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "roofline",
+        "compute bound",
+        "memory bound",
+        "산술 강도"
+       ],
+       "quiz_topics": [
+        "산술 강도 계산",
+        "SBC CPU에서 prefill이 어느 쪽에 걸리는지 판단"
+       ]
+      },
+      {
+       "id": "prefill-research-03",
+       "title": "GEMM/GEMV와 CPU 행렬 연산 기초",
+       "one_liner": "attention과 FFN 연산이 결국 GEMM/GEMV로 환원되는 과정과 SIMD 내적 명령어의 역할을 익힌다.",
+       "minutes": 35,
+       "concepts": [
+        "gemm",
+        "gemv",
+        "dotprod",
+        "simd"
+       ],
+       "quiz_topics": [
+        "GEMM과 GEMV를 구분하는 기준",
+        "SIMD가 산술 강도에 미치는 영향"
+       ]
+      },
+      {
+       "id": "prefill-research-04",
+       "title": "KV cache 개념과 메모리 레이아웃",
+       "one_liner": "KV cache가 왜 필요한지, decode 단계 메모리 병목의 원인이 되는지 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "kv cache",
+        "kv cache concept",
+        "메모리 레이아웃",
+        "메모리 계층"
+       ],
+       "quiz_topics": [
+        "KV cache 크기와 시퀀스 길이의 관계",
+        "KV cache가 memory-bound를 유발하는 이유"
+       ]
+      },
+      {
+       "id": "prefill-research-05",
+       "title": "chunked prefill과 청크 분할 전략",
+       "one_liner": "긴 프롬프트를 청크로 나눠 처리할 때의 트레이드오프를 배운다.",
+       "minutes": 35,
+       "concepts": [
+        "chunked prefill",
+        "청크 chunk",
+        "chunking long inputs",
+        "back pressure"
+       ],
+       "quiz_topics": [
+        "chunk 크기와 TTFT/처리량 트레이드오프",
+        "continuous batching과 chunked prefill의 상호작용"
+       ]
+      },
+      {
+       "id": "prefill-research-06",
+       "title": "양자화 기초와 블록 양자화",
+       "one_liner": "q40/q80 같은 블록 양자화 포맷과 repack이 CPU 추론에서 왜 중요한지 이해한다.",
+       "minutes": 40,
+       "concepts": [
+        "quantization fundamentals",
+        "block quantization and repacking",
+        "q40",
+        "q80"
+       ],
+       "quiz_topics": [
+        "블록 양자화와 전체 양자화의 차이",
+        "양자화 오차가 정확도에 미치는 영향"
+       ]
+      },
+      {
+       "id": "prefill-research-07",
+       "title": "텐서 병렬화와 파이프라인 병렬화",
+       "one_liner": "TP와 PP가 각각 어떤 연산을 어떻게 나누는지, CPU 클러스터에서의 함의를 배운다.",
+       "minutes": 45,
+       "concepts": [
+        "tp",
+        "pp",
+        "tensor and pipeline parallelism",
+        "dense"
+       ],
+       "quiz_topics": [
+        "TP와 PP의 통신 패턴 차이",
+        "1GbE 환경에서 TP가 불리한 이유"
+       ]
+      },
+      {
+       "id": "prefill-research-08",
+       "title": "시퀀스/컨텍스트 병렬화",
+       "one_liner": "긴 prefill을 시퀀스 축으로 나누는 SP/CP 방식과 causal mask 처리를 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "sp",
+        "cp",
+        "sequence and context parallelism",
+        "causal mask"
+       ],
+       "quiz_topics": [
+        "SP가 TP 대비 유리한 상황",
+        "causal mask가 병렬화에 미치는 제약"
+       ]
+      },
+      {
+       "id": "prefill-research-09",
+       "title": "집합 통신 패턴 (all-reduce, all-gather, ring)",
+       "one_liner": "분산 attention/FFN에서 쓰이는 집합 통신 연산과 ring 알고리즘의 대역폭 비용을 계산한다.",
+       "minutes": 40,
+       "concepts": [
+        "all reduce",
+        "allgather",
+        "ring",
+        "p2p"
+       ],
+       "quiz_topics": [
+        "ring all-reduce의 통신량 공식",
+        "1GbE에서 all-reduce 비용 추정"
+       ]
+      },
+      {
+       "id": "prefill-research-10",
+       "title": "동기화 배리어와 straggler",
+       "one_liner": "분산 노드 간 barrier와 poll 대기가 왜 성능을 좌우하는지, straggler 문제를 이해한다.",
+       "minutes": 30,
+       "concepts": [
+        "barrier",
+        "barrier 배리어",
+        "동기",
+        "poll 대기"
+       ],
+       "quiz_topics": [
+        "straggler가 전체 지연에 미치는 영향",
+        "barrier 위치를 줄이는 설계 아이디어"
+       ]
+      },
+      {
+       "id": "prefill-research-11",
+       "title": "Disaggregated serving과 KV migration",
+       "one_liner": "prefill/decode를 분리 배치하고 KV cache를 옮기는 D disaggregation 구조를 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "d disaggregation",
+        "kv migration",
+        "kv affinity",
+        "disaggregated serving and kv transfer"
+       ],
+       "quiz_topics": [
+        "disaggregation이 TTFT/처리량에 주는 이득",
+        "KV migration 비용이 병목이 되는 조건"
+       ]
+      },
+      {
+       "id": "prefill-research-12",
+       "title": "저랭크 근사(SVD)와 anchor amortization",
+       "one_liner": "SVD 기반 저랭크 근사로 연산/전송량을 줄이는 원리와 anchor 재사용 개념을 이해한다.",
+       "minutes": 45,
+       "concepts": [
+        "svd",
+        "저랭크 근사",
+        "low rank approximation via svd",
+        "랭크"
+       ],
+       "quiz_topics": [
+        "저랭크 근사의 오차-압축률 트레이드오프",
+        "anchor amortization이 유효한 조건"
+       ]
+      },
+      {
+       "id": "prefill-research-13",
+       "title": "롱컨텍스트 평가 벤치마크",
+       "one_liner": "LongBench, RULER, needle-in-haystack이 무엇을 측정하며 이 연구에 왜 필요한지 이해한다.",
+       "minutes": 35,
+       "concepts": [
+        "longbench",
+        "ruler",
+        "needle in haystack",
+        "long context evaluation benchmarks"
+       ],
+       "quiz_topics": [
+        "needle-in-haystack이 검증하려는 실패 모드",
+        "LongBench와 RULER의 평가 초점 차이"
+       ]
+      },
+      {
+       "id": "prefill-research-14",
+       "title": "측정 연구 방법론과 정확도 검증",
+       "one_liner": "baseline 위생, byte-for-byte 재현성, matched accuracy 비교 등 논문 수준 실험을 설계하는 법을 배운다.",
+       "minutes": 40,
+       "concepts": [
+        "measurement study",
+        "baseline 위생",
+        "byte for byte 동일",
+        "matched accuracy 비교"
+       ],
+       "quiz_topics": [
+        "baseline 위생이 깨지는 대표적 실수",
+        "matched accuracy 비교를 설계하는 절차"
+       ]
+      }
+     ],
+     "minutes": 530
+    },
+    {
+     "id": "prefill-code",
+     "title": "코드 읽기 — dllama 구조와 실행 경로",
+     "summary": "distributed-llama 소스 코드를 저장소 구조부터 실행 경로까지 따라 읽으며 prefill/TTFT 최적화 실험을 코드 수준에서 계획할 수 있게 한다.",
+     "lessons": [
+      {
+       "id": "prefill-code-01",
+       "title": "저장소 구조와 빌드 개관",
+       "one_liner": "nn/ 코어, app/ 추론 로직, root-worker 실행 파일이 어떻게 나뉘는지 지도를 그린다.",
+       "minutes": 30,
+       "concepts": [],
+       "quiz_topics": [
+        "디렉토리별 역할 매칭",
+        "root와 worker 실행 파일의 차이"
+       ]
+      },
+      {
+       "id": "prefill-code-02",
+       "title": "텐서 표현과 양자화 포맷 읽기",
+       "one_liner": "q40/q80 블록 양자화 구조체와 메모리 레이아웃을 코드에서 확인한다.",
+       "minutes": 40,
+       "concepts": [
+        "q40",
+        "q80",
+        "블록 양자화",
+        "메모리 레이아웃"
+       ],
+       "quiz_topics": [
+        "q40 블록 크기와 스케일 저장 위치",
+        "레이아웃이 SIMD 접근에 미치는 영향"
+       ]
+      },
+      {
+       "id": "prefill-code-03",
+       "title": "NN 코어 연산자 구현",
+       "one_liner": "matmul/dotprod 등 저수준 커널이 SIMD 명령어로 어떻게 구현되는지 읽는다.",
+       "minutes": 45,
+       "concepts": [
+        "gemm",
+        "gemv",
+        "dotprod",
+        "simd"
+       ],
+       "quiz_topics": [
+        "gemv와 gemm 코드 경로가 갈리는 지점",
+        "SIMD 명령어가 쓰이는 함수 식별"
+       ]
+      },
+      {
+       "id": "prefill-code-04",
+       "title": "Transformer 블록 forward 경로",
+       "one_liner": "attention과 ffn 호출 순서, residual 연결이 코드에서 어떻게 이어지는지 추적한다.",
+       "minutes": 50,
+       "concepts": [
+        "attention",
+        "ffn",
+        "causal mask",
+        "residual stream"
+       ],
+       "quiz_topics": [
+        "forward 함수 내 호출 순서 재구성",
+        "causal mask가 적용되는 코드 지점"
+       ]
+      },
+      {
+       "id": "prefill-code-05",
+       "title": "KV 캐시 버퍼 관리",
+       "one_liner": "KV 캐시 할당, 인덱싱, 갱신 코드를 읽고 메모리 사용 패턴을 파악한다.",
+       "minutes": 50,
+       "concepts": [
+        "kv cache",
+        "kv affinity",
+        "메모리 계층"
+       ],
+       "quiz_topics": [
+        "KV 캐시 버퍼 크기 계산식",
+        "캐시 갱신 시점 코드 위치"
+       ]
+      },
+      {
+       "id": "prefill-code-06",
+       "title": "텐서/파이프라인 병렬화 분할 로직",
+       "one_liner": "헤드와 레이어를 워커에 나누는 분할 코드를 읽고 통신이 필요한 지점을 찾는다.",
+       "minutes": 55,
+       "concepts": [
+        "tp",
+        "pp",
+        "gqa"
+       ],
+       "quiz_topics": [
+        "헤드 분할 인덱스 계산 코드",
+        "tp 경계에서 통신이 발생하는 위치"
+       ]
+      },
+      {
+       "id": "prefill-code-07",
+       "title": "소켓 통신 계층과 집합 통신",
+       "one_liner": "worker 간 all-reduce/전송을 구현하는 소켓 코드를 읽는다.",
+       "minutes": 55,
+       "concepts": [
+        "all reduce",
+        "allgather",
+        "p2p",
+        "집합 통신"
+       ],
+       "quiz_topics": [
+        "all-reduce 구현 함수의 데이터 흐름",
+        "소켓 송수신 오류 처리 지점"
+       ]
+      },
+      {
+       "id": "prefill-code-08",
+       "title": "root-worker 동기화와 배리어",
+       "one_liner": "root와 worker 간 barrier/polling 코드가 어디서 대기를 유발하는지 찾는다.",
+       "minutes": 50,
+       "concepts": [
+        "barrier",
+        "동기",
+        "poll 대기",
+        "straggler"
+       ],
+       "quiz_topics": [
+        "barrier 호출 위치와 목적",
+        "straggler가 발생할 수 있는 코드 구간"
+       ]
+      },
+      {
+       "id": "prefill-code-09",
+       "title": "prefill 실행 경로 전체 추적",
+       "one_liner": "토큰 배치 입력부터 logits 출력까지 prefill 한 번의 전체 호출 스택을 따라간다.",
+       "minutes": 60,
+       "concepts": [
+        "prefill",
+        "chunked prefill",
+        "lmhead",
+        "로짓"
+       ],
+       "quiz_topics": [
+        "prefill 호출 스택 순서 나열",
+        "chunked prefill 분기 조건"
+       ]
+      },
+      {
+       "id": "prefill-code-10",
+       "title": "TTFT 계측 지점 설계",
+       "one_liner": "연구용 계측(타이머/로그)을 삽입할 코드 지점을 코드 근거와 함께 식별한다.",
+       "minutes": 45,
+       "concepts": [
+        "ttft",
+        "measurement study",
+        "phase diagram"
+       ],
+       "quiz_topics": [
+        "TTFT 시작/종료 시점에 대응하는 코드 라인",
+        "계측 삽입이 성능에 왜곡을 주지 않는 위치 선택"
+       ]
+      }
+     ],
+     "minutes": 480
+    }
+   ],
+   "minutes": 1535,
+   "course_count": 3
+  }
+ ],
+ "lesson_count": 296,
+ "minutes": 10885
+}

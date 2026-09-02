@@ -1,0 +1,36 @@
+{
+ "tracks": [
+  {"id": "research", "title": "연구의 기초 — 학문의 뿌리와 방법론",
+   "courses": [
+    {"id": "philosophy", "title": "철학의 핵심 — 공학 박사는 왜 철학 박사(Ph.D.)일까?", "lessons": 19},
+    {"id": "paper-reading", "title": "논문 읽기 & 연구 방법론 — 연구자로 성장하기", "lessons": 12},
+    {"id": "grad-life", "title": "대학원생이 알았으면 좋았을 것들", "lessons": 20}
+   ]},
+  {"id": "ai", "title": "인공지능(AI) — 기계가 생각하는 법",
+   "courses": [
+    {"id": "ai-math", "title": "인공지능 수학 — AI를 떠받치는 수학적 기초", "lessons": 12},
+    {"id": "ml", "title": "머신러닝 — 데이터에서 지식을 추출하다", "lessons": 15},
+    {"id": "dl", "title": "딥러닝(Deep Learning) — 인공 신경망의 세계", "lessons": 24},
+    {"id": "cv", "title": "컴퓨터 비전(Computer Vision) — 기계에게 눈을 주다", "lessons": 15},
+    {"id": "nlp", "title": "자연어처리(NLP) — 기계가 언어를 이해하다", "lessons": 14},
+    {"id": "rl", "title": "강화학습(RL) — 시행착오로 배우는 에이전트", "lessons": 12},
+    {"id": "mlops", "title": "MLOps & 실전 배포 — 모델을 세상에 내보내기", "lessons": 10},
+    {"id": "genai", "title": "생성형 AI 엔지니어링", "lessons": 21},
+    {"id": "stats", "title": "연구를 위한 통계학", "lessons": 20}
+   ]},
+  {"id": "cs", "title": "컴퓨터 과학 & 프로그래밍 — 문제 해결의 도구",
+   "courses": [
+    {"id": "python", "title": "Python 프로그래밍 — 첫 코드에서 실전까지", "lessons": 14},
+    {"id": "c", "title": "C 프로그래밍 — 하드웨어에 가장 가까운 언어", "lessons": 12},
+    {"id": "cpp", "title": "C++ 프로그래밍 — 성능과 추상화의 균형", "lessons": 14},
+    {"id": "ds", "title": "자료구조 — 효율적인 데이터 관리의 핵심", "lessons": 12},
+    {"id": "algo", "title": "알고리즘 — 문제 해결의 체계적 접근", "lessons": 14}
+   ]},
+  {"id": "thisresearch", "title": "이 연구 — prefill/TTFT 최적화",
+   "courses": [
+    {"id": "prefill-foundations", "title": "기초 다지기 — 연구 코드를 읽기 위한 최소 지식", "lessons": 12},
+    {"id": "prefill-research", "title": "연구 용어 — 노트에 정의된 개념들", "lessons": 14},
+    {"id": "prefill-code", "title": "코드 읽기 — dllama 구조와 실행 경로", "lessons": 10}
+   ]}
+ ]
+}

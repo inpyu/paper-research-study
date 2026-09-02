@@ -1,0 +1,16 @@
+{"course_id":"paper-reading",
+ "summary":"논문을 효율적으로 읽고, 비판적으로 평가하고, 스스로의 연구를 논문으로 구조화하는 방법을 익힌다.",
+ "lessons":[
+  {"id":"paper-reading-01","title":"논문을 왜, 어떻게 읽는가","one_liner":"연구자에게 논문 읽기가 왜 핵심 기술인지, 논문의 종류(워크샵/컨퍼런스/저널/프리프린트)를 구분한다.","minutes":25,"concepts":[],"quiz_topics":["논문 종류별 신뢰도와 리뷰 수준 차이","프리프린트(arXiv)와 정식 게재 논문의 차이"]},
+  {"id":"paper-reading-02","title":"3-pass 읽기법으로 빠르게 훑기","one_liner":"제목·초록·그림만으로 1차 판단하고, 필요한 논문만 깊이 읽는 단계적 독해법을 익힌다.","minutes":25,"concepts":[],"quiz_topics":["1차 pass에서 확인해야 할 요소","논문을 끝까지 읽을지 판단하는 기준"]},
+  {"id":"paper-reading-03","title":"논문의 뼈대: Abstract부터 Conclusion까지","one_liner":"Introduction-Related Work-Method-Evaluation-Conclusion 각 절이 하는 역할을 구조적으로 이해한다.","minutes":30,"concepts":[],"quiz_topics":["Method와 Evaluation 절의 역할 구분","Introduction에서 저자가 반드시 언급하는 3가지"]},
+  {"id":"paper-reading-04","title":"관련 연구 찾기와 인용 그래프 추적","one_liner":"핵심 논문에서 출발해 인용/피인용 관계를 따라가며 연구 지형을 파악하는 방법을 배운다.","minutes":30,"concepts":["measurement study"],"quiz_topics":["snowballing(전방/후방 인용 추적) 방법","서베이 논문을 우선 찾아야 하는 이유"]},
+  {"id":"paper-reading-05","title":"실험 셋업 읽기: 하드웨어와 워크로드 스펙","one_liner":"논문의 실험 환경(하드웨어, 배치 크기, 시퀀스 길이 등)이 결과 해석에 왜 중요한지 이해한다.","minutes":30,"concepts":["compute bound","memory bound","roofline","machine balance"],"quiz_topics":["같은 기법이라도 하드웨어에 따라 결론이 달라지는 이유","실험 셋업에서 반드시 확인할 항목"]},
+  {"id":"paper-reading-06","title":"베이스라인과 공정한 비교 판별하기","one_liner":"저자가 비교하는 베이스라인이 공정한지, baseline 위생이 지켜졌는지 비판적으로 검토한다.","minutes":35,"concepts":["baseline 위생","matched accuracy 비교","byte for byte 동일"],"quiz_topics":["약한 베이스라인을 골라 우위를 과장하는 패턴 찾기","matched accuracy 비교가 필요한 이유"]},
+  {"id":"paper-reading-07","title":"벤치마크와 평가지표 이해하기","one_liner":"long-context/QA 벤치마크가 무엇을 측정하는지 알고, 지표 선택이 결론에 미치는 영향을 파악한다.","minutes":30,"concepts":["longbench","ruler","needle in haystack","holdout","정확도 벤치마크"],"quiz_topics":["needle in haystack 벤치마크가 측정하는 것","holdout 없이 낸 정확도의 문제점"]},
+  {"id":"paper-reading-08","title":"그림과 표에서 진짜 결과 읽어내기","one_liner":"축 스케일, 생략된 오차막대, 선택적 구간 등 그래프의 함정을 알아채는 법을 배운다.","minutes":30,"concepts":["ttft","상대 오차"],"quiz_topics":["로그 스케일 축이 결과를 과장하는 경우","오차막대 없는 그래프를 의심해야 하는 이유"]},
+  {"id":"paper-reading-09","title":"분산·병렬화 논문 읽기: TP/PP/SP와 통신 병목","one_liner":"분산 추론 논문에서 병렬화 전략과 집합 통신 오버헤드를 어떻게 보고하는지 읽어낸다.","minutes":35,"concepts":["tp","pp","sp","cp","all reduce","집합 통신","straggler","barrier"],"quiz_topics":["논문이 통신 오버헤드를 숨기는 방식","TP/PP 선택이 TTFT에 미치는 영향 서술 찾기"]},
+  {"id":"paper-reading-10","title":"저자의 주장과 근거 구분하기","one_liner":"논문의 주장(claim)과 그것을 뒷받침하는 실제 증거(evidence)를 분리해서 평가하는 비판적 읽기를 연습한다.","minutes":35,"concepts":["measurement study"],"quiz_topics":["과장된 주장과 실제 데이터의 간극 찾기","저자가 언급하지 않은 한계(limitation) 추론하기"]},
+  {"id":"paper-reading-11","title":"내 연구의 포지셔닝: 연구 공백 찾기","one_liner":"기존 연구들 사이에서 아직 다뤄지지 않은 gap을 찾아 자신의 연구 기여를 구체화하는 법을 배운다.","minutes":35,"concepts":["chunked prefill","d disaggregation","kv migration"],"quiz_topics":["research gap과 단순한 차이점의 구분","Related Work 절에서 gap을 서술하는 방식"]},
+  {"id":"paper-reading-12","title":"내 논문 쓰기와 리뷰어 관점 검토","one_liner":"자신의 실험 결과를 논문 구조로 옮기고, 리뷰어 입장에서 스스로 약점을 점검하는 법을 익힌다.","minutes":40,"concepts":["baseline 위생","matched accuracy 비교","measurement study"],"quiz_topics":["리뷰어가 가장 먼저 의심하는 부분","약점을 먼저 인정하는 서술이 유리한 이유"]}
+ ]}

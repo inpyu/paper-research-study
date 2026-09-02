@@ -75,22 +75,45 @@ def call_claude(prompt, model, timeout=240):
 
 
 def extract_json(text):
-    """모델이 앞뒤에 말을 붙였을 때를 대비해 첫 JSON 객체를 꺼낸다."""
+    """모델이 JSON 앞뒤에 말을 붙여도 꺼낸다.
+
+    단순히 첫 '{' 부터 중괄호를 세면 두 곳에서 깨진다.
+      - 앞선 설명 문장에 '{' 가 있으면 엉뚱한 곳에서 시작한다
+      - 문자열 값 안의 '{' 를 구조로 세어 균형이 어긋난다
+    그래서 문자열을 인식하며 세고, 후보 시작점을 모두 시도해
+    파싱에 성공한 것 중 가장 큰 것을 고른다.
+    """
     text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M).strip()
-    i, depth = text.find("{"), 0
-    if i < 0:
-        return None
-    for j in range(i, len(text)):
-        if text[j] == "{":
-            depth += 1
-        elif text[j] == "}":
-            depth -= 1
-            if depth == 0:
-                try:
-                    return json.loads(text[i:j + 1])
-                except json.JSONDecodeError:
-                    return None
-    return None
+    best = None
+    for start in (i for i, ch in enumerate(text) if ch == "{"):
+        depth, in_str, esc = 0, False, False
+        for j in range(start, len(text)):
+            ch = text[j]
+            if in_str:
+                if esc:
+                    esc = False
+                elif ch == "\\":
+                    esc = True
+                elif ch == '"':
+                    in_str = False
+                continue
+            if ch == '"':
+                in_str = True
+            elif ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    try:
+                        obj = json.loads(text[start:j + 1])
+                    except json.JSONDecodeError:
+                        break
+                    if best is None or len(text[start:j + 1]) > best[1]:
+                        best = (obj, len(text[start:j + 1]))
+                    break
+        if best and start > (text.find("{") + 200):
+            break            # 충분히 뒤까지 훑었으면 그만
+    return best[0] if best else None
 
 
 def build_prompt(cands, notes):

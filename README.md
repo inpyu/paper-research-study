@@ -23,6 +23,14 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 - [레포 위키](docs/05-wiki.md) — 파싱 부산물(파일·플래그·실험·로그·수치)을 학습 자료로
 - [로드맵](docs/04-roadmap.md) — M0~M7
 
+## 학습 카탈로그
+```
+영역 4개 → 과목 20개 → 레슨 252개
+  연구의 기초 · 인공지능(AI) · 컴퓨터 과학 & 프로그래밍 · 이 연구(prefill/TTFT)
+각 과목에 적응형 진단(객관식, 난이도 1~5)이 붙는다.
+레슨의 개념 태그를 누르면 아래 개념 트랙으로 이어진다.
+```
+
 ## 학습 트랙
 ```
 기초 커리큘럼 (curriculum/foundations.json — 사람이 고칠 수 있는 파일)
@@ -57,6 +65,8 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `questions.py` | 열린 질문 — TODO/FIXME·노트 미결·보류 실험 (W7) | 미사용 |
 | `xref.py` | 용어 역인덱스 (W8) | 미사용 |
 | `curriculum.py` | 딥러닝 기초 커리큘럼 설계 → `curriculum/foundations.json` | **사용** |
+| `catalog.py` | 학습 카탈로그(영역→과목→레슨) → `curriculum/catalog.json` | **사용** |
+| `quiz.py` | 과목별 진단 문항 출제 (난이도 1~5) | **사용** |
 | `explain_foundation.py` | 기초 개념 설명 생성 | **사용** |
 | `explain.py` | 연구 개념 설명 생성 | **사용** |
 | `explain_code.py` | 파일 역할 + 함수별 설명 생성 | **사용** |
