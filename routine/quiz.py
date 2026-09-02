@@ -77,7 +77,7 @@ def main():
             if not obj or not obj.get("items"):
                 print(f"  {c['id']} 시도 {attempt}: JSON 실패")
                 continue
-            items = []
+            items, biased_n = [], 0
             for i, it in enumerate(obj["items"], 1):
                 ch = it.get("choices") or []
                 a = it.get("answer")
@@ -85,6 +85,9 @@ def main():
                     continue
                 if len({x.strip() for x in ch}) != 4:
                     continue          # 보기 중복이면 정답이 하나가 아니다
+                L = [len(x) for x in ch]
+                if L[a] == max(L) and max(L) >= 20 and max(L) > sorted(L)[-2] * 1.45:
+                    biased_n += 1     # 길이로 찍히는 문항. quiz_fix.py 가 교정한다
                 items.append({
                     "id": it.get("id") or f"{c['id']}-q{i:02d}",
                     "course": c["id"], "course_title": c["title"],
@@ -109,7 +112,8 @@ def main():
             for it in items:
                 dist[it["difficulty"]] = dist.get(it["difficulty"], 0) + 1
             print(f"  {c['id']:<20} {len(items):>2}문항 · 난이도 분포 "
-                  + " ".join(f"{k}:{v}" for k, v in sorted(dist.items())))
+                  + " ".join(f"{k}:{v}" for k, v in sorted(dist.items()))
+                  + (f" · 길이편향 {biased_n}" if biased_n else ""))
             break
     done = len([f for f in os.listdir(DEST) if f.endswith(".json")])
     print(f"출제 {made}과목 · 누적 {done}")

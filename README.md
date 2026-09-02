@@ -67,6 +67,7 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `curriculum.py` | 딥러닝 기초 커리큘럼 설계 → `curriculum/foundations.json` | **사용** |
 | `catalog.py` | 학습 카탈로그(영역→과목→레슨) → `curriculum/catalog.json` | **사용** |
 | `quiz.py` | 과목별 진단 문항 출제 (난이도 1~5) | **사용** |
+| `quiz_fix.py` | 길이로 정답이 찍히는 문항 교정 (검사로 강제) | **사용** |
 | `explain_foundation.py` | 기초 개념 설명 생성 | **사용** |
 | `explain.py` | 연구 개념 설명 생성 | **사용** |
 | `explain_code.py` | 파일 역할 + 함수별 설명 생성 | **사용** |

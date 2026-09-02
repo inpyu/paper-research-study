@@ -38,7 +38,7 @@ run() {
 
   # 2.5) 설명 채우기 — 하루 조금씩. 실패해도 배포는 계속한다.
   #      한 번 만든 설명은 입력이 바뀌지 않는 한 다시 만들지 않는다.
-  for step in "catalog.py --limit 2" "quiz.py --limit 2" \
+  for step in "catalog.py --limit 2" "quiz.py --limit 2" "quiz_fix.py --limit 24" \
               "explain_foundation.py --limit 6" "explain.py --limit 6" \
               "explain_code.py --limit 3"; do
     timeout 900 "$PY" "$ROOT/routine/"$step >>"$LOG" 2>&1 \
