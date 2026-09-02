@@ -13,7 +13,7 @@ import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone  # noqa: F401
 
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from common import OUT, load  # noqa: E402
@@ -117,7 +117,29 @@ def main():
     args = ap.parse_args()
 
     notes = load("notes.json")
-    cands = load("candidates.json")["items"][:args.top]
+
+    # 이미 브리핑한 논문은 다시 올리지 않는다.
+    # arxiv.py 에서도 거르지만, 수집이 실패해 낡은 candidates.json 이 남으면
+    # 같은 논문이 또 올라간다. 실제로 09-02 가 09-01 과 같은 3편이었다.
+    done_ids = set()
+    bdir = os.path.join(OUT, "briefings")
+    if os.path.isdir(bdir):
+        for fn in os.listdir(bdir):
+            if not fn.endswith(".json"):
+                continue
+            try:
+                prev = json.load(open(os.path.join(bdir, fn), encoding="utf-8"))
+            except Exception:
+                continue
+            for x in prev.get("all", prev.get("items", [])):
+                if x.get("id"):
+                    done_ids.add(x["id"])
+
+    pool = [c for c in load("candidates.json")["items"] if c["id"] not in done_ids]
+    if not pool:
+        print(f"새 논문 없음 (이미 브리핑한 {len(done_ids)}편 제외) — 건너뜀")
+        return 0
+    cands = pool[:args.top]
     if not cands:
         print("후보 없음 — 건너뜀")
         return 0
@@ -181,7 +203,10 @@ def main():
     allb = [enrich(b) for b in items]
     # 판정 우선순위 -> 유사도 순으로 정확히 keep 편만 남긴다(전체는 all 에 보존).
     out = allb[:args.keep]
-    day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # 로컬(KST) 날짜로 찍는다.
+    # UTC 로 찍으면 06:10 KST 실행이 전날 21:10 UTC 라서
+    # 매일 아침 '어제 파일' 을 덮어쓴다. 실제로 09-02 브리핑이 09-01 을 지웠다.
+    day = datetime.now().astimezone().strftime("%Y-%m-%d")
     os.makedirs(os.path.join(OUT, "briefings"), exist_ok=True)
     p = os.path.join(OUT, "briefings", f"{day}.json")
     with open(p, "w", encoding="utf-8") as f:

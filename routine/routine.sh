@@ -32,7 +32,7 @@ run() {
   run "$PY" "$ROOT/routine/xref.py" || echo "!! 파싱 단계 실패 — 배포 중단"
 
   # 2) 논문 수집·브리핑 — 실패해도 배포는 계속한다(직전 브리핑 유지).
-  run "$PY" "$ROOT/routine/arxiv.py" --days 3 --top 8 || echo "arXiv 수집 실패(계속)"
+  run "$PY" "$ROOT/routine/arxiv.py" --days 7 --top 8 || echo "arXiv 수집 실패(계속)"
   timeout 600 "$PY" "$ROOT/routine/generate.py" --top 8 --keep 3 >>"$LOG" 2>&1 \
     || echo "브리핑 생성 실패(계속) — 직전 산출물 유지"
 

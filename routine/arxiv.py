@@ -130,10 +130,34 @@ class BM25:
         return s / math.sqrt(len(q))
 
 
+def briefed_ids():
+    """이미 브리핑한 논문 id. 같은 논문을 매일 다시 올리지 않기 위해서다.
+
+    신선도 창(--days)만으로는 부족하다. 창이 3일이면 같은 논문이 사흘 내내
+    올라온다. 실제로 09-02 브리핑이 09-01 과 같은 3편이었다.
+    """
+    d = os.path.join(OUT, "briefings")
+    out = set()
+    if os.path.isdir(d):
+        for fn in os.listdir(d):
+            if not fn.endswith(".json"):
+                continue
+            try:
+                b = json.load(open(os.path.join(d, fn), encoding="utf-8"))
+            except Exception:
+                continue
+            for x in b.get("all", b.get("items", [])):
+                if x.get("id"):
+                    out.add(x["id"])
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=3, help="최근 며칠치 신규를 볼지")
     ap.add_argument("--top", type=int, default=8)
+    ap.add_argument("--repeat", action="store_true",
+                    help="이미 브리핑한 논문도 다시 후보에 넣는다")
     ap.add_argument("--reuse", action="store_true",
                     help="직전 수집 결과를 재사용해 랭킹만 다시 한다")
     args = ap.parse_args()
@@ -156,11 +180,15 @@ def main():
     # 신규 후보 수집 (--reuse 면 캐시 사용)
     raw_path = os.path.join(OUT, "candidates_raw.json")
     if args.reuse and os.path.exists(raw_path):
-        cands = json.load(open(raw_path, encoding="utf-8"))["items"]
+        cands = [c for c in json.load(open(raw_path, encoding="utf-8"))["items"]
+                 if args.repeat or c["id"] not in briefed_ids()]
         print(f"캐시 재사용: 후보 {len(cands)}편")
         seen = set(seed_ids) | {c["id"] for c in cands}
         return rank_and_dump(cands, bm, args)
-    seen, cands = set(seed_ids), []
+    already = set() if args.repeat else briefed_ids()
+    if already:
+        print(f"이미 브리핑한 논문 {len(already)}편 제외")
+    seen, cands = set(seed_ids) | already, []
     for q in QUERIES:
         cat = " OR ".join(f"cat:{c}" for c in CATS)
         root = fetch({"search_query": f"({cat}) AND all:\"{q}\"",

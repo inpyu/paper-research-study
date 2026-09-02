@@ -51,7 +51,8 @@ def main():
     b = json.load(open(os.path.join(d, files[-1]), encoding="utf-8"))
     items = b["items"]
     must = [x for x in items if x["verdict"] == "must-read"]
-    head = f"논문 {len(items)}편" + (f" · must-read {len(must)}편" if must else "")
+    head = f"{b['date']} · 논문 {len(items)}편" + (
+        f" · must-read {len(must)}편" if must else "")
     body = "\n".join(f"**[{x['verdict']}]** {x['title']}\n{x['relation']}"
                      for x in items)
     return send(f"오늘의 브리핑 — {head}", body,
