@@ -119,7 +119,10 @@ function ConceptDetail({ k, onOpen, onBack, index }) {
   return (
     <>
       <button className="pill" onClick={onBack}>← 목록</button>
-      <h2 className="title">{c.name}</h2>
+      <h2 className="title">
+        {c.name}
+        {c.track === "foundation" && <span className="pill" style={{ marginLeft: 8, fontSize: 11 }}>기초</span>}
+      </h2>
       {c.one_liner && <p className="lead">{c.one_liner}</p>}
       <div style={{ margin: "6px 0 4px" }}>
         {c.difficulty > 0 && <span className="pill">난이도 {c.difficulty}/5</span>}
@@ -133,7 +136,17 @@ function ConceptDetail({ k, onOpen, onBack, index }) {
       <Section title="무엇인가">{c.what}</Section>
       <Section title="왜 필요한가">{c.why}</Section>
       <Section title="어떻게 동작하는가">{c.how}</Section>
-      <Section title="이 연구에서는">{c.in_this_repo}</Section>
+      <Section title="예시">{c.example}</Section>
+      <Section title="이 연구에서는">{c.in_this_repo || c.for_this_research}</Section>
+
+      {c.leads_to?.length > 0 && (
+        <>
+          <div className="sec">이걸 알면 읽을 수 있게 되는 것</div>
+          {c.leads_to.map((p) => (
+            <button className="pill big" key={p} onClick={() => onOpen(p)}>{nameOf(p)}</button>
+          ))}
+        </>
+      )}
 
       {c.prerequisites?.length > 0 && (
         <>
@@ -157,15 +170,15 @@ function ConceptDetail({ k, onOpen, onBack, index }) {
         </>
       )}
 
-      <div className="sec">노트에서 읽기</div>
+      {c.defs.length > 0 && <div className="sec">노트에서 읽기</div>}
       {c.defs.map((d, i) => (
         <a className="row" key={i} href={d.url} target="_blank" rel="noreferrer">
           <span className="mono">{d.doc.replace("research/", "")}</span>
           <span className="s">:{d.line}</span>
         </a>
       ))}
-      <div className="sec">코드에서 보기</div>
-      {c.evidence.length === 0
+      {c.track !== "foundation" && <div className="sec">코드에서 보기</div>}
+      {c.track === "foundation" ? null : c.evidence.length === 0
         ? <div className="empty">이 개념에 대응하는 코드를 찾지 못했습니다.</div>
         : c.evidence.map((e, i) => (
           <a className="row" key={i} href={e.url} target="_blank" rel="noreferrer">
@@ -200,7 +213,10 @@ function Concepts() {
     <div onClick={() => setSel(c.key)} style={{ cursor: "pointer" }}>
       <div className="card">
         <div className="t">
-          <span className="n">{c.name}</span>
+          <span className="n">
+            {c.name}
+            {c.track === "foundation" && <span className="pill" style={{ marginLeft: 6, fontSize: 10.5 }}>기초</span>}
+          </span>
           <span className="s">{c.difficulty ? `난이도 ${c.difficulty}` : ""}</span>
         </div>
         {c.one_liner
@@ -222,18 +238,32 @@ function Concepts() {
       <input type="search" placeholder="개념·태그 검색" value={q}
         onChange={(e) => setQ(e.target.value)} />
       {mode === "order" && !s && (
-        <p className="meta">선행 개념이 없는 것부터 순서대로 쌓아 올립니다.</p>
+        <p className="meta">
+          딥러닝 기초부터 시작해 이 연구의 용어까지 순서대로 이어집니다.
+        </p>
       )}
       {mode === "order" && !s
-        ? idx.steps.map((st) => (
-          <div key={st.level}>
-            <div className="sec">
-              {st.level === 0 ? "기초 — 먼저 읽을 것" : `${st.level}단계`}
-              <span className="meta"> · {st.keys.length}개</span>
+        ? <>
+          {(idx.foundation_stages || []).map((st) => (
+            <div key={`f${st.stage}`}>
+              <div className="sec">
+                기초 {st.stage} · {st.title}
+                <span className="meta"> · {st.keys.length}개</span>
+              </div>
+              {st.goal && <p className="meta" style={{ margin: "0 0 8px" }}>{st.goal}</p>}
+              {st.keys.map((k) => byKey[k] && <Item c={byKey[k]} key={k} />)}
             </div>
-            {st.keys.map((k) => byKey[k] && <Item c={byKey[k]} key={k} />)}
-          </div>
-        ))
+          ))}
+          {idx.steps.map((st) => (
+            <div key={st.level}>
+              <div className="sec">
+                {st.level === 0 ? "연구 용어 — 노트에 정의된 것" : `연구 용어 ${st.level}단계`}
+                <span className="meta"> · {st.keys.length}개</span>
+              </div>
+              {st.keys.map((k) => byKey[k] && <Item c={byKey[k]} key={k} />)}
+            </div>
+          ))}
+        </>
         : (idx.order || idx.items.map((c) => c.key))
           .map((k) => byKey[k]).filter((c) => c && match(c))
           .map((c) => <Item c={c} key={c.key} />)}

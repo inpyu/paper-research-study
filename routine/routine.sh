@@ -36,6 +36,14 @@ run() {
   timeout 600 "$PY" "$ROOT/routine/generate.py" --top 8 --keep 3 >>"$LOG" 2>&1 \
     || echo "브리핑 생성 실패(계속) — 직전 산출물 유지"
 
+  # 2.5) 설명 채우기 — 하루 조금씩. 실패해도 배포는 계속한다.
+  #      한 번 만든 설명은 입력이 바뀌지 않는 한 다시 만들지 않는다.
+  for step in "explain_foundation.py --limit 6" "explain.py --limit 6" \
+              "explain_code.py --limit 3"; do
+    timeout 900 "$PY" "$ROOT/routine/"$step >>"$LOG" 2>&1 \
+      || echo "설명 생성 실패(계속): $step"
+  done
+
   # 3) 빌드·배포·알림
   run "$PY" "$ROOT/routine/build.py" &&
   run "$PY" "$ROOT/routine/publish.py"

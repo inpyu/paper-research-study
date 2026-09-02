@@ -78,6 +78,51 @@ def main():
                          for e in ev],
             "links": links_out.get(c["key"], []),
         }))
+    # ---- 기초 커리큘럼 (연구 용어의 아래 단계) ----
+    cur_path = os.path.join(ROOT, "curriculum", "foundations.json")
+    found_dir = os.path.join(OUTDIR, "explain_found")
+    found_exp = {}
+    if os.path.isdir(found_dir):
+        for fn in os.listdir(found_dir):
+            if fn.endswith(".json"):
+                try:
+                    e = json.load(open(os.path.join(found_dir, fn), encoding="utf-8"))
+                    found_exp[e["key"]] = e
+                except Exception:
+                    pass
+    found_stages = []
+    if os.path.exists(cur_path):
+        cur = json.load(open(cur_path, encoding="utf-8"))
+        for st in cur["stages"]:
+            ks = []
+            for c in st["concepts"]:
+                e = found_exp.get(c["key"], {})
+                index.append({
+                    "key": c["key"], "name": c["name"], "aliases": [],
+                    "docs": 0, "ev": 0,
+                    "one_liner": e.get("one_liner") or c.get("one_liner", ""),
+                    "difficulty": e.get("difficulty", c.get("difficulty", 0)),
+                    "tags": e.get("tags", c.get("tags", [])),
+                    "explained": bool(e), "track": "foundation",
+                    "stage": st["stage"]})
+                files.append(write(
+                    f"concept/{c['key'].replace(' ', '_')}.json",
+                    {"key": c["key"], "name": c["name"], "aliases": [],
+                     "track": "foundation", "stage": st["stage"],
+                     "one_liner": e.get("one_liner") or c.get("one_liner", ""),
+                     "what": e.get("what"), "why": e.get("why"),
+                     "how": e.get("how"),
+                     "for_this_research": e.get("for_this_research"),
+                     "example": e.get("example"),
+                     "difficulty": e.get("difficulty", c.get("difficulty", 0)),
+                     "tags": e.get("tags", c.get("tags", [])),
+                     "prerequisites": c.get("prerequisites", []),
+                     "leads_to": e.get("leads_to", c.get("leads_to", [])),
+                     "related_keys": [], "links": [], "defs": [], "evidence": []}))
+                ks.append(c["key"])
+            found_stages.append({"stage": st["stage"], "title": st["title"],
+                                 "goal": st.get("goal", ""), "keys": ks})
+
     # 학습 순서: 선행 개념 그래프의 깊이 -> 난이도 -> 이름
     prereq = {c["key"]: explains.get(c["key"], {}).get("prerequisites", [])
               for c in notes["concepts"]}
@@ -102,10 +147,13 @@ def main():
     steps = {}
     for k in order:
         steps.setdefault(depth.get(k, 0), []).append(k)
+    for c in index:
+        c.setdefault("track", "research")
     files.append(write("concepts.json", {
         "count": len(index), "items": index,
         "explained": sum(1 for x in index if x["explained"]),
-        "order": order,
+        "order": [k for st in found_stages for k in st["keys"]] + order,
+        "foundation_stages": found_stages,
         "steps": [{"level": lv, "keys": ks} for lv, ks in sorted(steps.items())],
     }))
 
@@ -255,7 +303,9 @@ def main():
     print(f"  개념 {len(index)} · 논문 {len(papers)} · 소스파일 {len(src)} · "
           f"플래그 {len(code['flags'])} · 커밋 {len(log)} · 브리핑 {len(bindex)}일치 · "
           f"실행경로 {len(tr['traces']) if tr else 0}개")
-    print(f"  설명: 개념 {len(explains)}/{len(index)} · 코드 파일 {len(cdocs)}")
+    nf = sum(len(st["keys"]) for st in found_stages)
+    print(f"  설명: 연구개념 {len(explains)} · 기초개념 {len(found_exp)}/{nf} · "
+          f"코드 파일 {len(cdocs)}")
 
 
 if __name__ == "__main__":

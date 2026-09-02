@@ -23,6 +23,18 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 - [레포 위키](docs/05-wiki.md) — 파싱 부산물(파일·플래그·실험·로그·수치)을 학습 자료로
 - [로드맵](docs/04-roadmap.md) — M0~M7
 
+## 학습 트랙
+```
+기초 커리큘럼 (curriculum/foundations.json — 사람이 고칠 수 있는 파일)
+  0 수학·계산  →  1 신경망  →  2 트랜스포머  →  3 LLM 추론  →  4 성능·시스템
+        │  각 개념의 leads_to 가 아래로 이어진다
+        ▼
+연구 용어 (research/*.md 에서 추출한 104개) — 선행 그래프 깊이 순
+        │
+        ▼
+코드 (파일 역할 · 함수별 설명 · 실행 경로)
+```
+
 ## 핵심 설계 원칙
 1. **노트 우선** — 개념 그래프는 `research/*.md`에서 결정론적으로 뽑는다. LLM으로 지어내지 않는다.
 2. **생성은 로컬, 배포는 정적** — LLM 작업은 전부 이 서버의 루틴에서 끝난다. 사이트에는 런타임 LLM이 없다.
@@ -44,6 +56,10 @@ python3 routine/parse_notes.py && python3 routine/index_code.py && python3 routi
 | `logs.py` | 로그 템플릿 사전 + 코드 출력지점 연결 (W5) | 미사용 |
 | `questions.py` | 열린 질문 — TODO/FIXME·노트 미결·보류 실험 (W7) | 미사용 |
 | `xref.py` | 용어 역인덱스 (W8) | 미사용 |
+| `curriculum.py` | 딥러닝 기초 커리큘럼 설계 → `curriculum/foundations.json` | **사용** |
+| `explain_foundation.py` | 기초 개념 설명 생성 | **사용** |
+| `explain.py` | 연구 개념 설명 생성 | **사용** |
+| `explain_code.py` | 파일 역할 + 함수별 설명 생성 | **사용** |
 | `arxiv.py` | 시드 정규화 + arXiv 신규 수집 + BM25 랭킹 | 미사용 |
 | `generate.py` | 브리핑 생성 (Claude Code 헤드리스, 구독) + 스키마 검증 | **사용** |
 | `build.py` | `site/public/data/*.json` 생성 | 미사용 |

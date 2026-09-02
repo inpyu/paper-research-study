@@ -1,0 +1,764 @@
+{
+ "stages": [
+  {
+   "stage": 0,
+   "title": "수학과 계산의 기초",
+   "goal": "벡터·행렬 연산과 부동소수점, 메모리·대역폭 개념을 이해하고 연산량을 어림할 수 있다.",
+   "concepts": [
+    {
+     "key": "vector",
+     "name": "벡터",
+     "one_liner": "숫자를 순서대로 나열한 1차원 배열",
+     "prerequisites": [],
+     "leads_to": [
+      "dotprod",
+      "gemv"
+     ],
+     "tags": [
+      "math"
+     ],
+     "difficulty": 1,
+     "stage": 0
+    },
+    {
+     "key": "matrix",
+     "name": "행렬",
+     "one_liner": "벡터를 격자 형태로 배열한 구조",
+     "prerequisites": [
+      "vector"
+     ],
+     "leads_to": [
+      "gemm"
+     ],
+     "tags": [
+      "math"
+     ],
+     "difficulty": 1,
+     "stage": 0
+    },
+    {
+     "key": "matrix multiplication",
+     "name": "행렬곱",
+     "one_liner": "행렬 간 곱을 정의하는 연산 규칙",
+     "prerequisites": [
+      "matrix"
+     ],
+     "leads_to": [
+      "gemm",
+      "gemv",
+      "flops"
+     ],
+     "tags": [
+      "math"
+     ],
+     "difficulty": 2,
+     "stage": 0
+    },
+    {
+     "key": "floating point representation",
+     "name": "부동소수점 표현",
+     "one_liner": "실수를 유한 비트로 근사해 저장하는 방식",
+     "prerequisites": [],
+     "leads_to": [
+      "q40",
+      "q80",
+      "양자화"
+     ],
+     "tags": [
+      "compute"
+     ],
+     "difficulty": 2,
+     "stage": 0
+    },
+    {
+     "key": "computer memory hierarchy",
+     "name": "컴퓨터 메모리 계층 구조",
+     "one_liner": "레지스터부터 디스크까지 속도·용량이 다른 저장 단계",
+     "prerequisites": [],
+     "leads_to": [
+      "메모리 계층",
+      "memory bound"
+     ],
+     "tags": [
+      "system"
+     ],
+     "difficulty": 1,
+     "stage": 0
+    },
+    {
+     "key": "bandwidth and latency",
+     "name": "대역폭과 지연",
+     "one_liner": "데이터 전송량과 전송 지연 시간의 차이",
+     "prerequisites": [
+      "computer memory hierarchy"
+     ],
+     "leads_to": [
+      "지연 대 대역폭",
+      "roofline"
+     ],
+     "tags": [
+      "system"
+     ],
+     "difficulty": 2,
+     "stage": 0
+    },
+    {
+     "key": "array memory layout",
+     "name": "배열의 메모리 배치",
+     "one_liner": "다차원 배열이 실제 메모리에 저장되는 순서",
+     "prerequisites": [
+      "matrix"
+     ],
+     "leads_to": [
+      "메모리 레이아웃",
+      "타일링"
+     ],
+     "tags": [
+      "system"
+     ],
+     "difficulty": 2,
+     "stage": 0
+    },
+    {
+     "key": "computational cost estimation",
+     "name": "연산량 어림 계산",
+     "one_liner": "알고리즘이 수행하는 연산 횟수를 세는 방법",
+     "prerequisites": [
+      "matrix multiplication"
+     ],
+     "leads_to": [
+      "flops",
+      "산술 강도",
+      "machine balance"
+     ],
+     "tags": [
+      "math"
+     ],
+     "difficulty": 2,
+     "stage": 0
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "title": "신경망의 기초",
+   "goal": "뉴런·학습·정규화·비선형성의 원리를 이해하고 최소제곱 기반 적합의 기초를 다진다.",
+   "concepts": [
+    {
+     "key": "perceptron and neuron",
+     "name": "퍼셉트론과 인공 뉴런",
+     "one_liner": "입력의 가중합과 활성화로 출력을 내는 최소 단위",
+     "prerequisites": [
+      "vector",
+      "matrix multiplication"
+     ],
+     "leads_to": [
+      "dense"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 1,
+     "stage": 1
+    },
+    {
+     "key": "gradient descent and training loop",
+     "name": "경사하강법과 학습 루프",
+     "one_liner": "손실을 줄이는 방향으로 파라미터를 반복 갱신",
+     "prerequisites": [
+      "perceptron and neuron"
+     ],
+     "leads_to": [],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "linear regression and least squares",
+     "name": "선형 회귀와 최소제곱",
+     "one_liner": "오차 제곱합을 최소화해 직선을 적합시키는 방법",
+     "prerequisites": [
+      "matrix",
+      "gradient descent and training loop"
+     ],
+     "leads_to": [
+      "최소제곱",
+      "최소제곱 적합",
+      "정규방정식"
+     ],
+     "tags": [
+      "ml",
+      "math"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "overfitting generalization and holdout",
+     "name": "과적합·일반화와 홀드아웃",
+     "one_liner": "학습 데이터에만 맞춰져 일반 성능이 떨어지는 문제",
+     "prerequisites": [
+      "linear regression and least squares"
+     ],
+     "leads_to": [
+      "과적합",
+      "holdout",
+      "ridge"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "feedforward layers",
+     "name": "순전파 층 구조",
+     "one_liner": "입력이 여러 층을 거쳐 출력으로 변환되는 구조",
+     "prerequisites": [
+      "perceptron and neuron"
+     ],
+     "leads_to": [
+      "dense",
+      "ffn"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "normalization in neural networks",
+     "name": "신경망의 정규화 기법",
+     "one_liner": "층의 출력 분포를 안정시키는 스케일 조정",
+     "prerequisites": [
+      "feedforward layers"
+     ],
+     "leads_to": [
+      "정규화",
+      "rmsnorm"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "nonlinear activation functions",
+     "name": "비선형 활성 함수",
+     "one_liner": "선형 조합에 비선형성을 더하는 함수",
+     "prerequisites": [
+      "feedforward layers"
+     ],
+     "leads_to": [
+      "swiglu"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    },
+    {
+     "key": "residual connections",
+     "name": "잔차 연결",
+     "one_liner": "입력을 출력에 더해 정보 손실을 줄이는 우회 경로",
+     "prerequisites": [
+      "feedforward layers"
+     ],
+     "leads_to": [
+      "residual stream"
+     ],
+     "tags": [
+      "ml"
+     ],
+     "difficulty": 2,
+     "stage": 1
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "title": "시퀀스 모델과 트랜스포머",
+   "goal": "토큰화·임베딩·어텐션·트랜스포머 블록의 동작 원리를 설명할 수 있다.",
+   "concepts": [
+    {
+     "key": "tokenization",
+     "name": "토큰화",
+     "one_liner": "텍스트를 모델이 다룰 최소 단위로 분할하는 과정",
+     "prerequisites": [],
+     "leads_to": [
+      "토큰"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 1,
+     "stage": 2
+    },
+    {
+     "key": "embedding lookup",
+     "name": "임베딩 조회",
+     "one_liner": "이산 토큰을 연속 벡터로 매핑하는 표",
+     "prerequisites": [
+      "tokenization",
+      "vector"
+     ],
+     "leads_to": [
+      "임베딩",
+      "토큰 임베딩"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 1,
+     "stage": 2
+    },
+    {
+     "key": "positional information",
+     "name": "위치 정보의 필요성",
+     "one_liner": "어텐션이 순서를 모른다는 문제와 그 해결 필요성",
+     "prerequisites": [
+      "embedding lookup"
+     ],
+     "leads_to": [
+      "위치 인코딩",
+      "rope"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 2,
+     "stage": 2
+    },
+    {
+     "key": "self-attention mechanism",
+     "name": "셀프 어텐션",
+     "one_liner": "토큰들이 서로를 참조해 가중합을 구하는 메커니즘",
+     "prerequisites": [
+      "embedding lookup",
+      "matrix multiplication"
+     ],
+     "leads_to": [
+      "attention",
+      "causal mask"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 3,
+     "stage": 2
+    },
+    {
+     "key": "multi-head attention and variants",
+     "name": "멀티헤드 어텐션과 변형",
+     "one_liner": "여러 헤드로 병렬 계산 후 결합하는 어텐션 확장",
+     "prerequisites": [
+      "self-attention mechanism"
+     ],
+     "leads_to": [
+      "gqa"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 3,
+     "stage": 2
+    },
+    {
+     "key": "softmax and numerical stability",
+     "name": "소프트맥스와 수치 안정성",
+     "one_liner": "점수를 확률로 바꾸며 오버플로를 막는 계산법",
+     "prerequisites": [
+      "self-attention mechanism"
+     ],
+     "leads_to": [
+      "online softmax",
+      "lse log sum exp merge"
+     ],
+     "tags": [
+      "nlp",
+      "math"
+     ],
+     "difficulty": 3,
+     "stage": 2
+    },
+    {
+     "key": "transformer block architecture",
+     "name": "트랜스포머 블록 구조",
+     "one_liner": "어텐션과 FFN을 정규화·잔차로 엮은 반복 단위",
+     "prerequisites": [
+      "multi-head attention and variants",
+      "nonlinear activation functions"
+     ],
+     "leads_to": [],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 3,
+     "stage": 2
+    },
+    {
+     "key": "output projection and logits",
+     "name": "출력 사영과 로짓",
+     "one_liner": "은닉 상태를 어휘 크기 점수로 변환하는 마지막 층",
+     "prerequisites": [
+      "embedding lookup",
+      "matrix multiplication"
+     ],
+     "leads_to": [
+      "lmhead",
+      "로짓"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 2,
+     "stage": 2
+    },
+    {
+     "key": "local and sparse attention patterns",
+     "name": "지역·희소 어텐션 패턴",
+     "one_liner": "모든 토큰 대신 일부만 참조해 비용을 줄이는 어텐션",
+     "prerequisites": [
+      "self-attention mechanism"
+     ],
+     "leads_to": [
+      "블록 로컬 attention"
+     ],
+     "tags": [
+      "nlp"
+     ],
+     "difficulty": 3,
+     "stage": 2
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "title": "LLM과 추론",
+   "goal": "자기회귀 생성과 KV 캐시, 배칭, 프리필/디코드 구조, 결과 검증 방법을 이해한다.",
+   "concepts": [
+    {
+     "key": "autoregressive generation",
+     "name": "자기회귀 생성",
+     "one_liner": "이전 토큰을 바탕으로 다음 토큰을 순차 생성",
+     "prerequisites": [
+      "transformer block architecture",
+      "output projection and logits"
+     ],
+     "leads_to": [
+      "prefill",
+      "decode"
+     ],
+     "tags": [
+      "inference"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "kv cache concept",
+     "name": "KV 캐시 개념",
+     "one_liner": "이미 계산한 키·값을 재사용해 중복 연산을 줄임",
+     "prerequisites": [
+      "autoregressive generation",
+      "self-attention mechanism"
+     ],
+     "leads_to": [
+      "kv cache"
+     ],
+     "tags": [
+      "inference"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "batching inference requests",
+     "name": "추론 요청 배칭",
+     "one_liner": "여러 요청을 묶어 처리량을 높이는 방법",
+     "prerequisites": [
+      "autoregressive generation"
+     ],
+     "leads_to": [
+      "continuous batching"
+     ],
+     "tags": [
+      "inference",
+      "system"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "prefill and decode phases",
+     "name": "프리필과 디코드 단계 구분",
+     "one_liner": "입력 전체 처리 단계와 토큰별 생성 단계의 차이",
+     "prerequisites": [
+      "kv cache concept"
+     ],
+     "leads_to": [
+      "prefill",
+      "decode",
+      "ttft"
+     ],
+     "tags": [
+      "inference"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "chunking long inputs",
+     "name": "긴 입력의 청크 분할",
+     "one_liner": "긴 프롬프트를 작은 조각으로 나눠 처리하는 방법",
+     "prerequisites": [
+      "prefill and decode phases"
+     ],
+     "leads_to": [
+      "chunked prefill",
+      "청크 chunk"
+     ],
+     "tags": [
+      "inference"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "long context evaluation benchmarks",
+     "name": "장문맥 평가 벤치마크",
+     "one_liner": "긴 입력에서 모델의 기억·검색 능력을 재는 평가법",
+     "prerequisites": [
+      "chunking long inputs"
+     ],
+     "leads_to": [
+      "needle in haystack",
+      "ruler",
+      "longbench"
+     ],
+     "tags": [
+      "evaluation"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "output verification and reproducibility",
+     "name": "추론 출력 검증과 재현성",
+     "one_liner": "구현이 바뀌어도 같은 출력을 내는지 확인하는 방법",
+     "prerequisites": [
+      "autoregressive generation"
+     ],
+     "leads_to": [
+      "byte for byte 동일",
+      "matched accuracy 비교",
+      "drainprefilllogits"
+     ],
+     "tags": [
+      "evaluation",
+      "system"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    },
+    {
+     "key": "sampling and decoding strategies",
+     "name": "샘플링과 디코딩 전략",
+     "one_liner": "확률 분포에서 다음 토큰을 고르는 다양한 방식",
+     "prerequisites": [
+      "softmax and numerical stability",
+      "autoregressive generation"
+     ],
+     "leads_to": [],
+     "tags": [
+      "inference"
+     ],
+     "difficulty": 2,
+     "stage": 3
+    }
+   ]
+  },
+  {
+   "stage": 4,
+   "title": "성능과 시스템",
+   "goal": "양자화·저랭크 근사·병렬화·통신·분산 서빙의 병목을 분석할 수 있다.",
+   "concepts": [
+    {
+     "key": "quantization fundamentals",
+     "name": "양자화 기초",
+     "one_liner": "가중치를 저비트 정수로 근사해 저장·연산하는 방법",
+     "prerequisites": [
+      "floating point representation"
+     ],
+     "leads_to": [
+      "양자화",
+      "q40",
+      "q80"
+     ],
+     "tags": [
+      "quantization"
+     ],
+     "difficulty": 2,
+     "stage": 4
+    },
+    {
+     "key": "block quantization and repacking",
+     "name": "블록 양자화와 리팩",
+     "one_liner": "작은 블록 단위로 양자화 스케일을 다시 두는 방법",
+     "prerequisites": [
+      "quantization fundamentals",
+      "array memory layout"
+     ],
+     "leads_to": [
+      "블록 양자화",
+      "repack"
+     ],
+     "tags": [
+      "quantization"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "low rank approximation via svd",
+     "name": "SVD를 통한 저랭크 근사",
+     "one_liner": "큰 행렬을 소수의 성분으로 압축 근사하는 방법",
+     "prerequisites": [
+      "matrix",
+      "computational cost estimation"
+     ],
+     "leads_to": [
+      "저랭크 근사",
+      "svd",
+      "랭크"
+     ],
+     "tags": [
+      "compression",
+      "math"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "approximation error and reconstruction",
+     "name": "근사 오차와 재구성",
+     "one_liner": "압축·근사 후 원본과의 차이를 측정하는 방법",
+     "prerequisites": [
+      "low rank approximation via svd"
+     ],
+     "leads_to": [
+      "재구성 오차",
+      "상대 오차",
+      "특이값"
+     ],
+     "tags": [
+      "compression",
+      "math"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "tensor and pipeline parallelism",
+     "name": "텐서·파이프라인 병렬화",
+     "one_liner": "모델을 여러 장치에 층 또는 축 단위로 나누는 방법",
+     "prerequisites": [
+      "matrix multiplication",
+      "computer memory hierarchy"
+     ],
+     "leads_to": [
+      "tp",
+      "pp"
+     ],
+     "tags": [
+      "parallelism"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "sequence and context parallelism",
+     "name": "시퀀스·컨텍스트 병렬화",
+     "one_liner": "긴 입력을 시퀀스 축으로 나눠 여러 장치가 처리",
+     "prerequisites": [
+      "tensor and pipeline parallelism",
+      "chunking long inputs"
+     ],
+     "leads_to": [
+      "sp",
+      "cp"
+     ],
+     "tags": [
+      "parallelism"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "collective communication patterns",
+     "name": "집합 통신 패턴",
+     "one_liner": "여러 노드가 데이터를 모으고 나누는 표준 통신 방식",
+     "prerequisites": [
+      "tensor and pipeline parallelism",
+      "bandwidth and latency"
+     ],
+     "leads_to": [
+      "집합 통신",
+      "all reduce",
+      "allgather"
+     ],
+     "tags": [
+      "distributed system"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "synchronization barriers and stragglers",
+     "name": "동기화·배리어와 지연 노드",
+     "one_liner": "분산 노드 간 진행 속도를 맞추고 느린 노드를 다루는 문제",
+     "prerequisites": [
+      "collective communication patterns"
+     ],
+     "leads_to": [
+      "동기",
+      "barrier",
+      "straggler"
+     ],
+     "tags": [
+      "distributed system"
+     ],
+     "difficulty": 3,
+     "stage": 4
+    },
+    {
+     "key": "disaggregated serving and kv transfer",
+     "name": "분리형 서빙과 KV 전송",
+     "one_liner": "프리필과 디코드를 다른 노드로 분리해 KV를 옮기는 구조",
+     "prerequisites": [
+      "kv cache concept",
+      "synchronization barriers and stragglers"
+     ],
+     "leads_to": [
+      "p",
+      "d disaggregation",
+      "kv migration"
+     ],
+     "tags": [
+      "distributed system",
+      "inference"
+     ],
+     "difficulty": 4,
+     "stage": 4
+    }
+   ]
+  }
+ ],
+ "count": 42
+}
