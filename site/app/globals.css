@@ -70,12 +70,16 @@ h2.title{font-size:22px;letter-spacing:-.02em;margin:6px 0 4px;font-weight:700}
 .center{text-align:center}
 
 /* 카드 */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:14px 16px;margin-bottom:9px;box-shadow:var(--shadow);
+/* a 로도 쓰이므로 display 를 명시해야 한다.
+   빠뜨리면 앵커가 인라인으로 깔려 카드가 세로 막대처럼 찌그러지고 글자가 잘린다. */
+.card{display:block;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px 16px;margin-bottom:9px;box-shadow:var(--shadow);
   transition:border-color .13s,transform .13s}
 a.card:hover,.card.click:hover{border-color:var(--brand-line);transform:translateY(-1px)}
-.card .t{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.card .n{font-weight:650;letter-spacing:-.01em}
+.card .t{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+  min-width:0}
+.card .n{min-width:0;overflow-wrap:anywhere}
+.card .n{font-weight:650;letter-spacing:-.01em;min-width:0;overflow-wrap:anywhere}
 .card .s{font-size:12.5px;color:var(--muted);white-space:nowrap}
 .card .d{font-size:13.5px;color:var(--muted);margin-top:6px}
 .grid{display:grid;gap:9px;grid-template-columns:1fr}
@@ -108,6 +112,7 @@ input[type=search]:focus{outline:none;border-color:var(--brand);
   font-size:13px;color:var(--muted);cursor:pointer;font-weight:550}
 .seg button[data-on=true]{background:var(--bg);color:var(--brand);box-shadow:var(--shadow)}
 .row{display:flex;justify-content:space-between;gap:10px;align-items:center;
+  text-decoration:none;
   padding:11px 14px;border:1px solid var(--line);border-radius:9px;
   background:var(--surface);margin-bottom:7px;font-size:13.5px}
 .row:hover{border-color:var(--brand-line)}
