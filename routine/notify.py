@@ -9,6 +9,7 @@ import json
 import os
 import sys
 import urllib.request
+from datetime import datetime
 
 CFG = os.path.expanduser("~/.config/reposcholar/notify.json")
 SITE = "https://paper-research-study.vercel.app/"
@@ -49,6 +50,13 @@ def main():
     if not files:
         return send("RepoScholar", "오늘 새 브리핑이 없습니다.", tags="zzz")
     b = json.load(open(os.path.join(d, files[-1]), encoding="utf-8"))
+    today = datetime.now().astimezone().strftime("%Y-%m-%d")
+    if b.get("date") != today:
+        # 오늘 새 브리핑이 없으면 어제 것을 '오늘의 브리핑' 으로 보내지 않는다.
+        return send("RepoScholar · 새 브리핑 없음",
+                    f"오늘({today})은 새로 다룰 논문이 없었습니다. "
+                    f"최신 브리핑은 {b.get('date')} 입니다.",
+                    tags="zzz", priority="low")
     items = b["items"]
     must = [x for x in items if x["verdict"] == "must-read"]
     head = f"{b['date']} · 논문 {len(items)}편" + (

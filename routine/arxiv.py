@@ -240,6 +240,16 @@ def main():
 
 
 def rank_and_dump(cands, bm, args):
+    # 수집 단계에서 걸렀어도, 캐시(candidates_raw)에서 합쳐 온 것들은 안 걸러졌다.
+    # 그 탓에 상위 8편이 전부 어제까지 다룬 논문으로 채워지고
+    # 정작 신규 20편이 랭킹에서 밀려났다(2026-09-03).
+    # 랭킹 대상 전체에 한 번 더 적용한다.
+    if not args.repeat:
+        done = briefed_ids()
+        before = len(cands)
+        cands = [c for c in cands if c["id"] not in done]
+        if before != len(cands):
+            print(f"랭킹 전 제외: 이미 브리핑한 {before - len(cands)}편")
     cutoff = time.strftime("%Y-%m-%d", time.gmtime(time.time() - args.days * 86400))
     fresh = [c for c in cands if max(c["published"], c["updated"]) >= cutoff]
     pool = fresh or cands            # 신규가 없으면 전체에서 고른다

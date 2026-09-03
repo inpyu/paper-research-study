@@ -53,14 +53,19 @@ def main():
                           f"보기:\n{ch}\n정답 인덱스: {it['answer']}\n"
                           f"해설: {it['explanation']}")
         prompt = tpl.replace("{ITEMS}", "\n\n".join(blocks))
-        res, err = call_claude(prompt, args.model, timeout=600)
-        log_usage("quiz_fix", res)
-        if err:
-            print(f"  배치 {i//args.batch+1}: {err}")
-            continue
-        obj = extract_json(res.get("result", ""))
-        if not obj or "items" not in obj:
-            print(f"  배치 {i//args.batch+1}: JSON 실패")
+        obj = None
+        for attempt in (1, 2):
+            res, err = call_claude(prompt, args.model, timeout=600)
+            log_usage("quiz_fix", res)
+            if err:
+                print(f"  배치 {i//args.batch+1} 시도 {attempt}: {err}")
+                continue
+            obj = extract_json(res.get("result", ""))
+            if obj and "items" in obj:
+                break
+            print(f"  배치 {i//args.batch+1} 시도 {attempt}: JSON 실패")
+            obj = None
+        if obj is None:
             continue
         got = {x.get("id"): x for x in obj["items"]}
         for fname, it in chunk:
